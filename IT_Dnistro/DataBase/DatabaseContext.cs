@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace DataBase
 {
@@ -7,16 +6,12 @@ namespace DataBase
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
+            //Database.EnsureCreated();
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<UserInfo> UserInfos { get; set; }
-        public DbSet<ToursArchive> TourArchives { get; set; }
-
-        //public DatabaseContext()
-        //{
-        //    Database.EnsureCreated();
-        //}
+        public DbSet<Tour> Tours { get; set; }
     }
 }
