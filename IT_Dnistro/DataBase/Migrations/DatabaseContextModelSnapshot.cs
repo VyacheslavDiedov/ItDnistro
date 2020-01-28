@@ -19,29 +19,6 @@ namespace DataBase.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DataBase.Account", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Login")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Accounts");
-                });
-
             modelBuilder.Entity("DataBase.Tour", b =>
                 {
                     b.Property<int>("Id")
@@ -58,9 +35,32 @@ namespace DataBase.Migrations
                     b.Property<string>("TourName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TourTypeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("TourTypeId");
+
                     b.ToTable("Tours");
+                });
+
+            modelBuilder.Entity("DataBase.TourType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("TourTypeDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TourTypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TourTypes");
                 });
 
             modelBuilder.Entity("DataBase.User", b =>
@@ -70,8 +70,14 @@ namespace DataBase.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EMail")
                         .HasColumnType("nvarchar(max)");
@@ -85,64 +91,52 @@ namespace DataBase.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
+                    b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TourId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserInfoId")
-                        .HasColumnType("int");
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TourId");
-
-                    b.HasIndex("UserInfoId");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DataBase.UserInfo", b =>
+            modelBuilder.Entity("DataBase.UserTour", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Education")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("HowFoundUs")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Interests")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TourId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Occupation")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserInfos");
+                    b.HasIndex("TourId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTours");
                 });
 
-            modelBuilder.Entity("DataBase.Account", b =>
+            modelBuilder.Entity("DataBase.Tour", b =>
                 {
-                    b.HasOne("DataBase.User", "User")
+                    b.HasOne("DataBase.TourType", "TourType")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("TourTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DataBase.User", b =>
+            modelBuilder.Entity("DataBase.UserTour", b =>
                 {
                     b.HasOne("DataBase.Tour", "Tour")
                         .WithMany()
@@ -150,9 +144,9 @@ namespace DataBase.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataBase.UserInfo", "UserInfo")
+                    b.HasOne("DataBase.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserInfoId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

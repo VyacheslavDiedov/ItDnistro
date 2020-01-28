@@ -10,8 +10,8 @@ namespace DataBase
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<UserInfo> UserInfos { get; set; }
         public DbSet<Tour> Tours { get; set; }
+        public DbSet<TourType> TourTypes { get; set; }
+        public DbSet<UserTour> UserTours { get; set; }
     }
 }
