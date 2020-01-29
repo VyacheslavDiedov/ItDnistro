@@ -23,6 +23,11 @@ namespace IT_Dnistro.Controllers
             return View();
         }
 
+        public IActionResult Carpaty()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
