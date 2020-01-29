@@ -6,10 +6,14 @@ namespace DataBase
     {
         [Key]
         public int Id { get; set; }
+
         public int UserId { get; set; }
         public virtual User User { get; set; }
+
         public int TourId { get; set; }
         public virtual Tour Tour { get; set; }
+
+        [Required]
         public string HowFoundUs { get; set; }
     }
 }
