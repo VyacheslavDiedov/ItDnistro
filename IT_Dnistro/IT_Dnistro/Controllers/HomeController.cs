@@ -28,6 +28,16 @@ namespace IT_Dnistro.Controllers
             return View();
         }
 
+        public IActionResult Scandinavia()
+        {
+            return View();
+        }
+
+        public IActionResult Dnictro()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
