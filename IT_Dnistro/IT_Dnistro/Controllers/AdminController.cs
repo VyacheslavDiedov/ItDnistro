@@ -11,6 +11,7 @@ using IT_Dnistro.Models;
 
 namespace IT_Dnistro.Controllers
 {
+    
     public class AdminController : Controller
     {
         // GET: /<controller>/
@@ -18,6 +19,7 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
+        [Route("Admin")]
         public IActionResult Admin()
         {
             return View();
