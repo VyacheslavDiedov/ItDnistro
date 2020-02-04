@@ -32,12 +32,14 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
+        //[Authorize]
         //[Route("dnistro")]
         public IActionResult Dnistro()
         {
             return View();
-        }
+        //return Content(User.Identity.Name)
 
+        }
         public IActionResult Privacy()
         {
             return View();
