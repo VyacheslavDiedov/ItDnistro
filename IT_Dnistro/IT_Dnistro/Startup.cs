@@ -54,7 +54,7 @@ namespace IT_Dnistro
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Dnictro}/{id?}");
+                    pattern: "{controller=Home}/{action=dnistro}/{id?}");
             });
         }
     }

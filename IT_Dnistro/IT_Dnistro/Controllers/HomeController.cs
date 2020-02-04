@@ -22,18 +22,18 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
-        [Route("Carpaty")]
+        [Route("carpaty")]
         public IActionResult Carpaty()
         {
             return View();
         }
-        [Route("Scandinavia")]
+        [Route("scandinavia")]
         public IActionResult Scandinavia()
         {
             return View();
         }
-        
-        public IActionResult Dnictro()
+        [Route("dnistro")]
+        public IActionResult Dnistro()
         {
             return View();
         }
