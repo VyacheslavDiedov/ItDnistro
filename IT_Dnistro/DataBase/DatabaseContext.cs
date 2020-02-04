@@ -6,7 +6,7 @@ namespace DataBase
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         public DbSet<User> Users { get; set; }

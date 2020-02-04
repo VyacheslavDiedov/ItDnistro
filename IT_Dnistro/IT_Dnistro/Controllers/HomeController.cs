@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IT_Dnistro.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IT_Dnistro.Controllers
 {
@@ -32,10 +33,11 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
-
+        //[Authorize]
         public IActionResult Dnictro()
         {
             return View();
+            //return Content(User.Identity.Name);
         }
 
         public IActionResult Privacy()
