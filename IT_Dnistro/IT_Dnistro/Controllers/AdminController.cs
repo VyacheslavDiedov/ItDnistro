@@ -11,6 +11,7 @@ using IT_Dnistro.Models;
 
 namespace IT_Dnistro.Controllers
 {
+    
     public class AdminController : Controller
     {
         // GET: /<controller>/
