@@ -32,7 +32,7 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
-        [Route("dnistro")]
+        //[Route("dnistro")]
         public IActionResult Dnistro()
         {
             return View();
