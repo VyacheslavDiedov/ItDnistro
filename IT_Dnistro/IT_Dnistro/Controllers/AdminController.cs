@@ -18,6 +18,7 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
+        [Route("Admin")]
         public IActionResult Admin()
         {
             return View();
