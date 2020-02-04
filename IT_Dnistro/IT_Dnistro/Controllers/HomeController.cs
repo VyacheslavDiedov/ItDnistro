@@ -22,17 +22,17 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
-
+        [Route("Carpaty")]
         public IActionResult Carpaty()
         {
             return View();
         }
-
+        [Route("Scandinavia")]
         public IActionResult Scandinavia()
         {
             return View();
         }
-
+        
         public IActionResult Dnictro()
         {
             return View();
