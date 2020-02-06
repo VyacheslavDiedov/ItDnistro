@@ -229,7 +229,7 @@ p {
     text-align: center;
 }
 .content li {
-    font-size: 8pt;
+    font-size: 9pt;
     color: black;
 }
 .col-sm-3 li {
@@ -397,7 +397,7 @@ footer {
     .content ul {
         margin-left: 4vw !important;
         line-height: 1.4;
-        text-align: justify;
+        text-align: left;
     }
     .container {
         width: 70%;
@@ -489,7 +489,7 @@ footer {
     .content ul {
         margin-left: 4vw !important;
         line-height: 1.4;
-        text-align: justify;
+        text-align: left;
     }
     .container {
         width: 65%;
@@ -587,7 +587,7 @@ footer {
     .content ul {
         margin-left: 4vw !important;
         line-height: 1.4;
-        text-align: justify;
+        text-align: left;
     }
     .container {
         width: 60%;
@@ -699,7 +699,7 @@ footer {
     .content ul {
         margin-left: 4vw !important;
         line-height: 1.4;
-        text-align: justify;
+        text-align: left;
     }
     .container {
         width: 60%;
