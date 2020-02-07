@@ -33,7 +33,7 @@ namespace IT_Dnistro.Controllers
                 User user = await db.Users.FirstOrDefaultAsync(u => u.EMail == model.EMail && u.Password == model.Password).ConfigureAwait(false);
                 if (user != null)
                 {
-                    await Authenticate(model.EMail); // аутентификация
+                    await Authenticate(model.EMail).ConfigureAwait(true); // аутентификация
 
                     return RedirectToAction("Dnistro", "Home");
                 }
@@ -54,7 +54,7 @@ namespace IT_Dnistro.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.EMail == model.EMail);
+                User user = await db.Users.FirstOrDefaultAsync(u => u.EMail == model.EMail).ConfigureAwait(true);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
@@ -70,9 +70,9 @@ namespace IT_Dnistro.Controllers
                         Gender = model.Gender,
                         Phone = model.Phone
                     });
-                    await db.SaveChangesAsync();
+                    await db.SaveChangesAsync().ConfigureAwait(true);
 
-                    await Authenticate(model.EMail); // аутентификация
+                    await Authenticate(model.EMail).ConfigureAwait(true); // аутентификация
 
                     return RedirectToAction("Dnistro", "Home");
                 }
@@ -92,12 +92,12 @@ namespace IT_Dnistro.Controllers
             // создаем объект ClaimsIdentity
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
             // установка аутентификационных куки
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id)).ConfigureAwait(true);
         }
 
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme).ConfigureAwait(true);
             return RedirectToAction("Login", "Account");
         }
 
