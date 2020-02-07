@@ -8,6 +8,7 @@ using IT_Dnistro.Models; // пространство имен UserContext и к�
 using DataBase;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Linq;
 
 namespace IT_Dnistro.Controllers
 {
@@ -34,12 +35,14 @@ namespace IT_Dnistro.Controllers
                 {
                     await Authenticate(model.EMail); // аутентификация
 
-                    return RedirectToAction("Dnictro", "Home");
+                    return RedirectToAction("Dnistro", "Home");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
             return View(model);
         }
+
+        //CREATE
         [HttpGet]
         public IActionResult Register()
         {
@@ -71,7 +74,7 @@ namespace IT_Dnistro.Controllers
 
                     await Authenticate(model.EMail); // аутентификация
 
-                    return RedirectToAction("Dnictro", "Home");
+                    return RedirectToAction("Dnistro", "Home");
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
@@ -96,6 +99,31 @@ namespace IT_Dnistro.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
+        }
+
+        //UPDATE
+        public IActionResult Update(int id)
+        {
+            return View(db.Users.Where(u => u.Id == id).FirstOrDefault());
+        }
+
+        [HttpPost]
+        [ActionName("Update")]
+        public IActionResult Update_Post(User user)
+        {
+            db.Users.Update(user);
+            db.SaveChanges();
+            return RedirectToAction("Dnistro", "Home");
+        }
+
+        //DELETE
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var user = db.Users.Where(u => u.Id == id).FirstOrDefault();
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("Dnistro", "Home");
         }
     }
 }

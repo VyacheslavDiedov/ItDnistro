@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using DataBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IT_Dnistro.Models;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IT_Dnistro.Controllers
 {
@@ -18,10 +23,10 @@ namespace IT_Dnistro.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
         [Route("carpaty")]
         public IActionResult Carpaty()
         {
@@ -37,7 +42,7 @@ namespace IT_Dnistro.Controllers
         public IActionResult Dnistro()
         {
             return View();
-        //return Content(User.Identity.Name)
+       // return Content(User.Identity.Name);
 
         }
         public IActionResult Privacy()
