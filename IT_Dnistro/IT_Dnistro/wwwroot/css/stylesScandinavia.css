@@ -305,8 +305,13 @@ p {
     height:auto;
     padding-top: 15vh;
 }
+.project__next img {
+    margin-left: 27px !important;
+}
+
 .project__prev img {
     float: right;
+    margin-right: 27px !important;
 }
 .invisible {
     opacity: 0;
