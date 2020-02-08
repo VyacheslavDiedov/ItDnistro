@@ -129,6 +129,11 @@ div.col-2 {
     background: #333f59;
     color: white;
 }
+
+.button-container {
+    padding-top: 12px;
+}
+
 .button4 {
     background-color: #f5f8f5;
     border-radius:20px;
@@ -339,6 +344,15 @@ footer {
     padding-top: 5vh;
     z-index: 3;
 }
+
+.footer-phone-email {
+    padding-top: 8px;
+}
+
+.social-media-container {
+    padding-top: 20px;
+}
+
 .social-icon {
     height: auto;
     width: 5vw;
@@ -544,7 +558,7 @@ footer {
      }
     .social-icon {
         height: auto;
-        width: 3vw;
+        width: 2vw;
     }
     .logo {
         width: 7vw;
@@ -642,7 +656,7 @@ footer {
      }
     .social-icon {
         height: auto;
-        width: 3vw;
+        width: 2vw;
     }
     .logo {
         width: 6vw;
@@ -754,7 +768,7 @@ footer {
      }
     .social-icon {
         height: auto;
-        width: 3vw;
+        width: 2vw;
     }
     .logo {
         width: 6vw;
