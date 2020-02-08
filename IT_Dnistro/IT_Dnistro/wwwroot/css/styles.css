@@ -54,12 +54,9 @@ h2 {
     line-height: 1.2;
     text-align: center;
 }
-.col-sm-3 {
+.add_separator {
     border-right: 2px solid #9999cc;
     height: 40px;
-}
-#delete_right_border {
-    border-right: none;
 }
 .firstHeader {
     margin-top: 12vh;
