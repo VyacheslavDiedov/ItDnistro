@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace IT_Dnistro
 {
@@ -30,6 +32,16 @@ namespace IT_Dnistro
             string connection = Configuration.GetConnectionString("ITDnistroDBConnection");
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
+
+            //Амнін роль
+            // добавление ApplicationDbContext для взаимодействия с базой данных учетных записей
+            services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlServer(connection));
+
+            // добавление сервисов Idenity
+            services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<DatabaseContext>();
+
 
             //установка конфигурации подключения
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
