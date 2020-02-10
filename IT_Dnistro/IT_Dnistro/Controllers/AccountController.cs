@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using IT_Dnistro.ViewModels; // пространство имен моделей RegisterModel и LoginModel
-using IT_Dnistro.Models; // пространство имен UserContext и класса User
 using DataBase;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -14,7 +13,7 @@ namespace IT_Dnistro.Controllers
 {
     public class AccountController : Controller
     {
-        private DatabaseContext db;
+        private readonly DatabaseContext db;
         public AccountController(DatabaseContext context)
         {
             db = context;
@@ -109,7 +108,7 @@ namespace IT_Dnistro.Controllers
 
         [HttpPost]
         [ActionName("Update")]
-        public IActionResult Update_Post(User user)
+        public IActionResult UpdatePost(User user)
         {
             db.Users.Update(user);
             db.SaveChanges();
