@@ -8,6 +8,7 @@ using DataBase;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Linq;
+using Microsoft.AspNetCore.Identity;
 
 namespace IT_Dnistro.Controllers
 {
@@ -29,7 +30,7 @@ namespace IT_Dnistro.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.EMail == model.EMail && u.Password == model.Password).ConfigureAwait(false);
+                var user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.EMail && u.PasswordHash == model.Password).ConfigureAwait(false);
                 if (user != null)
                 {
                     await Authenticate(model.EMail).ConfigureAwait(true); // аутентификация
@@ -53,23 +54,23 @@ namespace IT_Dnistro.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.EMail == model.EMail).ConfigureAwait(true);
+                var user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.EMail).ConfigureAwait(true);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    db.Users.Add(new User
-                    {
-                        EMail = model.EMail, 
-                        Password = model.Password,
-                        BirthDate = model.BirthDate,
-                        City = model.City,
-                        Country = model.Country,
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        Gender = model.Gender,
-                        Phone = model.Phone
-                    });
-                    await db.SaveChangesAsync().ConfigureAwait(true);
+                    //db.Users.Add(new IdentityUser()
+                    //{
+                    //    EMail = model.EMail, 
+                    //    Password = model.Password,
+                    //    BirthDate = model.BirthDate,
+                    //    City = model.City,
+                    //    Country = model.Country,
+                    //    FirstName = model.FirstName,
+                    //    LastName = model.LastName,
+                    //    Gender = model.Gender,
+                    //    Phone = model.Phone
+                    //});
+                    //await db.SaveChangesAsync().ConfigureAwait(true);
 
                     await Authenticate(model.EMail).ConfigureAwait(true); // аутентификация
 
@@ -101,23 +102,23 @@ namespace IT_Dnistro.Controllers
         }
 
         //UPDATE
-        public IActionResult Update(int id)
+        public IActionResult Update(string id)
         {
             return View(db.Users.Where(u => u.Id == id).FirstOrDefault());
         }
 
-        [HttpPost]
-        [ActionName("Update")]
-        public IActionResult UpdatePost(User user)
-        {
-            db.Users.Update(user);
-            db.SaveChanges();
-            return RedirectToAction("Dnistro", "Home");
-        }
+        //[HttpPost]
+        //[ActionName("Update")]
+        //public IActionResult UpdatePost(User user)
+        //{
+        //    db.Users.Update(user);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Dnistro", "Home");
+        //}
 
         //DELETE
         [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             var user = db.Users.Where(u => u.Id == id).FirstOrDefault();
             db.Users.Remove(user);

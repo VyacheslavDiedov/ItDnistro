@@ -4,14 +4,16 @@ using DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataBase.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200210191853_ChangeUserType")]
+    partial class ChangeUserType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,33 +21,33 @@ namespace DataBase.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            //modelBuilder.Entity("DataBase.Tour", b =>
-            //    {
-            //        b.Property<int>("Id")
-            //            .ValueGeneratedOnAdd()
-            //            .HasColumnType("int")
-            //            .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            modelBuilder.Entity("DataBase.Tour", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            //        b.Property<DateTime>("TourDate")
-            //            .HasColumnType("datetime2");
+                    b.Property<DateTime>("TourDate")
+                        .HasColumnType("datetime2");
 
-            //        b.Property<int>("TourLength")
-            //            .HasColumnType("int");
+                    b.Property<int>("TourLength")
+                        .HasColumnType("int");
 
-            //        b.Property<string>("TourName")
-            //            .IsRequired()
-            //            .HasColumnType("nvarchar(50)")
-            //            .HasMaxLength(50);
+                    b.Property<string>("TourName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
-            //        b.Property<int>("TourTypeId")
-            //            .HasColumnType("int");
+                    b.Property<int>("TourTypeId")
+                        .HasColumnType("int");
 
-            //        b.HasKey("Id");
+                    b.HasKey("Id");
 
-            //        b.HasIndex("TourTypeId");
+                    b.HasIndex("TourTypeId");
 
-            //        b.ToTable("Tours");
-            //    });
+                    b.ToTable("Tours");
+                });
 
             modelBuilder.Entity("DataBase.TourType", b =>
                 {
@@ -67,34 +69,31 @@ namespace DataBase.Migrations
                     b.ToTable("TourTypes");
                 });
 
-            //modelBuilder.Entity("DataBase.UserTour", b =>
-            //    {
-            //        b.Property<int>("Id")
-            //            .ValueGeneratedOnAdd()
-            //            .HasColumnType("int")
-            //            .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            modelBuilder.Entity("DataBase.UserTour", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            //        b.Property<string>("HowFoundUs")
-            //            .IsRequired()
-            //            .HasColumnType("nvarchar(max)");
+                    b.Property<string>("HowFoundUs")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-            //        b.Property<int>("TourId")
-            //            .HasColumnType("int");
+                    b.Property<int>("TourId")
+                        .HasColumnType("int");
 
-            //        b.Property<int>("UserId")
-            //            .HasColumnType("int");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-            //        b.Property<string>("UserId1")
-            //            .HasColumnType("nvarchar(450)");
+                    b.HasKey("Id");
 
-            //        b.HasKey("Id");
+                    b.HasIndex("TourId");
 
-            //        b.HasIndex("TourId");
+                    b.HasIndex("UserId");
 
-            //        b.HasIndex("UserId1");
-
-            //        b.ToTable("UserTours");
-            //    });
+                    b.ToTable("UserTours");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -311,7 +310,7 @@ namespace DataBase.Migrations
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

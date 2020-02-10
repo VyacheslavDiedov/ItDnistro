@@ -39,7 +39,7 @@ namespace IT_Dnistro
                 options.UseSqlServer(connection));
 
             // добавление сервисов Idenity
-            services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
         .AddEntityFrameworkStores<DatabaseContext>();
 
 
