@@ -69,6 +69,7 @@ namespace IT_Dnistro.Controllers
                 var allRoles = _roleManager.Roles.ToList();
                 ChangeRoleViewModel model = new ChangeRoleViewModel
                 {
+                    UserId = user.Id,
                     UserEmail = user.Email,
                     UserRoles = userRoles,
                     AllRoles = allRoles
