@@ -33,7 +33,6 @@ namespace IT_Dnistro.Controllers
             return View();
         }
         [Route("scandinavia")]
-        [Authorize(Roles = "Admin")]
         public IActionResult Scandinavia()
         {
             return View();
