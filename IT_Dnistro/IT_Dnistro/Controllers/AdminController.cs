@@ -15,10 +15,12 @@ namespace IT_Dnistro.Controllers
     public class AdminController : Controller
     {
         // GET: /<controller>/
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
+        [HttpGet]
         [Route("Admin")]
         public IActionResult Admin()
         {

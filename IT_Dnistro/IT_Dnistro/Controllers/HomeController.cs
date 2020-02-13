@@ -27,30 +27,34 @@ namespace IT_Dnistro.Controllers
         //{
         //    return View();
         //}
+        [HttpGet]
         [Route("carpaty")]
         public IActionResult Carpaty()
         {
             return View();
         }
+        [HttpGet]
         [Route("scandinavia")]
-        [Authorize(Roles = "Admin")]
         public IActionResult Scandinavia()
         {
             return View();
         }
         //[Authorize]
         //[Route("dnistro")]
+        [HttpGet]
         public IActionResult Dnistro()
         {
             return View();
        // return Content(User.Identity.Name);
 
         }
+        [HttpGet]
         public IActionResult Privacy()
         {
             return View();
         }
 
+        [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
