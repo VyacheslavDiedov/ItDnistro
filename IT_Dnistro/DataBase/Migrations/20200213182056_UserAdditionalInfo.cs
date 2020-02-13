@@ -7,34 +7,6 @@ namespace DataBase.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "BirthDate",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "City",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Country",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "FirstName",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Gender",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "LastName",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Discriminator",
-                table: "AspNetUsers");
-
             migrationBuilder.CreateTable(
                 name: "UserAdditionalInfos",
                 columns: table => new
@@ -68,51 +40,6 @@ namespace DataBase.Migrations
         {
             migrationBuilder.DropTable(
                 name: "UserAdditionalInfos");
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "BirthDate",
-                table: "AspNetUsers",
-                type: "datetime2",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "City",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Country",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "FirstName",
-                table: "AspNetUsers",
-                type: "nvarchar(30)",
-                maxLength: 30,
-                nullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "Gender",
-                table: "AspNetUsers",
-                type: "int",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "LastName",
-                table: "AspNetUsers",
-                type: "nvarchar(30)",
-                maxLength: 30,
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Discriminator",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
         }
     }
 }

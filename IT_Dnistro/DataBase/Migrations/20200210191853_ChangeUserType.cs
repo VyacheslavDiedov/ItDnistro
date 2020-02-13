@@ -18,15 +18,22 @@ namespace DataBase.Migrations
                 name: "IX_UserTours_UserId",
                 table: "UserTours");
 
+            migrationBuilder.DropColumn("UserId", table: "UserTours");
+            migrationBuilder.AddColumn<string>(
+                name: "UserId",
+                table: "UserTours",
+                type: "nvarchar(450)",
+                nullable: true);
+
             //migrationBuilder.AddColumn<string>(
             //    name: "UserId1",
             //    table: "UserTours",
             //    nullable: true);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_UserTours_UserId",
-                table: "UserTours",
-                column: "UserId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_UserTours_UserId",
+            //    table: "UserTours",
+            //    column: "UserId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_UserTours_AspNetUsers_UserId",

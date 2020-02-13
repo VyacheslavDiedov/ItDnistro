@@ -8,7 +8,6 @@ namespace DataBase
         [Key]
         public int Id { get; set; }
 
-        public int UserId { get; set; }
         public virtual IdentityUser User { get; set; }
 
         public int TourId { get; set; }

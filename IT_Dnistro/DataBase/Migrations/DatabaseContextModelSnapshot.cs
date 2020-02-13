@@ -19,6 +19,26 @@ namespace DataBase.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("DataBase.TourType", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<string>("TourTypeDescription")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("TourTypeName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(150)")
+                    .HasMaxLength(150);
+
+                b.HasKey("Id");
+
+                b.ToTable("TourTypes");
+            });
+
             modelBuilder.Entity("DataBase.Tour", b =>
                 {
                     b.Property<int>("Id")
@@ -47,25 +67,6 @@ namespace DataBase.Migrations
                     b.ToTable("Tours");
                 });
 
-            modelBuilder.Entity("DataBase.TourType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("TourTypeDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TourTypeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TourTypes");
-                });
 
             modelBuilder.Entity("DataBase.UserAdditionalInfo", b =>
                 {
