@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Http
+@model AuthenticationScheme[]
+
+
+<hr />
+
+@if (Context.Request.QueryString.Value.Contains("ReturnUrl"))
+{
+    <div class="alert-message">Sorry, need to authenticate to continue :(</div>
+}
+
+<div class="main-greeting">
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form method="get" action="@Url.Action("Dnistro", "Home")">
+            <button class="btn btn-lg btn-success center-block" type="submit">Get schedule</button>
+        </form>
+    }
+    else
+    {
+        foreach (var scheme in Model)
+        {
+            <form action="/signin" method="post">
+                <input type="hidden" name="Provider" value="@scheme.Name" />
+                <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" />
+
+                <button class="btn btn-lg btn-success center-block" type="submit">Click to SignIn with Intita.com</button>
+            </form>
+        }
+    }
+
+
+</div>
+<hr />
+@*<div class="main-info">
+    <div class="main-info-image"><img src="images/info-schedule.PNG" /></div>
+    <div class="main-info-label">Take your time with SchedulITA</div>
+</div>*@

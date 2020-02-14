@@ -29,7 +29,7 @@ namespace IT_Dnistro.Controllers
         {
             if (!string.IsNullOrEmpty(name))
             {
-                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole(name));
+                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole(name)).ConfigureAwait(true);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index");
@@ -48,10 +48,10 @@ namespace IT_Dnistro.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
-            IdentityRole role = await _roleManager.FindByIdAsync(id);
+            IdentityRole role = await _roleManager.FindByIdAsync(id).ConfigureAwait(true);
             if (role != null)
             {
-                IdentityResult result = await _roleManager.DeleteAsync(role);
+                IdentityResult result = await _roleManager.DeleteAsync(role).ConfigureAwait(true);
             }
             return RedirectToAction("Index");
         }
@@ -61,11 +61,11 @@ namespace IT_Dnistro.Controllers
         public async Task<IActionResult> Edit(string userId)
         {
             // получаем пользователя
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(true);
             if (user != null)
             {
                 // получем список ролей пользователя
-                var userRoles = await _userManager.GetRolesAsync(user);
+                var userRoles = await _userManager.GetRolesAsync(user).ConfigureAwait(true);
                 var allRoles = _roleManager.Roles.ToList();
                 ChangeRoleViewModel model = new ChangeRoleViewModel
                 {
@@ -83,11 +83,11 @@ namespace IT_Dnistro.Controllers
         public async Task<IActionResult> Edit(string userId, List<string> roles)
         {
             // получаем пользователя
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(true);
             if (user != null)
             {
                 // получем список ролей пользователя
-                var userRoles = await _userManager.GetRolesAsync(user);
+                var userRoles = await _userManager.GetRolesAsync(user).ConfigureAwait(true);
                 // получаем все роли
                 var allRoles = _roleManager.Roles.ToList();
                 // получаем список ролей, которые были добавлены
@@ -95,9 +95,9 @@ namespace IT_Dnistro.Controllers
                 // получаем роли, которые были удалены
                 var removedRoles = userRoles.Except(roles);
 
-                await _userManager.AddToRolesAsync(user, addedRoles);
+                await _userManager.AddToRolesAsync(user, addedRoles).ConfigureAwait(true);
 
-                await _userManager.RemoveFromRolesAsync(user, removedRoles);
+                await _userManager.RemoveFromRolesAsync(user, removedRoles).ConfigureAwait(true);
 
                 return RedirectToAction("UserList");
             }

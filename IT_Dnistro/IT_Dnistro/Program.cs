@@ -26,7 +26,7 @@ namespace IT_Dnistro
                 {
                     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    await RoleInitializer.InitializeAsync(userManager, rolesManager);
+                    await RoleInitializer.InitializeAsync(userManager, rolesManager).ConfigureAwait(true);
                 }
                 catch (Exception ex)
                 {

@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using IT_Dnistro;
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <li>@Html.ActionLink($"Admin", "Index", "Admin", "")</li>
+    }
+    if (User.Identity.Name != "")
+    {
+
+        <li>@Html.ActionLink($"{User.Identity.Name}", "Dnistro", "Home", "")</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("", "Dnistro", "Home", "", new { @class = "glyphicon glyphicon-user" })</li>
+    }
+
+
+
+    <li>@Html.ActionLink("Logout", "SignOut", "Authentication")</li>
+}
+else
+{
+    <li>@Html.ActionLink("Login", "SignIn", "Authentication")</li>
+}

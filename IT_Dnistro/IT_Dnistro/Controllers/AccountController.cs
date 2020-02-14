@@ -10,14 +10,14 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 
-namespace IT_Dnistro.Controllers
+namespace  IT_Dnistro.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly DatabaseContext db;
+        private readonly DatabaseContext _db;
         public AccountController(DatabaseContext context)
         {
-            db = context;
+            _db = context;
         }
         [HttpGet]
         public IActionResult Login()
@@ -30,7 +30,7 @@ namespace IT_Dnistro.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.EMail && u.PasswordHash == model.Password).ConfigureAwait(false);
+                var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == model.EMail && u.PasswordHash == model.Password).ConfigureAwait(false);
                 if (user != null)
                 {
                     await Authenticate(model.EMail).ConfigureAwait(true); // аутентификация
@@ -54,7 +54,7 @@ namespace IT_Dnistro.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.EMail).ConfigureAwait(true);
+                var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == model.EMail).ConfigureAwait(true);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
@@ -104,7 +104,7 @@ namespace IT_Dnistro.Controllers
         //UPDATE
         public IActionResult Update(string id)
         {
-            return View(db.Users.Where(u => u.Id == id).FirstOrDefault());
+            return View(_db.Users.Where(u => u.Id == id).FirstOrDefault());
         }
 
         //[HttpPost]
@@ -120,9 +120,9 @@ namespace IT_Dnistro.Controllers
         [HttpPost]
         public IActionResult Delete(string id)
         {
-            var user = db.Users.Where(u => u.Id == id).FirstOrDefault();
-            db.Users.Remove(user);
-            db.SaveChanges();
+            var user = _db.Users.Where(u => u.Id == id).FirstOrDefault();
+            _db.Users.Remove(user);
+            _db.SaveChanges();
             return RedirectToAction("Dnistro", "Home");
         }
     }

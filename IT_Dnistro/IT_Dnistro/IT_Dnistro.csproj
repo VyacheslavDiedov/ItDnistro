@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataBase\DataBase.csproj" />
+    <ProjectReference Include="C:\Users\Andrew\Desktop\ita_schedule-develop\Schedule.IntIta\AspNet.Security.OAuth.Intita\AspNet.Security.OAuth.Intita.csproj" />
   </ItemGroup>
 
 

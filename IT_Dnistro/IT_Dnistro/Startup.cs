@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using AspNet.Security.OAuth.Intita;
 
 namespace IT_Dnistro
 {
@@ -27,7 +28,6 @@ namespace IT_Dnistro
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("ITDnistroDBConnection");
@@ -41,50 +41,61 @@ namespace IT_Dnistro
 
             // добавление сервисов Idenity
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-        .AddEntityFrameworkStores<DatabaseContext>();
+                .AddEntityFrameworkStores<DatabaseContext>();
 
 
-            //установка конфигурации подключения
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => //CookieAuthenticationOptions
+            services
+                .AddAuthentication
+                (
+                    options =>
+                    {
+                        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                        options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                        options.DefaultAuthenticateScheme = IntitaAuthenticationDefaults.AuthenticationScheme;
+                        options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+                    }
+                )
+                .AddCookie(options =>
                 {
-                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                    options.LoginPath = "/signin";
+                    options.LogoutPath = "/signout";
+                    options.Cookie.Name = "Intita.Oauth";
+                })
+                .AddOAuth<IntitaAuthenticationOptions, IntitaAuthenticationHandler>(IntitaAuthenticationDefaults.AuthenticationScheme, options =>
+                {
+                    options.ClientId = "22";
+                    options.ClientSecret = "KCzNty3tuxoJ8z1kZ1MmPeGa1FaisPU2dCjkXkLK";
+                    options.SaveTokens = true;
                 });
+
             services.AddControllersWithViews();
 
 
-            // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
-
             services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-
             app.UseDeveloperExceptionPage();
            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
-            app.UseAuthentication();    // аутентификация
-            app.UseAuthorization();     // авторизация
+            app.UseAuthentication();  
+            app.UseAuthorization(); 
 
             app.UseEndpoints(endpoints =>
             {
