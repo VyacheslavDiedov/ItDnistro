@@ -7,7 +7,7 @@ using System.Text;
 using Newtonsoft.Json;
 using ApiRequest.Enumerations;
 using Microsoft.Extensions.Configuration;
-//using IT_Dnistro.Domain.Models;
+//using AspNet.Security.OAuth.Intita;
 
 namespace ApiRequest
 {
