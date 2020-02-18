@@ -11,8 +11,8 @@ using IT_Dnistro.Models;
 
 namespace IT_Dnistro.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    //[Route("api/[controller]")]
+    //[ApiController]
     public class AdminController : Controller
     {
         // GET: /<controller>/
