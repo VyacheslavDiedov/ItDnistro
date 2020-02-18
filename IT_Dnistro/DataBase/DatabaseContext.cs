@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace DataBase
 {
-    public class DatabaseContext : IdentityDbContext
+    public class DatabaseContext : DbContext
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-            // Database.EnsureCreated();
+            Database.EnsureCreated();
         }
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    base.OnModelCreating(modelBuilder);
@@ -28,8 +29,8 @@ namespace DataBase
         //    });
         //}
 
-        //public DbSet<User> Users { get; set; }
-        public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
+        public DbSet<User> Users { get; set; }
+        //public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
         public DbSet<Tour> Tours { get; set; }
         public DbSet<TourType> TourTypes { get; set; }
         public DbSet<UserTour> UserTours { get; set; }
