@@ -43,11 +43,6 @@ namespace IT_Dnistro
                 .AddEntityFrameworkStores<DatabaseContext>();
 
 
-            //services
-            //    .AddAuthentication
-                
-   
-
             services.AddControllersWithViews();
 
 
