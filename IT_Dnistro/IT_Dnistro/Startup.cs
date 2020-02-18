@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using AspNet.Security.OAuth.Intita;
 
 namespace IT_Dnistro
 {
@@ -44,30 +43,10 @@ namespace IT_Dnistro
                 .AddEntityFrameworkStores<DatabaseContext>();
 
 
-            services
-                .AddAuthentication
-                (
-                    options =>
-                    {
-                        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                        options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                        options.DefaultAuthenticateScheme = IntitaAuthenticationDefaults.AuthenticationScheme;
-                        options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-
-                    }
-                )
-                .AddCookie(options =>
-                {
-                    options.LoginPath = "/signin";
-                    options.LogoutPath = "/signout";
-                    options.Cookie.Name = "Intita.Oauth";
-                })
-                .AddOAuth<IntitaAuthenticationOptions, IntitaAuthenticationHandler>(IntitaAuthenticationDefaults.AuthenticationScheme, options =>
-                {
-                    options.ClientId = "22";
-                    options.ClientSecret = "KCzNty3tuxoJ8z1kZ1MmPeGa1FaisPU2dCjkXkLK";
-                    options.SaveTokens = true;
-                });
+            //services
+            //    .AddAuthentication
+                
+   
 
             services.AddControllersWithViews();
 
