@@ -23,10 +23,6 @@ namespace IT_Dnistro.Controllers
             _logger = logger;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
         [HttpGet]
         [Route("carpaty")]
         public IActionResult Carpaty()
@@ -39,15 +35,13 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
-        //[Authorize]
+        
         //[Route("dnistro")]
         [HttpGet]
         public IActionResult Dnistro()
         {
             return View();
-       // return Content(User.Identity.Name);
-
-        }
+ }
         [HttpGet]
         public IActionResult Privacy()
         {

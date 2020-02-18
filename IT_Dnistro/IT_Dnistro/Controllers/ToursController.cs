@@ -22,7 +22,7 @@ namespace IT_Dnistro.Controllers
         public async Task<IActionResult> Index()
         {
             var databaseContext = _context.Tours.Include(t => t.TourType);
-            return View(await databaseContext.ToListAsync());
+            return View(await databaseContext.ToListAsync().ConfigureAwait(true));
         }
 
         // GET: Tours/Details/5
@@ -35,7 +35,7 @@ namespace IT_Dnistro.Controllers
 
             var tour = await _context.Tours
                 .Include(t => t.TourType)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
             if (tour == null)
             {
                 return NotFound();
@@ -61,7 +61,7 @@ namespace IT_Dnistro.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(tour);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ConfigureAwait(true);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName", tour.TourTypeId);
@@ -102,7 +102,7 @@ namespace IT_Dnistro.Controllers
                 try
                 {
                     _context.Update(tour);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync().ConfigureAwait(true);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -131,7 +131,7 @@ namespace IT_Dnistro.Controllers
 
             var tour = await _context.Tours
                 .Include(t => t.TourType)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
             if (tour == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace IT_Dnistro.Controllers
         {
             var tour = await _context.Tours.FindAsync(id);
             _context.Tours.Remove(tour);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(true);
             return RedirectToAction(nameof(Index));
         }
 

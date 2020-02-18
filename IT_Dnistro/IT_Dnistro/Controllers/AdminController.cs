@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using IT_Dnistro.Models;
 using Microsoft.AspNetCore.Authorization;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace IT_Dnistro.Controllers
 {
@@ -18,7 +17,8 @@ namespace IT_Dnistro.Controllers
     {
         // GET: /<controller>/
         [HttpGet]
-        public IActionResult Index()
+        [Route("Login")]
+        public IActionResult Login()
         {
             return View();
         }
