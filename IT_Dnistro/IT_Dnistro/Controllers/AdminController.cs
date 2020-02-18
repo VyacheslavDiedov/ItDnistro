@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IT_Dnistro.Models;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace IT_Dnistro.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    //[Route("api/[controller]")]
+    //[ApiController]
     public class AdminController : Controller
     {
         // GET: /<controller>/
@@ -22,6 +23,7 @@ namespace IT_Dnistro.Controllers
             return View();
         }
         [HttpGet]
+        //[Authorize]
         [Route("Admin")]
         public IActionResult Admin()
         {
