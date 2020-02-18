@@ -35,19 +35,14 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
-        
-        //[Route("dnistro")]
+
+        //[Route("index")]
         [HttpGet]
-        public IActionResult Dnistro()
-        {
-            return View();
- }
-        [HttpGet]
-        public IActionResult Privacy()
+        public IActionResult Index()
         {
             return View();
         }
-
+        
         [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
