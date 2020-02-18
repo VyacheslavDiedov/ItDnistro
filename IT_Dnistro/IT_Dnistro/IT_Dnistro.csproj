@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNet.Security.OAuth.Intita\AspNet.Security.OAuth.Intita.csproj" />
     <ProjectReference Include="..\DataBase\DataBase.csproj" />
   </ItemGroup>
 
