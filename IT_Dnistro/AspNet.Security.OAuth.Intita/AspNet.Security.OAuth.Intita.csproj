@@ -14,8 +14,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="2.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ApiRequest\ApiRequest.csproj" />
-  </ItemGroup>
-
 </Project>
