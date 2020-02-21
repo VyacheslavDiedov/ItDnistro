@@ -1,0 +1,36 @@
+﻿@model DataBase.TourType
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>TourType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TourTypeName" class="control-label"></label>
+                <input asp-for="TourTypeName" class="form-control" />
+                <span asp-validation-for="TourTypeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourTypeDescription" class="control-label"></label>
+                <input asp-for="TourTypeDescription" class="form-control" />
+                <span asp-validation-for="TourTypeDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
