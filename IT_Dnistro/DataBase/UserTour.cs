@@ -8,7 +8,7 @@ namespace DataBase
         [Key]
         public int Id { get; set; }
 
-        public virtual IdentityUser User { get; set; }
+        public virtual User User { get; set; }
 
         public int TourId { get; set; }
         public virtual Tour Tour { get; set; }
