@@ -33,14 +33,22 @@ namespace IT_Dnistro
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
 
+            // установка конфигурации подключения
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login");
+                });
+            services.AddControllersWithViews();
+
             //Амнін роль
             // добавление ApplicationDbContext для взаимодействия с базой данных учетных записей
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(connection));
 
             // добавление сервисов Idenity
-            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<DatabaseContext>();
+            //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<DatabaseContext>();
 
 
             services.AddControllersWithViews();
