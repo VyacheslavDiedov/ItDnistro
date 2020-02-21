@@ -6,6 +6,10 @@ $(document).on('ready', function () {
     $(".regular").slick({
         dots: true,
         infinite: true,
+        speed: 1000,
+        cssEase: 'linear',
+        focusOnSelect: true,
+        waitForAnimate: false,
         slidesToShow: 3,
         slidesToScroll: 1,
         centerMode: true,
