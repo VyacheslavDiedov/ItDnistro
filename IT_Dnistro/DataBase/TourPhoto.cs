@@ -10,5 +10,7 @@ namespace DataBase
         [Key]
         public int Id { get; set; }
         public string PhotoLink { get; set; }
+        public int TourTypeId { get; set; }
+        public virtual TourType TourType { get; set; }
     }
 }
