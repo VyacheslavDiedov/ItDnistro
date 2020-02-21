@@ -45,7 +45,7 @@ namespace IT_Dnistro.Controllers
                 {
                     await Authenticate(model.EMail).ConfigureAwait(true); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Admin", "Admin");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
