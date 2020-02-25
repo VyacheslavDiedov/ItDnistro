@@ -1,19 +1,11 @@
-using IT_Dnistro.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DataBase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 namespace IT_Dnistro
@@ -31,28 +23,26 @@ namespace IT_Dnistro
         {
             string connection = Configuration.GetConnectionString("ITDnistroDBConnection");
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
-            services.AddControllersWithViews();
 
             // установка конфигурации подключения
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => //CookieAuthenticationOptions
-                {
-                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login");
-                });
-            services.AddControllersWithViews();
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(options => //CookieAuthenticationOptions
+            //    {
+            //        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("Account/Login");
+            //    });
+            //services.AddControllersWithViews();
 
-            //Амнін роль
-            // добавление ApplicationDbContext для взаимодействия с базой данных учетных записей
-            services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(connection));
+            ////Амнін роль
+            //// добавление ApplicationDbContext для взаимодействия с базой данных учетных записей
+            //services.AddDbContext<DatabaseContext>(options =>
+            //    options.UseSqlServer(connection));
 
             // добавление сервисов Idenity
-            //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<DatabaseContext>();
+            services.AddIdentity<Admin, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<DatabaseContext>();
 
 
             services.AddControllersWithViews();
-
 
             services.AddSwaggerGen(c =>
             {
@@ -74,10 +64,11 @@ namespace IT_Dnistro
            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseAuthentication();  
-            app.UseAuthorization(); 
+            //app.UseAuthorization(); 
 
             app.UseEndpoints(endpoints =>
             {
