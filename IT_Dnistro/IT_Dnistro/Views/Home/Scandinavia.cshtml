@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<DataBase.TourPhoto>
+@{
     Layout = null;
 }
 
@@ -269,11 +270,21 @@
             <div class="col-1 invisible">.</div>
             <div class="col-1 project__prev"><img src="~/icons/left.png" alt=""></div>
             <section class="col-8 regular slider">
-                <div><img src="~/images/Scandinavia/photo3.jpg" alt=""></div>
+                <!--             <div><img src="~/images/Scandinavia/photo3.jpg" alt=""></div>
                 <div><img src="~/images/Scandinavia/photo1.jpg" alt=""></div>
                 <div><img src="~/images/Scandinavia/photo2.jpg" alt=""></div>
                 <div><img src="~/images/Scandinavia/photo4.jpg" alt=""></div>
                 <div><img src="~/images/Scandinavia/photo5.jpg" alt=""></div>
+                -->
+
+                @foreach (var photo in Model)
+                {
+                    if (photo.TourTypeId == 1)
+                    {
+                        <div><img src="~/images/Scandinavia/@photo.PhotoLink" alt=""></div>
+                    }
+                }
+
             </section>
             <div class="col-1 project__next"><img src="~/icons/right.png" alt=""></div>
             <div class="col-1"></div>

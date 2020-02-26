@@ -16,12 +16,12 @@ namespace IT_Dnistro.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         [HttpGet]
         [Route("carpaty")]
@@ -29,11 +29,18 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
+
+        DatabaseContext db;
+        public HomeController(DatabaseContext context)
+        {
+            db = context;
+        }
+
         [HttpGet]
         [Route("scandinavia")]
         public IActionResult Scandinavia()
         {
-            return View();
+            return View(db.TourPhotos.ToList());
         }
 
         //[Route("index")]
