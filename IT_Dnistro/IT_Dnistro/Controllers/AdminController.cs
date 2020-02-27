@@ -1,4 +1,5 @@
-﻿using DataBase;
+﻿using System;
+using DataBase;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace IT_Dnistro.Controllers
         [Route("Admin")]
         public IActionResult Admin()
         {
+            Console.WriteLine(HttpContext.User.Identity.Name);
             return View();
         }
     }

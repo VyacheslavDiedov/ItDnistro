@@ -1,31 +1,57 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using IT_Dnistro.ViewModels;
-using IT_Dnistro.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace IT_Dnistro.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<Admin> _userManager;
-        private readonly SignInManager<Admin> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public AccountController(UserManager<Admin> userManager, SignInManager<Admin> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+
         [HttpGet]
-        [Route("Login")]
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser() { Email = model.Email, UserName = model.Email};
+                // добавляем пользователя
+                var result = await _userManager.CreateAsync(user, model.Password).ConfigureAwait(true);
+                if (result.Succeeded)
+                {
+                    // установка куки
+                    await _signInManager.SignInAsync(user, false).ConfigureAwait(true);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        [HttpGet]
         public IActionResult Login(string returnUrl = null)
         {
             return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
-        //public IActionResult Login()
-        //{
-        //    return View();
-        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -34,7 +60,7 @@ namespace IT_Dnistro.Controllers
             if (ModelState.IsValid)
             {
                 var result =
-                    await _signInManager.PasswordSignInAsync(model.Name, model.Password, model.RememberMe, false);
+                    await _signInManager.PasswordSignInAsync(model.Name, model.Password, model.RememberMe, false).ConfigureAwait(true);
                 if (result.Succeeded)
                 {
                     // проверяем, принадлежит ли URL приложению
@@ -60,7 +86,7 @@ namespace IT_Dnistro.Controllers
         public async Task<IActionResult> Logout()
         {
             // удаляем аутентификационные куки
-            await _signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync().ConfigureAwait(true);
             return RedirectToAction("Index", "Home");
         }
     }

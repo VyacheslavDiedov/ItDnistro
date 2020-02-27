@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
+
 
 namespace IT_Dnistro
 {
@@ -24,23 +24,10 @@ namespace IT_Dnistro
             string connection = Configuration.GetConnectionString("ITDnistroDBConnection");
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 
-            // установка конфигурации подключения
-            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            //    .AddCookie(options => //CookieAuthenticationOptions
-            //    {
-            //        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("Account/Login");
-            //    });
-            //services.AddControllersWithViews();
-
-            ////Амнін роль
-            //// добавление ApplicationDbContext для взаимодействия с базой данных учетных записей
-            //services.AddDbContext<DatabaseContext>(options =>
-            //    options.UseSqlServer(connection));
-
-            // добавление сервисов Idenity
-            services.AddIdentity<Admin, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<DatabaseContext>();
 
+            services.AddTransient<UserManager<IdentityUser>>();
 
             services.AddControllersWithViews();
 
@@ -61,14 +48,14 @@ namespace IT_Dnistro
             });
 
             app.UseDeveloperExceptionPage();
-           
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseAuthentication();  
-            //app.UseAuthorization(); 
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
