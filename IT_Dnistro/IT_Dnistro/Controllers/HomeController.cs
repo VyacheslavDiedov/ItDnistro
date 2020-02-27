@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IT_Dnistro.Models;
+using DataBase;
+using System.Linq;
 
 namespace IT_Dnistro.Controllers
 {
