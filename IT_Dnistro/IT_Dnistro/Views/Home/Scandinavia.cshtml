@@ -16,10 +16,26 @@
 
     <link rel="stylesheet" type="text/css" href="~/css/stylesScandinavia.css" />
 
-    <link rel="stylesheet" type="text/css" href="~/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="~/slick/slick-theme.css" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./swiper/package/css/swiper.min.css">
 
     <title>travel.intita.com</title>
+
+    <!-- Swiper's styles -->
+    <style>
+        .swiper-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 250px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 420px;
+            height: 300px;
+        }
+    </style>
 </head>
 
 <body>
@@ -268,27 +284,25 @@
             <br>
             <h3 class="swiper">Карпати <br>Говерла 2019 р.</h3>
             <div class="col-1 invisible">.</div>
-            <div class="col-1 project__prev"><img src="~/icons/left.png" alt=""></div>
-            <section class="col-8 regular slider">
-                <!--             <div><img src="~/images/Scandinavia/photo3.jpg" alt=""></div>
-                <div><img src="~/images/Scandinavia/photo1.jpg" alt=""></div>
-                <div><img src="~/images/Scandinavia/photo2.jpg" alt=""></div>
-                <div><img src="~/images/Scandinavia/photo4.jpg" alt=""></div>
-                <div><img src="~/images/Scandinavia/photo5.jpg" alt=""></div>
-                -->
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo1.jpg)"></div>
+                    <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo2.jpg)"></div>
+                    <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo3.jpg)"></div>
+                    <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo4.jpg)"></div>
+                    <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo5.jpg)"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <!--             <div><img src="~/images/Scandinavia/photo3.jpg" alt=""></div>
+            <div><img src="~/images/Scandinavia/photo1.jpg" alt=""></div>
+            <div><img src="~/images/Scandinavia/photo2.jpg" alt=""></div>
+            <div><img src="~/images/Scandinavia/photo4.jpg" alt=""></div>
+            <div><img src="~/images/Scandinavia/photo5.jpg" alt=""></div>
+            -->
 
-                @foreach (var photo in Model)
-                {
-                    if (photo.TourTypeId == 1)
-                    {
-                        <div><img src="~/images/Scandinavia/@photo.PhotoLink" alt=""></div>
-                    }
-                }
-
-            </section>
-            <div class="col-1 project__next"><img src="~/icons/right.png" alt=""></div>
-            <div class="col-1"></div>
-            <div class="footerBlock5"></div>
         </div>
     </div>
 
@@ -333,12 +347,31 @@
         </div>
     </div>
 
-
-
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="~/slick/slick.min.js"></script>
-    <script type="text/javascript" src="~/js/site.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="./swiper/package/js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
 
 
 
