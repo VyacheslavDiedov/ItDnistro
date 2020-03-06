@@ -47,11 +47,12 @@
   box-sizing: border-box;
 }
 
+
 html {
-  font-family: sans-serif;
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
@@ -92,12 +93,9 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+    text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
-  -webkit-text-decoration-skip-ink: none;
-  text-decoration-skip-ink: none;
 }
 
 address {
@@ -464,7 +462,7 @@ mark,
 
 .initialism {
   font-size: 90%;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 .blockquote {
@@ -3953,12 +3951,13 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background-color: #2A323C;
 }
 
 .navbar > .container,
@@ -6274,13 +6273,13 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #5a5c69 !important;
+    background-color: #2A323C!important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #42444e !important;
+    background-color: #2A323C !important;
 }
 
 .bg-white {
@@ -9327,7 +9326,7 @@ button.bg-dark:focus {
 }
 
 .text-uppercase, .dropdown .dropdown-menu .dropdown-header, .sidebar .sidebar-heading {
-  text-transform: uppercase !important;
+  /*text-transform: uppercase !important;*/
 }
 
 .text-capitalize {
@@ -10132,7 +10131,7 @@ a:focus {
   margin: 0;
   white-space: nowrap;
   padding: .5rem 1.5rem;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 800;
   font-size: 0.65rem;
   color: #b7b9cc;
@@ -10200,23 +10199,45 @@ a:focus {
 }
 
 .sidebar .sidebar-brand {
-  height: 4.375rem;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 800;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  z-index: 1;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 1rem 0rem 1rem 1rem;
+    z-index: 1;
 }
 
 .sidebar .sidebar-brand .sidebar-brand-icon i {
   font-size: 2rem;
 }
 
+.adminName {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.adminTitle {
+    font-size: 1.3rem !important;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold !important;
+    color: #3A3A3A;
+}
+
+.green {
+    color: #2A323C;
+}
+.green:active {
+    color: #5CB45B!important;
+}
+
 .sidebar .sidebar-brand .sidebar-brand-text {
-  display: none;
+    font-size: 1vw;
+    line-height: 1vh;
+    color: #2A323C;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
 }
 
 .sidebar hr.sidebar-divider {
@@ -10271,7 +10292,7 @@ a:focus {
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
     width: 1rem;
-    text-align: center;
+    /*text-align: center;*/
     float: right;
     vertical-align: 0;
     border: 0;
@@ -10401,7 +10422,7 @@ a:focus {
 }
 
 .sidebar-dark .sidebar-brand {
-  color: #fff;
+  color: black;
 }
 
 .sidebar-dark hr.sidebar-divider {
