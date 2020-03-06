@@ -287,21 +287,25 @@
             <!-- Swiper -->
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo1.jpg)"></div>
+                    <!-- <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo1.jpg)"></div>
                     <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo2.jpg)"></div>
-                    <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo3.jpg)"></div>
+                     <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo3.jpg)"></div>
                     <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo4.jpg)"></div>
                     <div class="swiper-slide" style="background-image:url(./images/Scandinavia/photo5.jpg)"></div>
+                        -->
+
+    @foreach (var photo in Model)
+    {
+        if (photo.TourTypeId == 1)
+        {
+            <div class="swiper-slide" style="background-image:url(./images/Scandinavia/@photo.PhotoLink)"></div>
+        }
+    }
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
                 </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-            <!--             <div><img src="~/images/Scandinavia/photo3.jpg" alt=""></div>
-            <div><img src="~/images/Scandinavia/photo1.jpg" alt=""></div>
-            <div><img src="~/images/Scandinavia/photo2.jpg" alt=""></div>
-            <div><img src="~/images/Scandinavia/photo4.jpg" alt=""></div>
-            <div><img src="~/images/Scandinavia/photo5.jpg" alt=""></div>
-            -->
+           
 
         </div>
     </div>
