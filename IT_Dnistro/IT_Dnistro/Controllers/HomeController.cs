@@ -33,7 +33,7 @@ namespace IT_Dnistro.Controllers
         [Route("scandinavia")]
         public IActionResult Scandinavia()
         {
-            return View();
+            return View(db.TourPhotos.ToList());
         }
 
         //[Route("index")]
