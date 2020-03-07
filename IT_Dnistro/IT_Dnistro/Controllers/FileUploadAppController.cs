@@ -50,35 +50,6 @@ namespace IT_Dnistro.Controllers
             return RedirectToAction("Index");
         }
 
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var tourPhoto = await _context.TourPhotos
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (tourPhoto == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(tourPhoto);
-        //}
-
-        //// POST: TourTypes/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var tourPhoto = await _context.TourPhotos.FindAsync(id);
-        //    _context.TourPhotos.Remove(tourPhoto);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-
         [HttpGet,ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
