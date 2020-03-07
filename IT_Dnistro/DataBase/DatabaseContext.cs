@@ -26,11 +26,17 @@ namespace DataBase
             modelBuilder.Entity<TourPhoto>().HasData(
                 new TourPhoto[]
                 {
-                    new TourPhoto {Id = 1, PhotoLink="photo1.jpg", TourTypeId = 1},
-                    new TourPhoto {Id = 2, PhotoLink="photo2.jpg", TourTypeId = 1},
-                    new TourPhoto {Id = 3, PhotoLink="photo3.jpg", TourTypeId = 1},
-                    new TourPhoto {Id = 4, PhotoLink="photo4.jpg", TourTypeId = 1},
-                    new TourPhoto {Id = 5, PhotoLink="photo5.jpg", TourTypeId = 1}
+                    new TourPhoto {Id = 1, PhotoLink = "foto1.jpg", TourTypeId = 1},
+                    new TourPhoto {Id = 2, PhotoLink = "foto2.jpg", TourTypeId = 1},
+                    new TourPhoto {Id = 3, PhotoLink = "foto3.jpg", TourTypeId = 1},
+                    new TourPhoto {Id = 4, PhotoLink = "foto4.jpg", TourTypeId = 2},
+                    new TourPhoto {Id = 5, PhotoLink = "foto5.jpg", TourTypeId = 2},
+                    new TourPhoto {Id = 6, PhotoLink = "foto6.jpg", TourTypeId = 2},
+                    new TourPhoto {Id = 7, PhotoLink = "photo1.jpg", TourTypeId = 3},
+                    new TourPhoto {Id = 8, PhotoLink = "photo2.jpg", TourTypeId = 3},
+                    new TourPhoto {Id = 9, PhotoLink = "photo3.jpg", TourTypeId = 3},
+                    new TourPhoto {Id = 10, PhotoLink = "photo4.jpg", TourTypeId = 3},
+                    new TourPhoto {Id = 11, PhotoLink = "photo5.jpg", TourTypeId = 3}
                 });
             modelBuilder.Entity<TourType>().HasData(
                 new TourType[]
