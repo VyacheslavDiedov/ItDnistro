@@ -9588,10 +9588,6 @@ a:focus {
   overflow-x: hidden;
 }
 
-#wrapper #content-wrapper #content {
-  flex: 1 0 auto;
-}
-
 .container,
 .container-fluid {
   padding-left: 1.5rem;
