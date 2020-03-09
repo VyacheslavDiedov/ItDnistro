@@ -19,46 +19,6 @@ namespace DataBase.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DataBase.Admin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Admins");
-                });
-
-            modelBuilder.Entity("DataBase.TourType", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("int")
-                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                b.Property<string>("TourTypeDescription")
-                    .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("TourTypeName")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(150)")
-                    .HasMaxLength(150);
-
-                b.HasKey("Id");
-
-                b.ToTable("TourTypes");
-            });
-
             modelBuilder.Entity("DataBase.Tour", b =>
                 {
                     b.Property<int>("Id")
@@ -105,9 +65,115 @@ namespace DataBase.Migrations
                     b.HasIndex("TourTypeId");
 
                     b.ToTable("TourPhotos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PhotoLink = "foto1.jpg",
+                            TourTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            PhotoLink = "foto2.jpg",
+                            TourTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            PhotoLink = "foto3.jpg",
+                            TourTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            PhotoLink = "foto4.jpg",
+                            TourTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            PhotoLink = "foto5.jpg",
+                            TourTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            PhotoLink = "foto6.jpg",
+                            TourTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            PhotoLink = "photo1.jpg",
+                            TourTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            PhotoLink = "photo2.jpg",
+                            TourTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            PhotoLink = "photo3.jpg",
+                            TourTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            PhotoLink = "photo4.jpg",
+                            TourTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            PhotoLink = "photo5.jpg",
+                            TourTypeId = 3
+                        });
                 });
 
-           
+            modelBuilder.Entity("DataBase.TourType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("TourTypeDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TourTypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TourTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            TourTypeDescription = "For those who like to relax on the river bank",
+                            TourTypeName = "Dnistro"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            TourTypeDescription = "For those who like to relax in the mountains",
+                            TourTypeName = "Carpaty"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            TourTypeDescription = "For those who love fjords",
+                            TourTypeName = "Scandinadia"
+                        });
+                });
 
             modelBuilder.Entity("DataBase.UserAdditionalInfo", b =>
                 {
