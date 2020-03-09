@@ -21,8 +21,11 @@ namespace IT_Dnistro.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
+
+        //[Authorize(Roles = "admin")]
         public IActionResult Index() => View(_roleManager.Roles.ToList());
 
+        //[Authorize(Roles = "admin")]
         public IActionResult Create() => View();
         [HttpPost]
         public async Task<IActionResult> Create(string name)
@@ -46,6 +49,7 @@ namespace IT_Dnistro.Controllers
         }
 
         [HttpPost]
+        //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(string id)
         {
             IdentityRole role = await _roleManager.FindByIdAsync(id).ConfigureAwait(true);
@@ -58,6 +62,7 @@ namespace IT_Dnistro.Controllers
 
         public IActionResult UserList() => View(_userManager.Users.ToList());
 
+        //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(string userId)
         {
             // получаем пользователя
@@ -80,6 +85,7 @@ namespace IT_Dnistro.Controllers
             return NotFound();
         }
         [HttpPost]
+
         public async Task<IActionResult> Edit(string userId, List<string> roles)
         {
             // получаем пользователя
