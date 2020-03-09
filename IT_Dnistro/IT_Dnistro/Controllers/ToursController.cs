@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using DataBase;
 
 namespace IT_Dnistro.Controllers
@@ -19,6 +20,7 @@ namespace IT_Dnistro.Controllers
         }
 
         // GET: Tours
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Index()
         {
             var databaseContext = _context.Tours.Include(t => t.TourType);
