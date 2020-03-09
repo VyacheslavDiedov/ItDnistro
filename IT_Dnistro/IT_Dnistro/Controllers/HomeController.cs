@@ -9,25 +9,19 @@ namespace IT_Dnistro.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        [HttpGet]
-        [Route("carpaty")]
-        public IActionResult Carpaty()
-        {
-            return View();
-        }
-
         DatabaseContext db;
         public HomeController(DatabaseContext context)
         {
             db = context;
         }
+
+        [HttpGet]
+        [Route("carpaty")]
+        public IActionResult Carpaty()
+        {
+            return View(db.TourPhotos.ToList());
+        }
+
 
         [HttpGet]
         [Route("scandinavia")]

@@ -3,7 +3,7 @@
 
 
 @{
-    ViewData["Title"] = "Добавление и удаление файла";
+    ViewData["Title"] = "Галерея";
     Layout = "_LayoutAdmin";
 }
 <h3>Выберите файл для загрузки</h3>
@@ -16,15 +16,12 @@
 @foreach (var f in Model)
 {
 <p>
-    <img src="@Url.Content("~/images/Scandinavia/" + f.PhotoLink)"/>
-    @*<form asp-action="Delete">
-        <input type="hidden" asp-for="@f.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" />
-        <h1>@f.Id</h1>
-    </form>*@
-    @Html.ActionLink("Delete", "Delete", 
-        controllerName:"FileUploadApp", routeValues:new {Id = @f.Id},
-        new { @class = "btn btn-default"})
-
+    @if (f.TourTypeId == 3)
+    {
+        <img src="@Url.Content("~/images/Scandinavia/" + f.PhotoLink)" />
+        @Html.ActionLink("Delete", "Delete",
+            controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
+            new { @class = "btn btn-default" })
+    }
 </p>
 }
