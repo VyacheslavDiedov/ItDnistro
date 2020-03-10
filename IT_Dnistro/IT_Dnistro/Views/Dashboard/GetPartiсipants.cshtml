@@ -1,0 +1,31 @@
+﻿@model System.Collections.Generic.List<IT_Dnistro.ViewModels.ParticipantsViewModel>
+
+@{
+    ViewData["Title"] = "GetPartiсipants";
+    Layout = null;
+    //Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<a asp-action="AddParticipant">Добавить пользователя</a>
+
+<table class="table">
+    <tr><th>Id</th><th>Ім'я</th><th>Телефон</th><th>Email</th><th>Захід</th><th>Дії</th></tr>
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>@a.UserId</td>
+            <td>@a.FullName</td>
+            <td>@a.PhoneNumber</td>
+            <td>@a.Email</td>
+            <td>@a.TourName</td>
+            <td>
+                <form asp-action="RemoveParticipant" asp-route-id="@a.UserId" method="post">
+                    @*<a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@a.UserIdId">Изменить</a>*@
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
