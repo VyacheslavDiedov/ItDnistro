@@ -9,7 +9,6 @@ using DataBase.Migrations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace IT_Dnistro.Controllers
 {
@@ -36,7 +35,7 @@ namespace IT_Dnistro.Controllers
             if (uploadedFile != null) 
             {
                 // путь к папке Files
-                string path = "/images/Scandinavia/" + uploadedFile.FileName;
+                string path = "/images/Dnistro/" + uploadedFile.FileName;
                 // сохраняем файл в папку Files в каталоге wwwroot
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
@@ -56,6 +55,56 @@ namespace IT_Dnistro.Controllers
             _context.TourPhotos.Remove(tourPhoto);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [Route("UploadCarpaty")]
+        public IActionResult Carpaty()
+        {
+            return View(_context.TourPhotos.ToList());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFileCarpaty(IFormFile uploadedFile)
+        {
+            if (uploadedFile != null)
+            {
+                // путь к папке Files
+                string path = "/images/Carpaty/" + uploadedFile.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = 2 };
+                _context.TourPhotos.Add(file);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Carpaty");
+        }
+
+        [Route("UploadScandinavia")]
+        public IActionResult Scandinavia()
+        {
+            return View(_context.TourPhotos.ToList());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFileScandinavia(IFormFile uploadedFile)
+        {
+            if (uploadedFile != null)
+            {
+                // путь к папке Files
+                string path = "/images/Scandinavia/" + uploadedFile.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = 3 };
+                _context.TourPhotos.Add(file);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Scandinavia");
         }
 
     }

@@ -16,9 +16,9 @@
 @foreach (var f in Model)
 {
 <p>
-    @if (f.TourTypeId == 3)
+    @if (f.TourTypeId == 1)
     {
-        <img src="@Url.Content("~/images/Scandinavia/" + f.PhotoLink)" />
+        <img src="@Url.Content("~/images/Dnistro/" + f.PhotoLink)" />
         @Html.ActionLink("Delete", "Delete",
             controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
             new { @class = "btn btn-default" })
