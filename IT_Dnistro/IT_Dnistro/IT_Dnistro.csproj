@@ -40,6 +40,10 @@
     <ProjectReference Include="..\DataBase\DataBase.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Dashboard\" />
+  </ItemGroup>
+
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES3</TypeScriptTarget>
     <TypeScriptJSXEmit>React</TypeScriptJSXEmit>

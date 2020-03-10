@@ -14,7 +14,15 @@ namespace IT_Dnistro.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize(Roles = "admin")]
+        [Route("adminmain")]
+        public IActionResult AdminMainPage()
+        {
+            Console.WriteLine(HttpContext.User.Identity.Name);
+            return View();
+        }
+
+        [HttpGet]
         [Authorize(Roles = "admin")]
         [Route("admin")]
         public IActionResult Admin()

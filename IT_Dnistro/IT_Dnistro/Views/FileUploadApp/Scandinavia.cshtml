@@ -1,0 +1,27 @@
+﻿@using IT_Dnistro.Controllers
+@model IEnumerable<DataBase.TourPhoto>
+
+
+@{
+    ViewData["Title"] = "Галерея Скандинавія";
+    Layout = "_LayoutAdmin";
+}
+<h3>Выберите файл для загрузки</h3>
+<form asp-action="AddFileScandinavia" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
+    <input type="file" name="uploadedFile" /><br>
+    <input type="submit" value="Загрузить" />
+</form>
+
+<h3>Все файлы</h3>
+@foreach (var f in Model)
+{
+    <p>
+        @if (f.TourTypeId == 3)
+        {
+            <img src="@Url.Content("~/images/Scandinavia/" + f.PhotoLink)" />
+            @Html.ActionLink("Delete", "Delete",
+                controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
+                new { @class = "btn btn-default" })
+        }
+    </p>
+}
