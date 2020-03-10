@@ -18,6 +18,7 @@ namespace DataBase
         public DbSet<UserTour> UserTours { get; set; }
         public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
         public DbSet<TourPhoto> TourPhotos { get; set; }
+        public DbSet<Participant> Participants { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
