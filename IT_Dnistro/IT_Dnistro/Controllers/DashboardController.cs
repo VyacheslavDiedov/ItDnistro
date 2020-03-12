@@ -25,15 +25,23 @@ namespace IT_Dnistro.Controllers
         [Route("gg")]
         public IActionResult GetPartiсipants()
         {
-            var items = _context.UserTours.Select(x => new ParticipantsViewModel()
+            var items = _context.Participants.Select(x => new ParticipantsViewModel()
             {
-                UserId = x.User.Id,
-                TourId = x.TourId,
-                FullName = x.User.UserName,
-                PhoneNumber = x.User.PhoneNumber,
-                Email = x.User.Email,
-                TourName = x.Tour.TourName
+                Id = x.Id,
+                FullName = x.FullName,
+                EMail = x.EMail,
+                PhoneNumber = x.PhoneNumber,
+                TourName = x.TourType.TourTypeName
             }).ToList();
+            //var items = _context.UserTours.Select(x => new ParticipantsViewModel()
+            //{
+            //    UserId = x.User.Id,
+            //    TourId = x.TourId,
+            //    FullName = x.User.UserName,
+            //    PhoneNumber = x.User.PhoneNumber,
+            //    Email = x.User.Email,
+            //    TourName = x.Tour.TourName
+            //}).ToList();
 
             return View(items);
         }
