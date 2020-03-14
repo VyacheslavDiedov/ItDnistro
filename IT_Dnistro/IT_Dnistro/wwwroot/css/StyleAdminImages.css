@@ -1,11 +1,4 @@
-﻿body {
-    font-family: Arial, sans-serif;
-    padding: 0;
-    margin: 0;
-    background-color: #fafafa;
-}
-
-.container {
+﻿.gallery_container {
     width: auto;
     height: 100vh;
     position: relative;
@@ -14,18 +7,17 @@
 
 .menu {
     border-bottom: solid 1.5px #d7d7d7;
-    height: 7%;
+    height: 5%;
     width: 700px;
     margin-top: 40px;
     margin-left: 40px;
-    margin-bottom: 140px;
+    margin-bottom: 80px;
 }
 
 .currentMenu {
     background: #5CB45B;
     border: 1px solid #DFDFDF;
     box-sizing: border-box;
-    -ms-border-radius: 4px;
     border-radius: 4px;
 }
 
@@ -58,7 +50,7 @@
     width: 95%;
     height: 500px;
     position: absolute;
-    margin-top: 150px;
+    margin-top: 100px;
     margin-left: 5%;
 }
 
@@ -68,18 +60,15 @@
     margin-left: 1%;
     margin-right: 1%;
     float: left;
+    border-radius: 4px;
+    border: 2px solid #E6E9EC;
+    -webkit-box-shadow: 0px 3px 13px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 13px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 13px -3px rgba(0,0,0,0.75);
 }
 
-.photo:hover {
-    box-shadow: inset 10px 10px 300px 129px rgba(0,0,0,0.19);
-}
 
 .first_images_container {
-    height: 295px;
-    width: 100%;
-}
-
-.second_images_container {
     height: 295px;
     width: 100%;
 }
@@ -87,7 +76,7 @@
 .photo {
     width: 100%;
     height: 80%;
-    background: url(../images/foto1.jpg) no-repeat center top / cover;
+    background: url(../images/photo.jpg) no-repeat center top / cover;
 }
 
 .photo_name {
@@ -98,10 +87,46 @@
 
 .photo_name p {
     text-align: center;
+    display: inline-block;
+    margin: 0;
+    line-height: 7vh;
 }
 
-.add_new_image {
+.photo img {
+    margin-left: 88%;
+    width: 11%;
+    display: none;
+}
+
+.image:hover img {
+    display: block;
+}
+
+.image:hover div {
+    box-shadow: inset 10px 10px 300px 129px rgba(0,0,0,0.19);
+}
+
+.plus_image {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 22%;
+    height: 280px;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: left;
+    border: 2px solid #E6E9EC;
+    box-shadow: 0px 3px 13px -3px rgba(0,0,0,0.75);
+}
+
+.add_button {
+    margin: 0 auto;
+    width: 8vh;
+    height: 8vh;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.add_button img {
     width: 100%;
-    height: 80%;
-    background-color: #555;
 }
