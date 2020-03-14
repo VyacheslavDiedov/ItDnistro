@@ -1,0 +1,40 @@
+﻿@model IT_Dnistro.ViewModels.AddParticipantViewModel
+@*@model DataBase.UserTour*@
+
+@{
+    ViewData["Title"] = "AddParticipant";
+    //Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h1>Create</h1>
+
+<h4>Tour</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddParticipant">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="User" class="control-label"></label>
+                <select asp-for="User" class="form-control" asp-items="ViewBag.Testik2"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourId" class="control-label"></label>
+                <select asp-for="TourId" class="form-control" asp-items="ViewBag.Testik"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="HowFoundUs" class="control-label"></label>
+                <input asp-for="HowFoundUs" class="form-control" />
+                <span asp-validation-for="HowFoundUs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetPartiсipants">Back to List</a>
+</div>
+
