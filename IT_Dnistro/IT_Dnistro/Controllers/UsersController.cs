@@ -11,6 +11,8 @@ using IT_Dnistro.ViewModels;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class UsersController : Controller
     {
         UserManager<IdentityUser> _userManager;
@@ -19,12 +21,12 @@ namespace IT_Dnistro.Controllers
         {
             _userManager = manager;
         }
-
+        [HttpGet("")]
         public IActionResult Index() => View(_userManager.Users.ToList());
-
+        [HttpGet("create")]
         public IActionResult Create() => View();
 
-        [HttpPost]
+        [HttpPut("create")]
         public async Task<IActionResult> Create(CreateUserViewModel model)
         {
             if (ModelState.IsValid)
@@ -45,7 +47,7 @@ namespace IT_Dnistro.Controllers
             }
             return View(model);
         }
-
+        [HttpGet("edit")]
         public async Task<IActionResult> Edit(string id)
         {
             IdentityUser user = await _userManager.FindByIdAsync(id);
@@ -57,7 +59,7 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPost("edit")]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
             if (ModelState.IsValid)
@@ -86,7 +88,7 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> Delete(string id)
         {
             IdentityUser user = await _userManager.FindByIdAsync(id);

@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class FileUploadAppController : Controller
     {
         DatabaseContext _context;
@@ -22,14 +24,14 @@ namespace IT_Dnistro.Controllers
             _context = context;
             _appEnvironment = appEnvironment;
         }
-
+        [HttpGet]
         [Route("Upload")]
         public IActionResult Index()
         {
             return View(_context.TourPhotos.ToList());
         }
 
-        [HttpPost]
+        [HttpPut("addFileToDnistro")]
         public async Task<IActionResult> AddFile(IFormFile uploadedFile)
         {
             if (uploadedFile != null) 
@@ -56,14 +58,14 @@ namespace IT_Dnistro.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [HttpGet]
         [Route("UploadCarpaty")]
         public IActionResult Carpaty()
         {
             return View(_context.TourPhotos.ToList());
         }
 
-        [HttpPost]
+        [HttpPut("addFileToCarpaty")]
         public async Task<IActionResult> AddFileCarpaty(IFormFile uploadedFile)
         {
             if (uploadedFile != null)
@@ -81,14 +83,14 @@ namespace IT_Dnistro.Controllers
             }
             return RedirectToAction("Carpaty");
         }
-
+        [HttpGet]
         [Route("UploadScandinavia")]
         public IActionResult Scandinavia()
         {
             return View(_context.TourPhotos.ToList());
         }
 
-        [HttpPost]
+        [HttpPut("addFileToScandinavia")]
         public async Task<IActionResult> AddFileScandinavia(IFormFile uploadedFile)
         {
             if (uploadedFile != null)

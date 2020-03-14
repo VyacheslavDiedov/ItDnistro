@@ -7,6 +7,8 @@ using System.Linq;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class HomeController : Controller
     {
         DatabaseContext db;
@@ -37,7 +39,7 @@ namespace IT_Dnistro.Controllers
             return View(db.TourPhotos.ToList());
         }
         
-        [HttpGet]
+        [HttpGet("error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

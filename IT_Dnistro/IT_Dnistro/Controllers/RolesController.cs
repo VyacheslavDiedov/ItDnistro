@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class RolesController : Controller
     {
 
@@ -21,13 +23,14 @@ namespace IT_Dnistro.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
+        [HttpGet("index")]
         //[Authorize(Roles = "admin")]
         public IActionResult Index() => View(_roleManager.Roles.ToList());
 
         //[Authorize(Roles = "admin")]
+        [HttpGet("create")]
         public IActionResult Create() => View();
-        [HttpPost]
+        [HttpPut("create")]
         public async Task<IActionResult> Create(string name)
         {
             if (!string.IsNullOrEmpty(name))
@@ -48,7 +51,7 @@ namespace IT_Dnistro.Controllers
             return View(name);
         }
 
-        [HttpPost]
+        [HttpDelete("delete")]
         //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(string id)
         {
@@ -59,9 +62,9 @@ namespace IT_Dnistro.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        [HttpGet("userList")]
         public IActionResult UserList() => View(_userManager.Users.ToList());
-
+        [HttpPost("edit1")]
         //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(string userId)
         {
@@ -84,7 +87,7 @@ namespace IT_Dnistro.Controllers
 
             return NotFound();
         }
-        [HttpPost]
+        [HttpPost("edit2")]
 
         public async Task<IActionResult> Edit(string userId, List<string> roles)
         {

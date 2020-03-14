@@ -10,6 +10,8 @@ using DataBase;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class ToursController : Controller
     {
         private readonly DatabaseContext _context;
@@ -18,16 +20,14 @@ namespace IT_Dnistro.Controllers
         {
             _context = context;
         }
-
-        // GET: Tours
+        [HttpGet("")]
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Index()
         {
             var databaseContext = _context.Tours.Include(t => t.TourType);
             return View(await databaseContext.ToListAsync().ConfigureAwait(true));
         }
-
-        // GET: Tours/Details/5
+        [HttpGet("details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,18 +45,14 @@ namespace IT_Dnistro.Controllers
 
             return View(tour);
         }
-
-        // GET: Tours/Create
+        [HttpGet("create")]
         public IActionResult Create()
         {
             ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName");
             return View();
         }
 
-        // POST: Tours/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPut]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,TourName,TourTypeId,TourDate,TourLength")] Tour tour)
         {
@@ -69,8 +65,7 @@ namespace IT_Dnistro.Controllers
             ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName", tour.TourTypeId);
             return View(tour);
         }
-
-        // GET: Tours/Edit/5
+        [HttpGet("edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,9 +82,6 @@ namespace IT_Dnistro.Controllers
             return View(tour);
         }
 
-        // POST: Tours/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,TourName,TourTypeId,TourDate,TourLength")] Tour tour)
@@ -122,8 +114,7 @@ namespace IT_Dnistro.Controllers
             ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName", tour.TourTypeId);
             return View(tour);
         }
-
-        // GET: Tours/Delete/5
+        [HttpGet("delete")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -142,8 +133,7 @@ namespace IT_Dnistro.Controllers
             return View(tour);
         }
 
-        // POST: Tours/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

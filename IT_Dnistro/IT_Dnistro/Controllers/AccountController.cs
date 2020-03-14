@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -16,13 +18,12 @@ namespace IT_Dnistro.Controllers
             _signInManager = signInManager;
         }
 
-
-        [HttpGet]
+        [HttpGet("register")]
         public IActionResult Register()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -47,13 +48,13 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpGet]
+        [HttpGet("login")]
         public IActionResult Login(string returnUrl = null)
         {
             return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -81,7 +82,7 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPost("logout")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {

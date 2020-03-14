@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AdminController : Controller
     {
         private DatabaseContext _db;
@@ -24,7 +26,7 @@ namespace IT_Dnistro.Controllers
 
         [HttpGet]
         [Authorize(Roles = "admin")]
-        [Route("admin")]
+        //[Route("admin")]
         public IActionResult Admin()
         {
             Console.WriteLine(HttpContext.User.Identity.Name);

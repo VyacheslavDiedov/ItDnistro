@@ -9,6 +9,8 @@ using DataBase;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class TourTypesController : Controller
     {
         private readonly DatabaseContext _context;
@@ -17,14 +19,12 @@ namespace IT_Dnistro.Controllers
         {
             _context = context;
         }
-
-        // GET: TourTypes
+        [HttpGet("")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.TourTypes.ToListAsync());
         }
-
-        // GET: TourTypes/Details/5
+        [HttpGet("details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -41,17 +41,12 @@ namespace IT_Dnistro.Controllers
 
             return View(tourType);
         }
-
-        // GET: TourTypes/Create
+        [HttpGet("create")]
         public IActionResult Create()
         {
             return View();
         }
-
-        // POST: TourTypes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPut("create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,TourTypeName,TourTypeDescription")] TourType tourType)
         {
@@ -63,8 +58,7 @@ namespace IT_Dnistro.Controllers
             }
             return View(tourType);
         }
-
-        // GET: TourTypes/Edit/5
+        [HttpGet("edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,10 +74,7 @@ namespace IT_Dnistro.Controllers
             return View(tourType);
         }
 
-        // POST: TourTypes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,TourTypeName,TourTypeDescription")] TourType tourType)
         {
@@ -114,8 +105,7 @@ namespace IT_Dnistro.Controllers
             }
             return View(tourType);
         }
-
-        // GET: TourTypes/Delete/5
+        [HttpGet("delete")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,8 +123,7 @@ namespace IT_Dnistro.Controllers
             return View(tourType);
         }
 
-        // POST: TourTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

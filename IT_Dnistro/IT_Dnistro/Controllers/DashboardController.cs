@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class DashboardController : Controller
     {
         private readonly DatabaseContext _context;
@@ -50,7 +52,7 @@ namespace IT_Dnistro.Controllers
         /// додає нового учасника в поїздку
         /// </summary>
         /// <returns></returns>
-
+        [HttpPut]
         public IActionResult AddParticipant()
         {
             ViewData["Testik"] = new SelectList(_context.Tours, "Id","TourName");
