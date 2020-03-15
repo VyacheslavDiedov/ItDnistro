@@ -2,7 +2,7 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Arial', sans-serif;
     background: #fafafa;
 }
 
@@ -17,7 +17,7 @@ p {
 a,
 a:hover,
 a:focus {
-    color: inherit;
+    /*color: inherit;*/
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -46,6 +46,9 @@ a:focus {
 i,
 span {
     display: inline-block;
+}
+.together {
+    display: inline-block!important;
 }
 
 /* ---------------------------------------------------
@@ -143,8 +146,9 @@ span {
         display: block;
     }
 
+
         #sidebar ul li a:hover {
-            color: #7386D5;
+            color: #5CB45B;
             background: #fff;
         }
 
@@ -154,8 +158,8 @@ span {
 
     #sidebar ul li.active > a,
     a[aria-expanded="true"] {
-        color: #fff;
-        background: #6d7fcc;
+        color: #5CB45B;
+        background: #fff;
     }
 
 a[data-toggle="collapse"] {
@@ -173,7 +177,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #fff;
 }
 
 ul.CTAs {
@@ -190,17 +194,19 @@ ul.CTAs {
 
 a.download {
     background: #fff;
-    color: #7386D5;
+    color:  #5CB45B;
 }
 
 a.article,
-a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
+a.article:hover,
+a.article:active{
+    background: #fff !important;
+    color: #5CB45B !important;
 }
 
 div a img {
-    width: 1rem;
+    width: 1.2rem;
+    margin: 0.5rem;
 }
 
 /* ---------------------------------------------------

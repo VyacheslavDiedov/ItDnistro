@@ -51,7 +51,7 @@ namespace IT_Dnistro
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //app.UseDefaultFiles();
+            app.UseDefaultFiles();
 
             app.UseRouting();
 
@@ -62,7 +62,8 @@ namespace IT_Dnistro
             {
                 endpoints.MapControllers();
                 endpoints.MapControllerRoute(
-                    "default", "{controller=Home}/{action=Index}/{id?}");
+                    "default", 
+                    "api/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

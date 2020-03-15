@@ -11,17 +11,24 @@ namespace IT_Dnistro.Controllers
     [Route("api/[controller]")]
     public class HomeController : Controller
     {
-        DatabaseContext db;
+        DatabaseContext _db;
         public HomeController(DatabaseContext context)
         {
-            db = context;
+            _db = context;
         }
+
+        [HttpGet("Index")]
+        public IActionResult Index()
+        {
+            return View(_db.TourPhotos.ToList());
+        }
+        
 
         [HttpGet]
         [Route("carpaty")]
         public IActionResult Carpaty()
         {
-            return View(db.TourPhotos.ToList());
+            return View(_db.TourPhotos.ToList());
         }
 
 
@@ -29,16 +36,10 @@ namespace IT_Dnistro.Controllers
         [Route("scandinavia")]
         public IActionResult Scandinavia()
         {
-            return View(db.TourPhotos.ToList());
+            return View(_db.TourPhotos.ToList());
         }
 
-        //[Route("index")]
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View(db.TourPhotos.ToList());
-        }
-        
+
         [HttpGet("error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
