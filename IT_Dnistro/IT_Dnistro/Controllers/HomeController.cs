@@ -17,7 +17,7 @@ namespace IT_Dnistro.Controllers
             _db = context;
         }
 
-        [HttpGet("Index")]
+        [HttpGet("index")]
         public IActionResult Index()
         {
             return View(_db.TourPhotos.ToList());

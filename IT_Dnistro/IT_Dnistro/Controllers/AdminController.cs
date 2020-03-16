@@ -24,7 +24,7 @@ namespace IT_Dnistro.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpGet("admin")]
         [Authorize(Roles = "admin")]
         //[Route("admin")]
         public IActionResult Admin()

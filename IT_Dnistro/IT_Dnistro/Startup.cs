@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 
-
 namespace IT_Dnistro
 {
     public class Startup
@@ -30,6 +29,10 @@ namespace IT_Dnistro
             services.AddTransient<UserManager<IdentityUser>>();
 
             services.AddControllersWithViews();
+
+            //services.AddMvc(options => options.EnableEndpointRouting = false);
+            //services.AddControllers(options => options.EnableEndpointRouting = false);
+
 
             services.AddSwaggerGen(c =>
             {
@@ -60,11 +63,23 @@ namespace IT_Dnistro
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
                 endpoints.MapControllerRoute(
-                    "default", 
-                    "api/{controller=Home}/{action=Index}/{id?}");
+                    name: "default",
+                    pattern: "api/{controller=Home}/{action=Index}/{id?}");
             });
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "Default",
+            //        pattern: "{controller=default}/{action=Index}/{id?}");
+            //endpoints.MapControllers();
+            //});
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute("default", "api/{controller=Home}/{action=Index}/{id?}");
+            //});
         }
     }
 }
