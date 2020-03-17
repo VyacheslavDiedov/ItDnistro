@@ -20,7 +20,7 @@ namespace IT_Dnistro.Controllers
         {
             _context = context;
         }
-        [HttpGet("")]
+        [HttpGet("index")]
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Index()
         {

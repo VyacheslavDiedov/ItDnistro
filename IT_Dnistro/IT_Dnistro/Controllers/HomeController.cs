@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using IT_Dnistro.Models;
 using DataBase;
 using System.Linq;
@@ -24,16 +23,14 @@ namespace IT_Dnistro.Controllers
         }
         
 
-        [HttpGet]
-        [Route("carpaty")]
+        [HttpGet("carpaty")]
         public IActionResult Carpaty()
         {
             return View(_db.TourPhotos.ToList());
         }
 
 
-        [HttpGet]
-        [Route("scandinavia")]
+        [HttpGet("scandinavia")]
         public IActionResult Scandinavia()
         {
             return View(_db.TourPhotos.ToList());

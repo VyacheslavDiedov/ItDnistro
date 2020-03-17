@@ -19,7 +19,7 @@ namespace IT_Dnistro.Controllers
         {
             _context = context;
         }
-        [HttpGet("")]
+        [HttpGet("index")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.TourTypes.ToListAsync());
@@ -123,7 +123,7 @@ namespace IT_Dnistro.Controllers
             return View(tourType);
         }
 
-        [HttpDelete, ActionName("Delete")]
+        [HttpDelete, ActionName("delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

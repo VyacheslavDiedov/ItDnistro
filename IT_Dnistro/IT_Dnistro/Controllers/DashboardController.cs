@@ -23,8 +23,7 @@ namespace IT_Dnistro.Controllers
         /// повертає список учасників для таблиці
         /// </summary>
 
-        [HttpGet]
-        [Route("gg")]
+        [HttpGet("getpartiсipants")]
         public IActionResult GetPartiсipants()
         {
             var items = _context.Participants.Select(x => new ParticipantsViewModel()
@@ -52,7 +51,7 @@ namespace IT_Dnistro.Controllers
         /// додає нового учасника в поїздку
         /// </summary>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut("addparticipant")]
         public IActionResult AddParticipant()
         {
             ViewData["Testik"] = new SelectList(_context.Tours, "Id","TourName");
@@ -60,7 +59,7 @@ namespace IT_Dnistro.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("addparticipant")]
         public async Task<IActionResult> AddParticipant(AddParticipantViewModel model)
         {
             if (ModelState.IsValid)
@@ -82,12 +81,10 @@ namespace IT_Dnistro.Controllers
         /// видаляє учасника з поїздки
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("removeparticipant")]
         public IActionResult RemoveParticipant(int id, int tourId)
         {
             return View();
         }
-
-
     }
 }

@@ -21,7 +21,7 @@ namespace IT_Dnistro.Controllers
         {
             _userManager = manager;
         }
-        [HttpGet("")]
+        [HttpGet]
         public IActionResult Index() => View(_userManager.Users.ToList());
         [HttpGet("create")]
         public IActionResult Create() => View();

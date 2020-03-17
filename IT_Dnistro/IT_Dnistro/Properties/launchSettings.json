@@ -2,8 +2,12 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/IT_Dnistro",
+      "sslPort": 0
+    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:49543",
+      "applicationUrl": "http://localhost:5000",
       "sslPort": 44376
     }
   },
@@ -19,6 +23,7 @@
     "IT_Dnistro": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "api/admin/admin",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

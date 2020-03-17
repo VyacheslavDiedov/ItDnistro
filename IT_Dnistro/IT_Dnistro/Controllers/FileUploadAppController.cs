@@ -24,8 +24,7 @@ namespace IT_Dnistro.Controllers
             _context = context;
             _appEnvironment = appEnvironment;
         }
-        [HttpGet]
-        [Route("Upload")]
+        [HttpGet("Upload")]
         public IActionResult Index()
         {
             return View(_context.TourPhotos.ToList());
@@ -58,8 +57,7 @@ namespace IT_Dnistro.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        [Route("UploadCarpaty")]
+        [HttpGet("UploadCarpaty")]
         public IActionResult Carpaty()
         {
             return View(_context.TourPhotos.ToList());
@@ -83,8 +81,7 @@ namespace IT_Dnistro.Controllers
             }
             return RedirectToAction("Carpaty");
         }
-        [HttpGet]
-        [Route("UploadScandinavia")]
+        [HttpGet("UploadScandinavia")]
         public IActionResult Scandinavia()
         {
             return View(_context.TourPhotos.ToList());

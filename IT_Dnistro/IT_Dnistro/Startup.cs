@@ -30,10 +30,6 @@ namespace IT_Dnistro
 
             services.AddControllersWithViews();
 
-            //services.AddMvc(options => options.EnableEndpointRouting = false);
-            //services.AddControllers(options => options.EnableEndpointRouting = false);
-
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
@@ -74,19 +70,6 @@ namespace IT_Dnistro
                     name: "default",
                     pattern: "api/{controller=Home}/{action=index}/{id?}");
             });
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "Default",
-            //        pattern: "{controller=default}/{action=Index}/{id?}");
-            //endpoints.MapControllers();
-            //});
-
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute("default", "api/{controller=Home}/{action=Index}/{id?}");
-            //});
         }
     }
 }
