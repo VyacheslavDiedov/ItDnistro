@@ -27,8 +27,8 @@ namespace IT_Dnistro.Controllers
         [HttpGet("create")]
         public IActionResult Create() => View();
 
-        [HttpPut("create")]
-        public async Task<IActionResult> Create(CreateUserViewModel model)
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromForm]CreateUserViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -60,8 +60,8 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpPut("edit")]
-        public async Task<IActionResult> Edit(EditUserViewModel model)
+        [HttpPost("edit")]
+        public async Task<IActionResult> Edit([FromForm]EditUserViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpDelete("user")]
+        [HttpPost("delete")]
         public async Task<ActionResult> Delete(string id)
         {
             IdentityUser user = await _userManager.FindByIdAsync(id).ConfigureAwait(true);

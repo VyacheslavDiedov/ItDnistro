@@ -19,8 +19,8 @@ namespace IT_Dnistro.Controllers
             _context = context;
         }
 
-        [HttpGet("partiсipant")]
-        public IActionResult GetPartiсipants()
+        [HttpGet("participant")]
+        public IActionResult GetParticipants()
         {
             var items = _context.Participants.Select(x => new ParticipantsViewModel()
             {
@@ -33,38 +33,41 @@ namespace IT_Dnistro.Controllers
             return View(items);
         }
 
-        [HttpPut("participant")]
+        [HttpGet("add")]
         public IActionResult AddParticipant()
         {
             ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName");
             return View();
         }
 
-        [HttpPost("participant")]
-        public async Task<IActionResult> AddParticipant(ParticipantViewModel model)
+        [HttpPost("add")]
+        public async Task<IActionResult> AddParticipant([FromForm]ParticipantsViewModel model)
         {
             if (ModelState.IsValid)
             {
                 Participant participant = new Participant()
                 {
-                    Id = model.Id,FullName = model.FullName,EMail = model.EMail,PhoneNumber = model.PhoneNumber,
+                    Id = model.Id,
+                    FullName = model.FullName,
+                    EMail = model.EMail,
+                    PhoneNumber = model.PhoneNumber,
                     TourTypeId = model.TourTypeId
                 };
                 _context.Add(participant);
                 await _context.SaveChangesAsync().ConfigureAwait(true);
-                return RedirectToAction(nameof(GetPartiсipants));
+                return RedirectToAction(nameof(GetParticipants));
             }
             return View(model);
         }
 
 
-        [HttpDelete("participant")]
-        public async Task<IActionResult> RemoveParticipant(int id, int tourId)
+        [HttpPost("remove")]
+        public async Task<IActionResult> RemoveParticipant(int id)
         {
             var participant = await _context.Participants.FindAsync(id);
             _context.Participants.Remove(participant);
             await _context.SaveChangesAsync().ConfigureAwait(true);
-            return RedirectToAction(nameof(GetPartiсipants));
+            return RedirectToAction(nameof(GetParticipants));
         }
     }
 }
