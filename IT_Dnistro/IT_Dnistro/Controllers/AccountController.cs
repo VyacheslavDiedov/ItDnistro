@@ -29,11 +29,9 @@ namespace IT_Dnistro.Controllers
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser() { Email = model.Email, UserName = model.Email};
-                // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password).ConfigureAwait(true);
                 if (result.Succeeded)
                 {
-                    // установка куки
                     await _signInManager.SignInAsync(user, false).ConfigureAwait(true);
                     return RedirectToAction("Index", "Home");
                 }
@@ -64,7 +62,6 @@ namespace IT_Dnistro.Controllers
                     await _signInManager.PasswordSignInAsync(model.Name, model.Password, model.RememberMe, false).ConfigureAwait(true);
                 if (result.Succeeded)
                 {
-                    // проверяем, принадлежит ли URL приложению
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
                         return Redirect(model.ReturnUrl);
@@ -86,7 +83,6 @@ namespace IT_Dnistro.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            // удаляем аутентификационные куки
             await _signInManager.SignOutAsync().ConfigureAwait(true);
             return RedirectToAction("Index", "Home");
         }

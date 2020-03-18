@@ -21,7 +21,6 @@ namespace IT_Dnistro.Controllers
         {
             return View(_db.TourPhotos.ToList());
         }
-        
 
         [HttpGet("carpaty")]
         public IActionResult Carpaty()
@@ -29,13 +28,11 @@ namespace IT_Dnistro.Controllers
             return View(_db.TourPhotos.ToList());
         }
 
-
         [HttpGet("scandinavia")]
         public IActionResult Scandinavia()
         {
             return View(_db.TourPhotos.ToList());
         }
-
 
         [HttpGet("error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -5,10 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using DataBase;
 using System.IO;
-using DataBase.Migrations;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-
 
 namespace IT_Dnistro.Controllers
 {
@@ -24,23 +21,21 @@ namespace IT_Dnistro.Controllers
             _context = context;
             _appEnvironment = appEnvironment;
         }
-        [HttpGet("Upload")]
+        [HttpGet("upload")]
         public IActionResult Index()
         {
             return View(_context.TourPhotos.ToList());
         }
 
-        [HttpPut("addFileToDnistro")]
+        [HttpPut("dnistro")]
         public async Task<IActionResult> AddFile(IFormFile uploadedFile)
         {
             if (uploadedFile != null) 
             {
-                // путь к папке Files
                 string path = "/images/Dnistro/" + uploadedFile.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
-                    await uploadedFile.CopyToAsync(fileStream);
+                    await uploadedFile.CopyToAsync(fileStream).ConfigureAwait(true);
                 }
                 TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = 1 };
                 _context.TourPhotos.Add(file);
@@ -49,7 +44,7 @@ namespace IT_Dnistro.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet,ActionName("Delete")]
+        [HttpDelete]
         public ActionResult DeleteConfirmed(int id)
         {
             var tourPhoto = _context.TourPhotos.Find(id);
@@ -57,23 +52,21 @@ namespace IT_Dnistro.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpGet("UploadCarpaty")]
+        [HttpGet("carpaty")]
         public IActionResult Carpaty()
         {
             return View(_context.TourPhotos.ToList());
         }
 
-        [HttpPut("addFileToCarpaty")]
+        [HttpPut("carpaty")]
         public async Task<IActionResult> AddFileCarpaty(IFormFile uploadedFile)
         {
             if (uploadedFile != null)
             {
-                // путь к папке Files
                 string path = "/images/Carpaty/" + uploadedFile.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
-                    await uploadedFile.CopyToAsync(fileStream);
+                    await uploadedFile.CopyToAsync(fileStream).ConfigureAwait(true);
                 }
                 TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = 2 };
                 _context.TourPhotos.Add(file);
@@ -81,23 +74,21 @@ namespace IT_Dnistro.Controllers
             }
             return RedirectToAction("Carpaty");
         }
-        [HttpGet("UploadScandinavia")]
+        [HttpGet("scandinavia")]
         public IActionResult Scandinavia()
         {
             return View(_context.TourPhotos.ToList());
         }
 
-        [HttpPut("addFileToScandinavia")]
+        [HttpPut("scandinavia")]
         public async Task<IActionResult> AddFileScandinavia(IFormFile uploadedFile)
         {
             if (uploadedFile != null)
             {
-                // путь к папке Files
                 string path = "/images/Scandinavia/" + uploadedFile.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
-                    await uploadedFile.CopyToAsync(fileStream);
+                    await uploadedFile.CopyToAsync(fileStream).ConfigureAwait(true);
                 }
                 TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = 3 };
                 _context.TourPhotos.Add(file);

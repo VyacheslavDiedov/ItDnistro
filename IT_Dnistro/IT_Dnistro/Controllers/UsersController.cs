@@ -21,8 +21,9 @@ namespace IT_Dnistro.Controllers
         {
             _userManager = manager;
         }
-        [HttpGet]
+        [HttpGet("index")]
         public IActionResult Index() => View(_userManager.Users.ToList());
+
         [HttpGet("create")]
         public IActionResult Create() => View();
 
@@ -50,7 +51,7 @@ namespace IT_Dnistro.Controllers
         [HttpGet("edit")]
         public async Task<IActionResult> Edit(string id)
         {
-            IdentityUser user = await _userManager.FindByIdAsync(id);
+            IdentityUser user = await _userManager.FindByIdAsync(id).ConfigureAwait(true);
             if (user == null)
             {
                 return NotFound();
@@ -59,19 +60,19 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpPost("edit")]
+        [HttpPut("edit")]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                IdentityUser user = await _userManager.FindByIdAsync(model.Id);
+                IdentityUser user = await _userManager.FindByIdAsync(model.Id).ConfigureAwait(true);
                 if (user != null)
                 {
                     user.Email = model.Email;
                     user.UserName = model.UserName;
                     user.PhoneNumber = model.Phone;
 
-                    var result = await _userManager.UpdateAsync(user);
+                    var result = await _userManager.UpdateAsync(user).ConfigureAwait(true);
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Index");
@@ -88,13 +89,13 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpDelete]
+        [HttpDelete("user")]
         public async Task<ActionResult> Delete(string id)
         {
-            IdentityUser user = await _userManager.FindByIdAsync(id);
+            IdentityUser user = await _userManager.FindByIdAsync(id).ConfigureAwait(true);
             if (user != null)
             {
-                IdentityResult result = await _userManager.DeleteAsync(user);
+                IdentityResult result = await _userManager.DeleteAsync(user).ConfigureAwait(true);
             }
             return RedirectToAction("Index");
         }

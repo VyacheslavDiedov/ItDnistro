@@ -30,6 +30,7 @@ namespace IT_Dnistro.Controllers
         //[Authorize(Roles = "admin")]
         [HttpGet("create")]
         public IActionResult Create() => View();
+
         [HttpPut("create")]
         public async Task<IActionResult> Create(string name)
         {
@@ -52,7 +53,6 @@ namespace IT_Dnistro.Controllers
         }
 
         [HttpDelete("delete")]
-        //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(string id)
         {
             IdentityRole role = await _roleManager.FindByIdAsync(id).ConfigureAwait(true);
@@ -64,15 +64,14 @@ namespace IT_Dnistro.Controllers
         }
         [HttpGet("userList")]
         public IActionResult UserList() => View(_userManager.Users.ToList());
-        [HttpPost("edit1")]
+
+        [HttpPost("user")]
         //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(string userId)
         {
-            // получаем пользователя
             var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(true);
             if (user != null)
             {
-                // получем список ролей пользователя
                 var userRoles = await _userManager.GetRolesAsync(user).ConfigureAwait(true);
                 var allRoles = _roleManager.Roles.ToList();
                 ChangeRoleViewModel model = new ChangeRoleViewModel
@@ -87,7 +86,7 @@ namespace IT_Dnistro.Controllers
 
             return NotFound();
         }
-        [HttpPost("edit2")]
+        [HttpPost("role")]
 
         public async Task<IActionResult> Edit(string userId, List<string> roles)
         {

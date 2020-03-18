@@ -20,6 +20,7 @@ namespace IT_Dnistro.Controllers
         {
             _context = context;
         }
+
         [HttpGet("index")]
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Index()
@@ -27,6 +28,7 @@ namespace IT_Dnistro.Controllers
             var databaseContext = _context.Tours.Include(t => t.TourType);
             return View(await databaseContext.ToListAsync().ConfigureAwait(true));
         }
+
         [HttpGet("details")]
         public async Task<IActionResult> Details(int? id)
         {
@@ -45,6 +47,7 @@ namespace IT_Dnistro.Controllers
 
             return View(tour);
         }
+
         [HttpGet("create")]
         public IActionResult Create()
         {
@@ -52,7 +55,7 @@ namespace IT_Dnistro.Controllers
             return View();
         }
 
-        [HttpPut]
+        [HttpPut("create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,TourName,TourTypeId,TourDate,TourLength")] Tour tour)
         {
@@ -65,6 +68,7 @@ namespace IT_Dnistro.Controllers
             ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName", tour.TourTypeId);
             return View(tour);
         }
+
         [HttpGet("edit")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -82,7 +86,7 @@ namespace IT_Dnistro.Controllers
             return View(tour);
         }
 
-        [HttpPost]
+        [HttpPut("edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,TourName,TourTypeId,TourDate,TourLength")] Tour tour)
         {
@@ -133,7 +137,7 @@ namespace IT_Dnistro.Controllers
             return View(tour);
         }
 
-        [HttpDelete, ActionName("Delete")]
+        [HttpDelete("delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

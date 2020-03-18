@@ -19,10 +19,11 @@ namespace IT_Dnistro.Controllers
         {
             _context = context;
         }
+
         [HttpGet("index")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TourTypes.ToListAsync());
+            return View(await _context.TourTypes.ToListAsync().ConfigureAwait(true));
         }
         [HttpGet("details")]
         public async Task<IActionResult> Details(int? id)
@@ -33,7 +34,7 @@ namespace IT_Dnistro.Controllers
             }
 
             var tourType = await _context.TourTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
             if (tourType == null)
             {
                 return NotFound();
@@ -53,7 +54,7 @@ namespace IT_Dnistro.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(tourType);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ConfigureAwait(true);
                 return RedirectToAction(nameof(Index));
             }
             return View(tourType);
@@ -88,7 +89,7 @@ namespace IT_Dnistro.Controllers
                 try
                 {
                     _context.Update(tourType);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync().ConfigureAwait(true);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -114,7 +115,7 @@ namespace IT_Dnistro.Controllers
             }
 
             var tourType = await _context.TourTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
             if (tourType == null)
             {
                 return NotFound();
@@ -129,7 +130,7 @@ namespace IT_Dnistro.Controllers
         {
             var tourType = await _context.TourTypes.FindAsync(id);
             _context.TourTypes.Remove(tourType);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(true);
             return RedirectToAction(nameof(Index));
         }
 
