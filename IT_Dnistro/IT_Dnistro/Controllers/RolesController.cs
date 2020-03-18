@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class RolesController : Controller
     {
 
@@ -21,13 +23,15 @@ namespace IT_Dnistro.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
+        [HttpGet("index")]
         //[Authorize(Roles = "admin")]
         public IActionResult Index() => View(_roleManager.Roles.ToList());
 
         //[Authorize(Roles = "admin")]
+        [HttpGet("create")]
         public IActionResult Create() => View();
-        [HttpPost]
+
+        [HttpPut("create")]
         public async Task<IActionResult> Create(string name)
         {
             if (!string.IsNullOrEmpty(name))
@@ -48,8 +52,7 @@ namespace IT_Dnistro.Controllers
             return View(name);
         }
 
-        [HttpPost]
-        //[Authorize(Roles = "admin")]
+        [HttpDelete("delete")]
         public async Task<IActionResult> Delete(string id)
         {
             IdentityRole role = await _roleManager.FindByIdAsync(id).ConfigureAwait(true);
@@ -59,17 +62,16 @@ namespace IT_Dnistro.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        [HttpGet("userList")]
         public IActionResult UserList() => View(_userManager.Users.ToList());
 
+        [HttpPost("user")]
         //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(string userId)
         {
-            // получаем пользователя
             var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(true);
             if (user != null)
             {
-                // получем список ролей пользователя
                 var userRoles = await _userManager.GetRolesAsync(user).ConfigureAwait(true);
                 var allRoles = _roleManager.Roles.ToList();
                 ChangeRoleViewModel model = new ChangeRoleViewModel
@@ -84,7 +86,7 @@ namespace IT_Dnistro.Controllers
 
             return NotFound();
         }
-        [HttpPost]
+        [HttpPost("role")]
 
         public async Task<IActionResult> Edit(string userId, List<string> roles)
         {

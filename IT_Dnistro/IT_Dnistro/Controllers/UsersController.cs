@@ -11,6 +11,8 @@ using IT_Dnistro.ViewModels;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class UsersController : Controller
     {
         UserManager<IdentityUser> _userManager;
@@ -19,12 +21,13 @@ namespace IT_Dnistro.Controllers
         {
             _userManager = manager;
         }
-
+        [HttpGet("index")]
         public IActionResult Index() => View(_userManager.Users.ToList());
 
+        [HttpGet("create")]
         public IActionResult Create() => View();
 
-        [HttpPost]
+        [HttpPut("create")]
         public async Task<IActionResult> Create(CreateUserViewModel model)
         {
             if (ModelState.IsValid)
@@ -45,10 +48,10 @@ namespace IT_Dnistro.Controllers
             }
             return View(model);
         }
-
+        [HttpGet("edit")]
         public async Task<IActionResult> Edit(string id)
         {
-            IdentityUser user = await _userManager.FindByIdAsync(id);
+            IdentityUser user = await _userManager.FindByIdAsync(id).ConfigureAwait(true);
             if (user == null)
             {
                 return NotFound();
@@ -57,19 +60,19 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPut("edit")]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                IdentityUser user = await _userManager.FindByIdAsync(model.Id);
+                IdentityUser user = await _userManager.FindByIdAsync(model.Id).ConfigureAwait(true);
                 if (user != null)
                 {
                     user.Email = model.Email;
                     user.UserName = model.UserName;
                     user.PhoneNumber = model.Phone;
 
-                    var result = await _userManager.UpdateAsync(user);
+                    var result = await _userManager.UpdateAsync(user).ConfigureAwait(true);
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Index");
@@ -86,13 +89,13 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpDelete("user")]
         public async Task<ActionResult> Delete(string id)
         {
-            IdentityUser user = await _userManager.FindByIdAsync(id);
+            IdentityUser user = await _userManager.FindByIdAsync(id).ConfigureAwait(true);
             if (user != null)
             {
-                IdentityResult result = await _userManager.DeleteAsync(user);
+                IdentityResult result = await _userManager.DeleteAsync(user).ConfigureAwait(true);
             }
             return RedirectToAction("Index");
         }

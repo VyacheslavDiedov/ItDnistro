@@ -1,43 +1,40 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using IT_Dnistro.Models;
 using DataBase;
 using System.Linq;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class HomeController : Controller
     {
-        DatabaseContext db;
+        DatabaseContext _db;
         public HomeController(DatabaseContext context)
         {
-            db = context;
+            _db = context;
         }
 
-        [HttpGet]
-        [Route("carpaty")]
-        public IActionResult Carpaty()
-        {
-            return View(db.TourPhotos.ToList());
-        }
-
-
-        [HttpGet]
-        [Route("scandinavia")]
-        public IActionResult Scandinavia()
-        {
-            return View(db.TourPhotos.ToList());
-        }
-
-        //[Route("index")]
-        [HttpGet]
+        [HttpGet("index")]
         public IActionResult Index()
         {
-            return View(db.TourPhotos.ToList());
+            return View(_db.TourPhotos.ToList());
         }
-        
-        [HttpGet]
+
+        [HttpGet("carpaty")]
+        public IActionResult Carpaty()
+        {
+            return View(_db.TourPhotos.ToList());
+        }
+
+        [HttpGet("scandinavia")]
+        public IActionResult Scandinavia()
+        {
+            return View(_db.TourPhotos.ToList());
+        }
+
+        [HttpGet("error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

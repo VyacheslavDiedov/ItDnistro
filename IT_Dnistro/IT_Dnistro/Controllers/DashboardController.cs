@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class DashboardController : Controller
     {
         private readonly DatabaseContext _context;
@@ -17,12 +19,7 @@ namespace IT_Dnistro.Controllers
             _context = context;
         }
 
-        /// <summary>
-        /// повертає список учасників для таблиці
-        /// </summary>
-
-        [HttpGet]
-        [Route("gg")]
+        [HttpGet("partiсipant")]
         public IActionResult GetPartiсipants()
         {
             var items = _context.Participants.Select(x => new ParticipantsViewModel()
@@ -36,18 +33,15 @@ namespace IT_Dnistro.Controllers
             return View(items);
         }
 
-        /// <summary>
-        /// додає нового учасника в поїздку
-        /// </summary>
-
+        [HttpPut("participant")]
         public IActionResult AddParticipant()
         {
             ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName");
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddParticipant(ParticipantsViewModel model)
+        [HttpPost("participant")]
+        public async Task<IActionResult> AddParticipant(ParticipantViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -63,18 +57,14 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        /// <summary>
-        /// видаляє учасника з поїздки
-        /// </summary>
-        [HttpPost]
-        public async Task<IActionResult> RemoveParticipant(int id)
+
+        [HttpDelete("participant")]
+        public async Task<IActionResult> RemoveParticipant(int id, int tourId)
         {
             var participant = await _context.Participants.FindAsync(id);
             _context.Participants.Remove(participant);
             await _context.SaveChangesAsync().ConfigureAwait(true);
             return RedirectToAction(nameof(GetPartiсipants));
         }
-
-
     }
 }
