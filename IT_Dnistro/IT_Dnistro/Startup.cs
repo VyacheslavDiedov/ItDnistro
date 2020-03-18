@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 
-
 namespace IT_Dnistro
 {
     public class Startup
@@ -35,6 +34,13 @@ namespace IT_Dnistro
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/api/Account/Login";
+                options.AccessDeniedPath = "";//401 error page
+;            });
+
             services.AddControllers();
         }
 
@@ -51,6 +57,7 @@ namespace IT_Dnistro
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseDefaultFiles();
 
             app.UseRouting();
 
@@ -61,7 +68,7 @@ namespace IT_Dnistro
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "api/{controller=Home}/{action=index}/{id?}");
             });
         }
     }

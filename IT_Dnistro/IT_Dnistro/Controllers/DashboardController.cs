@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class DashboardController : Controller
     {
         private readonly DatabaseContext _context;
@@ -17,12 +19,7 @@ namespace IT_Dnistro.Controllers
             _context = context;
         }
 
-        /// <summary>
-        /// повертає список учасників для таблиці
-        /// </summary>
-
-        [HttpGet]
-        [Route("gg")]
+        [HttpGet("partiсipant")]
         public IActionResult GetPartiсipants()
         {
             var items = _context.Participants.Select(x => new ParticipantsViewModel()
@@ -33,24 +30,11 @@ namespace IT_Dnistro.Controllers
                 PhoneNumber = x.PhoneNumber,
                 TourName = x.TourType.TourTypeName
             }).ToList();
-            //var items = _context.UserTours.Select(x => new ParticipantsViewModel()
-            //{
-            //    UserId = x.User.Id,
-            //    TourId = x.TourId,
-            //    FullName = x.User.UserName,
-            //    PhoneNumber = x.User.PhoneNumber,
-            //    Email = x.User.Email,
-            //    TourName = x.Tour.TourName
-            //}).ToList();
-
+           
             return View(items);
         }
 
-        /// <summary>
-        /// додає нового учасника в поїздку
-        /// </summary>
-        /// <returns></returns>
-
+        [HttpPut("participant")]
         public IActionResult AddParticipant()
         {
             ViewData["Testik"] = new SelectList(_context.Tours, "Id","TourName");
@@ -58,7 +42,7 @@ namespace IT_Dnistro.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("participant")]
         public async Task<IActionResult> AddParticipant(AddParticipantViewModel model)
         {
             if (ModelState.IsValid)
@@ -76,16 +60,10 @@ namespace IT_Dnistro.Controllers
             return View(model);
         }
 
-        /// <summary>
-        /// видаляє учасника з поїздки
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
+        [HttpDelete("participant")]
         public IActionResult RemoveParticipant(int id, int tourId)
         {
             return View();
         }
-
-
     }
 }

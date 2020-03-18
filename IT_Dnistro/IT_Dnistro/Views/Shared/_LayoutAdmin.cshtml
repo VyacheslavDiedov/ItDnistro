@@ -14,130 +14,118 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link href="~/css/stylesAdminLayout.css" rel="stylesheet">
     <link href="~/css/sb-admin-2.css" rel="stylesheet">
-    <!-- Bootstrap core JavaScript-->
-    <script src="~/vendor/jquery/jquery.min.js"></script>
-    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="~/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="~/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="~/js/demo/chart-area-demo.js"></script>
-    <script src="~/js/demo/chart-pie-demo.js"></script>
 
 </head>
 <body>
     <!-- Page Wrapper -->
-    <div id="wrapper" class="wrapper">
+    <div class="wrapper">
 
         <nav id="sidebar">
             <!-- Sidebar -->
+            <div class="sidebar-header">
+                <img class="logo" src="~/images/logoAdmin.png" alt="">
+            </div>
 
-            <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-
-                <!-- Sidebar - Brand -->
-                <li class="nav-item">
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center font-weight-bold" href="index.html">
-                        <div class="sidebar-brand-icon">
-                            <img class="logo" src="~/images/logoAdmin.png" alt="" style="width:3vw;">
-                        </div>
-                        <div class="sidebar-brand-text mx-3 adminTitle"> IT DnistrO</div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-suitcase-rolling"></i>
+                        <span class="span-left">Тури</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a class="a-left" href="#">Дошка</a>
+                        </li>
+                        <li>
+                            <a class="a-left" href="#">Галерея</a>
+                        </li>
+                    </ul>
+                </li>
+                @*<li>
+                    <a href="#">
+                        <i class="fas fa-briefcase"></i>
+                        About
+                    </a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        Pages
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-image"></i>
+                        Portfolio
                     </a>
                 </li>
-                <p class="adminNavbarDevider"></p>
-                <li class="nav-item">
-                    <a class="sidebar-brand d-flex align-items-start font-weight-bold" href="#">
-                        <div class="green">
-                            <i class="fas fa-home"></i>
-                            <div class="sidebar-brand-text mx-3 green">Дошка</div>
-                        </div>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question"></i>
+                        <span>FAQ</span>
                     </a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="sidebar-brand d-flex align-items-start font-weight-bold" href="#">
-                        <div class="green">
-                            <i class="fas fa-camera"></i>
-                            <div class="sidebar-brand-text mx-3 green">Галерея</div>
-                        </div>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-paper-plane"></i>
+                        Contact
                     </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="sidebar-brand d-flex align-items-start  font-weight-bold" href="#">
-                        <div class="green">
-                            <i class="fas fa-home"></i>
-                            <div class="sidebar-brand-text mx-3 green">Контакти</div>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed sidebar-brand d-flex align-items-start font-weight-bold" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                        <div class="green">
-                            <i class="fas fa-home"></i>
-                            <div class="sidebar-brand-text mx-3 green">Тури</div>
-                        </div>
-                    </a>
-                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="green py-2 collapse-inner rounded">
-                            <a class="dropdown-item" href="#">IT DnistrO</a>
-                            <a class="dropdown-item" href="#">IT Carpaty</a>
-                            <a class="dropdown-item" href="#">IT Scandinavia</a>
-                            <button type="button" class="btn btn-info btn-add">
-                                <span>Додати тур</span>
-                            </button>
-                        </div>
-                    </div>
-                </li>
-
+                </li>*@
             </ul>
         </nav>
-        @*<a class="collapse-item" asp-action="Index" asp-controller="Users">Users</a>
-            <a class="collapse-item" asp-action="Index" asp-controller="TourTypes">TourTypes</a>
-            <a class="collapse-item" asp-action="Index" asp-controller="Tours">Tours</a>*@
 
         <!-- Page Content  -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <nav class="navbar navbar-dark bg-dark topbar mb-4 shadow">
-                    <div class="container-fluid">
+        <div id="content">
 
-                        <button type="button" id="sidebarCollapse" class="btn btn-info btn-circle">
-                            <i class="fas fa-align-justify"></i>
-                            <span></span>
-                        </button>
-                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto btn-circle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-align-justify"></i>
-                        </button>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
 
-                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-0 small" aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
                             </div>
-                        </form>
-                        
-                        <div>
-                            <a class="text-white" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt text-white"></i>
-                                Вихід
-                            </a>
                         </div>
+                    </form>
+
+                    <div class="justify-content-center">
+                        <img src="~/images/Admin.jpg" class="rounded-circle foto" alt="">
                     </div>
-                </nav>
-            </div>
+                    <div class="marginRight">
+                        <p>Добровольський Констянтин</p>
+                        <p>Адміністратор</p>
+                    </div>
+
+                    <div>
+                        <a class="text-white" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <img class="together" src="~/icons/Exit.png" alt="">
+                            Вихід
+                        </a>
+                    </div>
+                </div>
+            </nav>
+           
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
@@ -146,7 +134,7 @@
         </div>
         <!-- End of Content Wrapper -->
     </div>
-   
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -166,19 +154,19 @@
         </div>
     </div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
         });
-    </script>
+    });
+</script>
 </body>
 </html>

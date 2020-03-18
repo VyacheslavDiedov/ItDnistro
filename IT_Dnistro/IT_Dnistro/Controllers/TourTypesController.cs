@@ -9,6 +9,8 @@ using DataBase;
 
 namespace IT_Dnistro.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class TourTypesController : Controller
     {
         private readonly DatabaseContext _context;
@@ -18,13 +20,12 @@ namespace IT_Dnistro.Controllers
             _context = context;
         }
 
-        // GET: TourTypes
+        [HttpGet("index")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TourTypes.ToListAsync());
+            return View(await _context.TourTypes.ToListAsync().ConfigureAwait(true));
         }
-
-        // GET: TourTypes/Details/5
+        [HttpGet("details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,7 +34,7 @@ namespace IT_Dnistro.Controllers
             }
 
             var tourType = await _context.TourTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
             if (tourType == null)
             {
                 return NotFound();
@@ -41,30 +42,24 @@ namespace IT_Dnistro.Controllers
 
             return View(tourType);
         }
-
-        // GET: TourTypes/Create
+        [HttpGet("create")]
         public IActionResult Create()
         {
             return View();
         }
-
-        // POST: TourTypes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPut("create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,TourTypeName,TourTypeDescription")] TourType tourType)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(tourType);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ConfigureAwait(true);
                 return RedirectToAction(nameof(Index));
             }
             return View(tourType);
         }
-
-        // GET: TourTypes/Edit/5
+        [HttpGet("edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,10 +75,7 @@ namespace IT_Dnistro.Controllers
             return View(tourType);
         }
 
-        // POST: TourTypes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,TourTypeName,TourTypeDescription")] TourType tourType)
         {
@@ -97,7 +89,7 @@ namespace IT_Dnistro.Controllers
                 try
                 {
                     _context.Update(tourType);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync().ConfigureAwait(true);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -114,8 +106,7 @@ namespace IT_Dnistro.Controllers
             }
             return View(tourType);
         }
-
-        // GET: TourTypes/Delete/5
+        [HttpGet("delete")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,7 +115,7 @@ namespace IT_Dnistro.Controllers
             }
 
             var tourType = await _context.TourTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
             if (tourType == null)
             {
                 return NotFound();
@@ -133,14 +124,13 @@ namespace IT_Dnistro.Controllers
             return View(tourType);
         }
 
-        // POST: TourTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete, ActionName("delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var tourType = await _context.TourTypes.FindAsync(id);
             _context.TourTypes.Remove(tourType);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(true);
             return RedirectToAction(nameof(Index));
         }
 

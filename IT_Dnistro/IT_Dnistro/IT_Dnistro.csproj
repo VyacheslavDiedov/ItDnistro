@@ -42,6 +42,8 @@
 
   <ItemGroup>
     <Folder Include="Views\Dashboard\" />
+    <Folder Include="wwwroot\images\Carpaty\" />
+    <Folder Include="wwwroot\images\Dnistro\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
