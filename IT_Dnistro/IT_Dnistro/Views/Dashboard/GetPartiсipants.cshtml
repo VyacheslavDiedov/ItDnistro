@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<IT_Dnistro.ViewModels.ParticipantsViewModel>
 
 @{
-    ViewData["Title"] = "GetPartiсipants";
+    ViewData["Title"] = "Учасники";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<a asp-action="AddParticipant">Добавить пользователя</a>
+<a asp-action="AddParticipant">Додати учасника</a>
 
 <table class="table">
     <tr><th>ПІБ</th><th>Телефон</th><th>Email</th><th>Захід</th><th>Дії</th></tr>
@@ -20,7 +20,7 @@
                 <form asp-action="RemoveParticipant" asp-route-id="@a.Id" method="post">
                     @*<a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@a.UserIdId">Изменить</a>*@
                     <button type="submit" class="btn btn-sm btn-danger">
-                        Удалить
+                        Видалити
                     </button>
                 </form>
             </td>

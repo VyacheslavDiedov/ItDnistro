@@ -33,43 +33,30 @@ namespace IT_Dnistro.Controllers
                 PhoneNumber = x.PhoneNumber,
                 TourName = x.TourType.TourTypeName
             }).ToList();
-            //var items = _context.UserTours.Select(x => new ParticipantsViewModel()
-            //{
-            //    UserId = x.User.Id,
-            //    TourId = x.TourId,
-            //    FullName = x.User.UserName,
-            //    PhoneNumber = x.User.PhoneNumber,
-            //    Email = x.User.Email,
-            //    TourName = x.Tour.TourName
-            //}).ToList();
-
             return View(items);
         }
 
         /// <summary>
         /// додає нового учасника в поїздку
         /// </summary>
-        /// <returns></returns>
 
         public IActionResult AddParticipant()
         {
-            ViewData["Testik"] = new SelectList(_context.Tours, "Id","TourName");
-            ViewData["Testik2"] = new SelectList(_context.Users, "Id", "UserName");
+            ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName");
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddParticipant(AddParticipantViewModel model)
+        public async Task<IActionResult> AddParticipant(ParticipantsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (model.HowFoundUs == null)
+                Participant participant = new Participant()
                 {
-                    model.HowFoundUs = "null";
-                }
-
-                UserTour userTour = new UserTour{ User = model.User, TourId = model.TourId, HowFoundUs = model.HowFoundUs};
-                _context.Add(userTour);
+                    Id = model.Id,FullName = model.FullName,EMail = model.EMail,PhoneNumber = model.PhoneNumber,
+                    TourTypeId = model.TourTypeId
+                };
+                _context.Add(participant);
                 await _context.SaveChangesAsync().ConfigureAwait(true);
                 return RedirectToAction(nameof(GetPartiсipants));
             }
@@ -79,11 +66,13 @@ namespace IT_Dnistro.Controllers
         /// <summary>
         /// видаляє учасника з поїздки
         /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public IActionResult RemoveParticipant(int id, int tourId)
+        [HttpPost]
+        public async Task<IActionResult> RemoveParticipant(int id)
         {
-            return View();
+            var participant = await _context.Participants.FindAsync(id);
+            _context.Participants.Remove(participant);
+            await _context.SaveChangesAsync().ConfigureAwait(true);
+            return RedirectToAction(nameof(GetPartiсipants));
         }
 
 
