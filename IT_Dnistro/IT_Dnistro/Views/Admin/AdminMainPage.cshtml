@@ -5,50 +5,63 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main admin page</title>
-    <link rel="stylesheet" type="text/css" href="~/css/styleAdminMainPage.css">
-</head>
-<body>
-    <div class="wrapper">
-        <div class="header">
-            <h1>Дошка</h1>
-        </div>
-        <div class="main">
-            <div class="container">
-                <div class="left-block">
-                    <div class="double-block">
-                        <div class="total-participant">
-                            <h4>Всього учасників</h4>
-                            <p>56</p>
-                        </div>
-                        <div class="total-visitor">
-                            <h4>Всього відвідувачів</h4>
-                            <p>121</p>
-                        </div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Admin board</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+            <link rel="stylesheet" href="~/css/styleAdminMainPage.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header"><h1>Дошка</h1></div>
+            <div class="row justify-content-between">
+                <div class="frame col-3">
+                    <h2>Всього учасників</h2>
+                    <p>56</p>
+                    <div class="round" style="background: #F2B701;">
+                        <object type="image/svg+xml"
+                                data="~/icons/participants.svg">
+                        </object>
                     </div>
-                    <div class="tours">Доступні тури</div>
                 </div>
-                <div class="right-block">
-                    <div class="tour-name">
-                        <p>Наша подорож</p>
+                <div class="frame col-3">
+                    <h2>Всього відвідувачів</h2>
+                    <p>121</p>
+                    <div class="round" style="background: #09A275;">
+                        <object type="image/svg+xml"
+                                data="~/icons/participants.svg">
+                        </object>
                     </div>
-                    <div class="tour-description">
-                        <p>Вінницька IT Академія відкриває для всіх бажаючих простори високогірного регіону.
-                        Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати вершини!
-                        Свіже гірське повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку.
-                        Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям на фоні прекрасних гір
-                        будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній
-                        дружній компанії.</p>
+                </div>
+                <div class="frame col-3">
+                    <h2>Залишилось до старту</h2>
+                    <p>7 днів</p>
+                    <div class="round" style="background: #6D04AD;">
+                        <object type="image/svg+xml"
+                                data="~/icons/participants.svg">
+                        </object>
+                    </div>
+                </div>
+                <div class="frame col-3">
+                    <h2>Нових учасників за тиждень</h2>
+                    <p>17</p>
+                    <div class="round" style="background: #0F4FA8;">
+                        <object type="image/svg+xml"
+                                data="~/icons/participants.svg">
+                        </object>
                     </div>
                 </div>
             </div>
-            <div class="space"> </div>
-            <div class="participant">
-                <p>Таблиця учасників</p>
+            <div class="block row justify-content-between">
+                <div class="participants col-12">
+                    <h2>Таблиця учасників</h2>
+                    <div class="button"></div>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
