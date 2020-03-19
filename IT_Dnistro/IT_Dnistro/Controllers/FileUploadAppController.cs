@@ -44,7 +44,7 @@ namespace IT_Dnistro.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpDelete]
+        [HttpGet, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             var tourPhoto = _context.TourPhotos.Find(id);
@@ -52,6 +52,7 @@ namespace IT_Dnistro.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [HttpGet("carpaty")]
         public IActionResult Carpaty()
         {
