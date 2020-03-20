@@ -51,9 +51,9 @@ namespace IT_Dnistro.Controllers
                 string path = "/images/Swiper/" + uploadedFile.FileName;
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
-                     uploadedFile.CopyToAsync(fileStream).ConfigureAwait(true);
+                    uploadedFile.CopyTo(fileStream);
                 }
-                if(_id != 0)
+                if (_id != 0)
                 {
                     TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = _id };
                     _context.TourPhotos.Add(file);
@@ -67,13 +67,7 @@ namespace IT_Dnistro.Controllers
         public ActionResult GetIdTour(int idTour)
         {
             _id = idTour;
-            Console.WriteLine("присвоїти - " + _id);
             return RedirectToAction("Index");
-        }
-        [HttpGet("carpaty")]
-        public IActionResult Carpaty()
-        {
-            return View(_context.TourPhotos.ToList());
         }
 
         [HttpGet]
