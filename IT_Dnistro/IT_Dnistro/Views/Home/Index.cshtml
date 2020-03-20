@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<DataBase.TourPhoto>
+@{
     Layout = null;
 }
 
@@ -19,20 +20,20 @@
     <title>travel.intita.com</title>
 
     <!-- Swiper's styles -->
-     <style>
+    <style>
         .swiper-container {
             width: 100%;
             padding-top: 20px;
             padding-bottom: 250px;
-         }
+        }
 
-         .swiper-slide {
-             background-position: center;
-             background-size: cover;
-             width: 420px;
-             height: 300px;
-         }
-     </style>
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 420px;
+            height: 300px;
+        }
+    </style>
 </head>
 
 <body>
@@ -298,7 +299,7 @@
                     {
                         if (photo.TourTypeId == 1)
                         {
-                            <div class="swiper-slide" style="background-image: url(./images/Dnistro/@photo.PhotoLink)"></div>
+                            <div class="swiper-slide" style="background-image: url(./images/Swiper/@photo.PhotoLink)"></div>
                         }
                     }
                 </div>
