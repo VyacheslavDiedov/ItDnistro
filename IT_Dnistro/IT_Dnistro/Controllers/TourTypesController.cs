@@ -47,9 +47,9 @@ namespace IT_Dnistro.Controllers
         {
             return View();
         }
-        [HttpPut("create")]
+        [HttpPost("create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TourTypeName,TourTypeDescription")] TourType tourType)
+        public async Task<IActionResult> Create([FromForm][Bind("Id,TourTypeName,TourTypeDescription")] TourType tourType)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace IT_Dnistro.Controllers
 
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TourTypeName,TourTypeDescription")] TourType tourType)
+        public async Task<IActionResult> Edit([FromForm]int id, [FromForm][Bind("Id,TourTypeName,TourTypeDescription")] TourType tourType)
         {
             if (id != tourType.Id)
             {
@@ -124,9 +124,9 @@ namespace IT_Dnistro.Controllers
             return View(tourType);
         }
 
-        [HttpDelete, ActionName("delete")]
+        [HttpPost("delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed([FromForm]int id)
         {
             var tourType = await _context.TourTypes.FindAsync(id);
             _context.TourTypes.Remove(tourType);

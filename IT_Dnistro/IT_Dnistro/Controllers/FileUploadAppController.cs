@@ -70,6 +70,11 @@ namespace IT_Dnistro.Controllers
             Console.WriteLine("присвоїти - " + _id);
             return RedirectToAction("Index");
         }
+        [HttpGet("carpaty")]
+        public IActionResult Carpaty()
+        {
+            return View(_context.TourPhotos.ToList());
+        }
 
         [HttpGet]
         public ActionResult DeleteConfirmed(int id)

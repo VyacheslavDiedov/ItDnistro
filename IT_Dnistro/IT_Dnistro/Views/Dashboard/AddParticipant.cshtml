@@ -1,32 +1,33 @@
-﻿@model IT_Dnistro.ViewModels.AddParticipantViewModel
-@*@model DataBase.UserTour*@
+﻿@model IT_Dnistro.ViewModels.ParticipantsViewModel
 
 @{
-    ViewData["Title"] = "AddParticipant";
-    //Layout = null;
+    ViewData["Title"] = "Створення учасника";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<h1>Create</h1>
 
-<h4>Tour</h4>
+<h4>Створення учасника</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="AddParticipant">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="User" class="control-label"></label>
-                <select asp-for="User" class="form-control" asp-items="ViewBag.Testik2"></select>
+                <label asp-for="FullName" class="control-label">ПІБ</label>
+                <input asp-for="FullName" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="TourId" class="control-label"></label>
-                <select asp-for="TourId" class="form-control" asp-items="ViewBag.Testik"></select>
+                <label asp-for="PhoneNumber" class="control-label">Телефон</label>
+                <input asp-for="PhoneNumber" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="HowFoundUs" class="control-label"></label>
-                <input asp-for="HowFoundUs" class="form-control" />
-                <span asp-validation-for="HowFoundUs" class="text-danger"></span>
+                <label asp-for="EMail" class="control-label"></label>
+                <input asp-for="EMail" class="form-control" />
             </div>
+            <div>
+                <label asp-for="TourTypeId" class="control-label">Захід</label>
+                <select asp-for="TourTypeId" class="form-control" asp-items="ViewBag.TourTypeId"></select>
+            </div>
+            <br/>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -35,6 +36,6 @@
 </div>
 
 <div>
-    <a asp-action="GetPartiсipants">Back to List</a>
+    <a asp-action="GetParticipants">Повернутися до списку</a>
 </div>
 

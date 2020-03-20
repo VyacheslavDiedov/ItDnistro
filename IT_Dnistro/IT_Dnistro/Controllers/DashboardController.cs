@@ -19,8 +19,8 @@ namespace IT_Dnistro.Controllers
             _context = context;
         }
 
-        [HttpGet("partiсipant")]
-        public IActionResult GetPartiсipants()
+        [HttpGet("participant")]
+        public IActionResult GetParticipants()
         {
             var items = _context.Participants.Select(x => new ParticipantsViewModel()
             {
@@ -30,40 +30,44 @@ namespace IT_Dnistro.Controllers
                 PhoneNumber = x.PhoneNumber,
                 TourName = x.TourType.TourTypeName
             }).ToList();
-           
             return View(items);
         }
 
-        [HttpPut("participant")]
+        [HttpGet("add")]
         public IActionResult AddParticipant()
         {
-            ViewData["Testik"] = new SelectList(_context.Tours, "Id","TourName");
-            ViewData["Testik2"] = new SelectList(_context.Users, "Id", "UserName");
+            ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName");
             return View();
         }
 
-        [HttpPost("participant")]
-        public async Task<IActionResult> AddParticipant(AddParticipantViewModel model)
+        [HttpPost("add")]
+        public async Task<IActionResult> AddParticipant([FromForm]ParticipantsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (model.HowFoundUs == null)
+                Participant participant = new Participant()
                 {
-                    model.HowFoundUs = "null";
-                }
-
-                UserTour userTour = new UserTour{ User = model.User, TourId = model.TourId, HowFoundUs = model.HowFoundUs};
-                _context.Add(userTour);
+                    Id = model.Id,
+                    FullName = model.FullName,
+                    EMail = model.EMail,
+                    PhoneNumber = model.PhoneNumber,
+                    TourTypeId = model.TourTypeId
+                };
+                _context.Add(participant);
                 await _context.SaveChangesAsync().ConfigureAwait(true);
-                return RedirectToAction(nameof(GetPartiсipants));
+                return RedirectToAction(nameof(GetParticipants));
             }
             return View(model);
         }
 
-        [HttpDelete("participant")]
-        public IActionResult RemoveParticipant(int id, int tourId)
+
+        [HttpPost("remove")]
+        public async Task<IActionResult> RemoveParticipant(int id)
         {
-            return View();
+            var participant = await _context.Participants.FindAsync(id);
+            _context.Participants.Remove(participant);
+            await _context.SaveChangesAsync().ConfigureAwait(true);
+            return RedirectToAction(nameof(GetParticipants));
         }
     }
 }

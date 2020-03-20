@@ -8,23 +8,23 @@
 {
     if (User.IsInRole("Admin"))
     {
-        <li>@Html.ActionLink($"Admin", "Index", "Admin", "")</li>
+        <li>@Html.ActionLink($"Admin", "Admin", "Admin", "")</li>
     }
     if (User.Identity.Name != "")
     {
 
-        <li>@Html.ActionLink($"{User.Identity.Name}", "Dnistro", "Home", "")</li>
+        <li>@Html.ActionLink($"{User.Identity.Name}", "Index", "Home", "")</li>
     }
     else
     {
-        <li>@Html.ActionLink("", "Dnistro", "Home", "", new { @class = "glyphicon glyphicon-user" })</li>
+        <li>@Html.ActionLink("", "Index", "Home", "", new { @class = "glyphicon glyphicon-user" })</li>
     }
 
 
 
-    <li>@Html.ActionLink("Logout", "SignOut", "Authentication")</li>
+    <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
 }
 else
 {
-    <li>@Html.ActionLink("Login", "SignIn", "Authentication")</li>
+    <li>@Html.ActionLink("Login", "Login", "Account")</li>
 }

@@ -11,6 +11,7 @@ namespace IT_Dnistro.ViewModels
         public string FullName { get; set; }
         public string EMail { get; set; }
         public string PhoneNumber { get; set; }
+        public int TourTypeId { get; set; }
         public string TourName { get; set; }
     }
 }
