@@ -1,11 +1,28 @@
-﻿@using IT_Dnistro.Controllers
-@model IEnumerable<DataBase.TourPhoto>
-
+﻿@using DataBase
+@using IT_Dnistro.ViewModels
+@model GalleryViewModel
 
 @{
     ViewData["Title"] = "Галерея";
     Layout = "_LayoutAdmin";
 }
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Обрати тур
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        @foreach (var tour in Model.Tours)
+        {
+            <button class="dropdown-item" type="button">
+                @Html.ActionLink(@tour.TourTypeName, "GetIdTour",
+                    controllerName: "FileUploadApp", routeValues: new { IdTour = tour.Id },
+                    new { @class = "btn btn-default" })
+            </button>
+        }
+    </div>
+</div>
+
 <h3>Выберите файл для загрузки</h3>
 <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
     <input type="file" name="uploadedFile" /><br>
@@ -13,15 +30,12 @@
 </form>
 
 <h3>Все файлы</h3>
-@foreach (var f in Model)
+@foreach (var f in Model.Photos)
 {
-<p>
-    @if (f.TourTypeId == 1)
-    {
-        <img src="@Url.Content("~/images/Dnistro/" + f.PhotoLink)" />
-        @Html.ActionLink("Delete", "Delete",
+    <p>
+        <img src="@Url.Content("~/images/Swiper/" + f.PhotoLink)" />
+        @Html.ActionLink("Delete", "DeleteConfirmed",
             controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
             new { @class = "btn btn-default" })
-    }
-</p>
+    </p>
 }
