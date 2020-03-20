@@ -23,7 +23,7 @@
     "IT_Dnistro": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/admin/admin",
+      "launchUrl": "dnistro",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

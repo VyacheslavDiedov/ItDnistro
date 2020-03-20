@@ -7,7 +7,6 @@ using System.Linq;
 namespace IT_Dnistro.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
     public class HomeController : Controller
     {
         DatabaseContext _db;
@@ -16,7 +15,7 @@ namespace IT_Dnistro.Controllers
             _db = context;
         }
 
-        [HttpGet("index")]
+        [HttpGet("dnistro")]
         public IActionResult Index()
         {
             return View(_db.TourPhotos.ToList());

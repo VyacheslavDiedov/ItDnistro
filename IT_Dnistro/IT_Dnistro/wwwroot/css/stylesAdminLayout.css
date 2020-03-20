@@ -6,21 +6,26 @@ body {
     background: #fafafa;
 }
 
-p {
+.marginRight p {
     font-family: 'Arial', sans-serif;
-    margin: 0.8em !important;
+    margin: 0.7em !important;
     font-weight: 300;
     line-height: 0.8em;
     color: #FFFFFF !important;
+    font-size: 0.7em !important;
+}
+
+.text-white {
+    font-size: 0.7em !important;
 }
 
 .foto {
     background: #C4C4C4;
-    width: 3em;
+    width: 2em;
 }
 
 .marginRight {
-    margin-right: 3em!important;
+    margin-right: 2em !important;
 }
 
 a,
@@ -37,6 +42,7 @@ a:focus {
     border: none;
     border-radius: 0;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    
 }
 
 .navbar-btn {
@@ -70,8 +76,8 @@ span {
 }
 
 #sidebar {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 150px;
+    max-width: 150px;
     background: #FFFFFF;
     color: #fff;
     transition: all 0.3s;
@@ -82,6 +88,7 @@ span {
         min-width: 80px;
         max-width: 80px;
         text-align: center;
+        margin-left: 0;
     }
 
         #sidebar.active .sidebar-header img,
@@ -192,7 +199,7 @@ a[data-toggle="collapse"] {
     display: block;
     position: absolute;
     top: 50%;
-    right: 50px;
+    right: 30px;
     transform: translateY(-50%);
 }
 
@@ -227,8 +234,8 @@ a.article:active{
 }
 
 div a img {
-    width: 1.2rem;
-    margin: 0.5rem;
+    width: 0.9rem;
+    margin: 0.3rem;
 }
 
 /* ---------------------------------------------------

@@ -3,7 +3,7 @@
 /* font-family: "Bahnschrift"; */
 @font-face {
     font-family: "Bahnschrift";
-    url("../fonts/Bahnschrift/BAHNSCHRIFT.TTF") format("truetype");
+    src: url("../fonts/Bahnschrift/BAHNSCHRIFT.TTF") format("truetype");
     font-style: normal;
     font-weight: normal;
 }
