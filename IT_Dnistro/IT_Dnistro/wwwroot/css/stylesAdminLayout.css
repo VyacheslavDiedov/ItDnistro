@@ -6,6 +6,25 @@ body {
     background: #fafafa;
 }
 
+.admin-icons {
+    width: 1em;
+    color: #2A323C;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.otstup-top {
+    padding-top: 10px;
+}
+
+.vector-down {
+    right: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .marginRight p {
     font-family: 'Arial', sans-serif;
     margin: 0.7em !important;
@@ -62,6 +81,7 @@ i,
 span {
     display: inline-block;
 }
+
 .together {
     display: inline-block!important;
 }
@@ -89,6 +109,7 @@ span {
         max-width: 80px;
         text-align: center;
         margin-left: 0;
+        border-bottom: 1px solid black;
     }
 
         #sidebar.active .sidebar-header img,
@@ -134,12 +155,12 @@ span {
         }
 
 .span-left {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
-    #sidebar.active ul ul a {
-        padding: 10px !important;
-    }
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
 
     #sidebar.active .dropdown-toggle::after {
         top: auto;
@@ -161,35 +182,56 @@ span {
         }
 
 
-    #sidebar ul.components {
-        padding: 20px 0;
-        /*border-bottom: 1px solid #47748b;*/
-    }
+.bottom-line {
+    padding: 10px 0;
+    border-bottom: 1px solid #D2D2D2;
+}
 
-    #sidebar ul li a {
-        padding: 10px;
-        font-size: 1.1em;
-        display: block;
-    }
-    .a-left {
-        margin-left: 1em;
-    }
+#sidebar ul li a {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+#sidebar ul li a .active {
+    font-weight: bold;
+}
+
+.a-left {
+    margin-left: 1em;
+    padding: 7px 0 7px 25px !important;
+    font-weight: bold;
+}
 
 
-        #sidebar ul li a:hover {
-            color: #5CB45B;
-            background: #fff;
-        }
+#sidebar ul li a:hover {
+    color: #5CB45B;
+    background: #fff;
+    font-weight: bold;
+}
+
+/*#sidebar ul li a:focus {
+    color: red;
+}*/
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: red;
+    background-color: #E7E7E7;
+}
 
         #sidebar ul li a i img {
             margin-right: 10px;
         }
 
-    #sidebar ul li.active > a,
-    a[aria-expanded="true"] {
-        color: #5CB45B;
-        background: #fff;
-    }
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #5CB45B;
+    text-decoration: none;
+}
 
 a[data-toggle="collapse"] {
     position: relative;
