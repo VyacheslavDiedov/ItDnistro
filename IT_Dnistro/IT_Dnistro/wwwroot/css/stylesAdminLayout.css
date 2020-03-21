@@ -247,10 +247,31 @@ span {
     background: rgba(92, 180, 91, 0.12);
     color: #5CB45B;
     font-weight: bold;
+    fill: #5CB45B;
+}
+
+.nav li a:focus svg {
+    fill: #5CB45B;
+}
+
+.nav li a:hover svg {
+    fill: #5CB45B;
 }
 
 #sidebar ul li a i img {
     margin-right: 10px;
+}
+
+svg {
+    fill: #2A323C;
+}
+
+svg:hover {
+    fill: #5CB45B;
+}
+
+svg:focus {
+    fill: #5CB45B;
 }
 
 #sidebar ul li.active > a,
@@ -379,3 +400,12 @@ div a img {
         display: none;
     }
 }
+
+
+@media (max-width: 360px) {
+    .marginRight {
+        display: none;
+    }
+}
+
+
