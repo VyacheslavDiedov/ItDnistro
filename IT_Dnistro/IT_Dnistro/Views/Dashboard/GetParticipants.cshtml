@@ -18,7 +18,7 @@
                 <td>@item.TourName</td>
                 <td>
                     <form asp-action="RemoveParticipant" asp-route-id="@item.Id" method="post">
-                        @*<a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@a.UserIdId">Изменить</a>*@
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id">Змінити</a>
                         <button type="submit" class="btn btn-sm btn-danger">
                             Видалити
                         </button>

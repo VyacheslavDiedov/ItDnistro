@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using DataBase;
 using Microsoft.AspNetCore.Mvc;
 using IT_Dnistro.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace IT_Dnistro.Controllers
 {
@@ -58,6 +60,48 @@ namespace IT_Dnistro.Controllers
                 return RedirectToAction(nameof(GetParticipants));
             }
             return View(model);
+        }
+
+        [HttpGet("edit")]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            ViewData["TourTypeId"] = new SelectList(_context.TourTypes, "Id", "TourTypeName");
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var Participant = await _context.Participants.FindAsync(id);
+            if (Participant == null)
+            {
+                return NotFound();
+            }
+
+            return View(Participant);
+        }
+
+        [HttpPost("edit")]
+        public async Task<IActionResult> Edit([FromForm]int id, [FromForm]Participant participant)
+        {
+            if (id != participant.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(participant);
+                    await _context.SaveChangesAsync().ConfigureAwait(true);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+                }
+                return RedirectToAction(nameof(GetParticipants));
+            }
+            return View(participant);
         }
 
 
