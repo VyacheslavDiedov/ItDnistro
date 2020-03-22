@@ -17,12 +17,12 @@
     </head>
     <body>
         <div class="container">
-            <div class="header"><h1>Дошка</h1></div>
+            <div class="header"><h1>Головна ITDnistrO</h1></div>
             <div class="row justify-content-between">
                 <div class="frame col-3">
                     <h2>Всього учасників</h2>
                     <p>56</p>
-                    <div class="round" style="background: #F2B701;">
+                    <div id="participants" class="round">
                         <object type="image/svg+xml"
                                 data="~/icons/participants.svg">
                         </object>
@@ -31,35 +31,133 @@
                 <div class="frame col-3">
                     <h2>Всього відвідувачів</h2>
                     <p>121</p>
-                    <div class="round" style="background: #09A275;">
+                    <div id="visitors" class="round">
                         <object type="image/svg+xml"
-                                data="~/icons/participants.svg">
+                                data="~/icons/eye.svg">
                         </object>
                     </div>
                 </div>
                 <div class="frame col-3">
                     <h2>Залишилось до старту</h2>
-                    <p>7 днів</p>
-                    <div class="round" style="background: #6D04AD;">
+                    <p>7</p>
+                    <div id="tostart" class="round">
                         <object type="image/svg+xml"
-                                data="~/icons/participants.svg">
+                                data="~/icons/time.svg">
                         </object>
                     </div>
                 </div>
                 <div class="frame col-3">
                     <h2>Нових учасників за тиждень</h2>
                     <p>17</p>
-                    <div class="round" style="background: #0F4FA8;">
+                    <div id="newparticipants" class="round">
                         <object type="image/svg+xml"
-                                data="~/icons/participants.svg">
+                                data="~/icons/hand-shake.svg">
                         </object>
                     </div>
                 </div>
             </div>
             <div class="block row justify-content-between">
-                <div class="participants col-12">
+                <div class="participantslist col-12">
                     <h2>Таблиця учасників</h2>
-                    <div class="button"></div>
+                    <div class="button">
+                        <object type="image/svg+xml"
+                                data="~/icons/plus.svg">
+                        </object>
+                        <object type="image/svg+xml"
+                                data="~/icons/Roboto.svg">
+                        </object>
+                    </div>
+                    <div class="participants-table">
+                        <table style="width:100%">
+                            <tr>
+                                <th class="name">
+                                    <span>ПІБ</span>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/arrows.svg">
+                                    </object>
+                                </th>
+                                <th class="phone">Телефон</th>
+                                <th class="email">Email</th>
+                                @*<th class="bdate">
+                <span>Дата народження</span>
+                    <object type="image/svg+xml"
+                            data="~/icons/arrows.svg">
+                    </object>
+            </th>*@
+                                <th class="tour">
+                                    <span>Захід</span>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/arrows.svg">
+                                    </object>
+                                </th>
+                                <th class="action">Дії</th>
+                            </tr>
+                            <tr>
+                                <td>Іванов Костянтин </td>
+                                <td>38 (067) 188 88 88 </td>
+                                <td>hgjjhggjkjkjjjhhjhjkh@gmail.com</td>
+                                @*<td>25/07/90</td>*@
+                                <td>IT DnistrO</td>
+                                <td>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/pencil.svg">
+                                    </object>
+                                    <span> </span>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/cross.svg">
+                                    </object>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Іванов Костянтин Костянтинович</td>
+                                <td>38 (067) 188 88 88 </td>
+                                <td>jjhhjhjkh@gmail.com</td>
+                                @*<td>25/07/90</td>*@
+                                <td>IT Carpaty</td>
+                                <td>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/pencil.svg">
+                                    </object>
+                                    <span> </span>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/cross.svg">
+                                    </object>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Іванов Костянтин Костянтинович</td>
+                                <td>38 (067) 188 88 88 </td>
+                                <td>jjhhjhjkh@gmail.com</td>
+                                @*<td>25/07/90</td>*@
+                            <td>IT Scandinavia</td>
+                                <td>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/pencil.svg">
+                                    </object>
+                                    <span> </span>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/cross.svg">
+                                    </object>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Іванов Костянтин Костянтинович</td>
+                                <td>38 (067) 188 88 88 </td>
+                                <td>jjhhjhjkh@gmail.com</td>
+                                @*<td>25/07/90</td>*@
+                                <td>IT Carpaty</td>
+                                <td>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/pencil.svg">
+                                    </object>
+                                    <span> </span>
+                                    <object type="image/svg+xml"
+                                            data="~/icons/cross.svg">
+                                    </object>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -55,7 +55,7 @@
         font-weight: bold;
         font-size: 30px;
         line-height: 34px;
-        color: #55A654;
+        color: #55A654 !important;
     }
 
 .round {
@@ -65,24 +65,45 @@
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    /*background: #F2B701;*/
+}
+
+#participants {
+    background-color: #F2B701;
     padding-top: 16px;
     padding-left: 11px;
 }
 
-.participants {
+#visitors {
+    background-color: #09A275;
+    padding-top: 16px;
+    padding-left: 16px;
+}
+
+#tostart {
+    background-color: #6D04AD;
+    padding-top: 9px;
+    padding-left: 12px;
+}
+
+#newparticipants {
+    background-color: #0F4FA8;
+    padding-top: 9px;
+    padding-left: 6px;
+}
+
+.participantslist {
     margin: 5px;
     padding-top: 22px;
     padding-left: 24px;
     height: 430px;
+    /*display: table;*/
     flex: 1;
     background-color: #FFFFFF;
     border-radius: 4px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
     position: relative;
 }
-
-    .participants h2 {
+    .participantslist h2 {
         font-family: Arial;
         font-style: normal;
         font-weight: bold;
@@ -99,4 +120,95 @@
     height: 34px;
     border-radius: 17px;
     background: #5CB45B;
+    padding-top: 6px;
+    padding-left: 25px;
+}
+
+table {
+    margin-top: 25px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.name {
+    width: 25%;
+}
+
+.phone {
+    width: 15%;
+}
+
+.email {
+    width: 20%;
+}
+
+/*.bdate {
+    width: 15%;
+}*/
+
+.tour {
+    width: 15%;
+}
+
+.action {
+    width: 7%;
+}
+
+th, td {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+table span {
+    margin-right: 5px;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+th {
+    height: 40px;
+    vertical-align: central;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: #666666;
+}
+
+td {
+    height: 40px;
+    vertical-align: central;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #666666;
+}
+
+
+@media screen and (max-width: 1760px) {
+    .frame {
+        height: 123px;
+        max-width: 350px;
+    }
+
+        .frame h2 {
+            max-width: 150px;
+            font-size: 18px;
+        }
+}
+
+
+@media screen and (max-width: 800px) {
+    .frame {
+        height: 123px;
+        max-width: 350px;
+    }
+
+        .frame h2 {
+            max-width: 150px;
+            font-size: 18px;
+        }
 }
