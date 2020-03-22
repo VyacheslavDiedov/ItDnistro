@@ -1,13 +1,14 @@
 ﻿@model DataBase.TourType
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редагування туру";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Edit</h1>
 
-<h4>TourType</h4>
+<br/>
+<h4><b>Редагування туру</b></h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,23 +16,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="TourTypeName" class="control-label"></label>
+                <label asp-for="TourTypeName" class="control-label">Назва туру</label>
                 <input asp-for="TourTypeName" class="form-control" />
                 <span asp-validation-for="TourTypeName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TourTypeDescription" class="control-label"></label>
+                <label asp-for="TourTypeDescription" class="control-label">Опис туру</label>
                 <input asp-for="TourTypeDescription" class="form-control" />
                 <span asp-validation-for="TourTypeDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Повернутися до списку</a>
 </div>
 
