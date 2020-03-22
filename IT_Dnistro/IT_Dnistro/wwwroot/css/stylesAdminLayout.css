@@ -10,6 +10,10 @@ body {
     width: 3.5em;
 }
 
+.grey {
+    background-color: #404750;
+}
+
 .admin-icons {
     width: 1em;
     color: #2A323C;
@@ -373,6 +377,7 @@ div a img {
 
     #sidebar ul li a {
         padding: 20px 10px;
+        font-size: 10px;
     }
 
         #sidebar ul li a span {
