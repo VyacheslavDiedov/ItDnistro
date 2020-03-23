@@ -43,6 +43,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\Carpaty\" />
     <Folder Include="wwwroot\images\Dnistro\" />
+    <Folder Include="wwwroot\images\Swiper\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
