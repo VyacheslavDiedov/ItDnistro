@@ -12,8 +12,10 @@ namespace DataBase
         [Required]
         public string TourTypeName { get; set; }
         public string TourTypeDescription { get; set; }
-        //public string TourDate { get; set; }
-        //public int ParticipantId { get; set; }
-        //public virtual Participant Participant { get; set; }
+        public int Amount { get; set; }
+        [Required]
+        public DateTime TourDateFrom { get; set; }
+        [Required]
+        public DateTime TourDateTo { get; set; }
     }
 }

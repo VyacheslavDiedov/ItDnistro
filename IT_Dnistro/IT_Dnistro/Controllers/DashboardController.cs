@@ -56,6 +56,8 @@ namespace IT_Dnistro.Controllers
                     TourTypeId = model.TourTypeId
                 };
                 _context.Add(participant);
+                var TourType = await _context.TourTypes.FindAsync(model.TourTypeId);
+                TourType.Amount++;
                 await _context.SaveChangesAsync().ConfigureAwait(true);
                 return RedirectToAction(nameof(GetParticipants));
             }
@@ -110,6 +112,8 @@ namespace IT_Dnistro.Controllers
         {
             var participant = await _context.Participants.FindAsync(id);
             _context.Participants.Remove(participant);
+            var TourType = await _context.TourTypes.FindAsync(participant.TourTypeId);
+            TourType.Amount--;
             await _context.SaveChangesAsync().ConfigureAwait(true);
             return RedirectToAction(nameof(GetParticipants));
         }
