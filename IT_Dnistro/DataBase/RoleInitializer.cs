@@ -30,5 +30,11 @@ namespace DataBase
             }
         }
     }
+
+    //todo fill
+    public class EnvironmentTypeInitializer
+    {
+
+    }
 }
 

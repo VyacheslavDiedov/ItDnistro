@@ -46,6 +46,8 @@ namespace DataBase
                     new TourType {Id = 2, TourTypeName="Carpaty", TourTypeDescription = "For those who like to relax in the mountains"},
                     new TourType {Id = 3, TourTypeName="Scandinadia", TourTypeDescription = "For those who love fjords"}
                 });
+
+            //TourTypeSettings
         }
     }
 }
