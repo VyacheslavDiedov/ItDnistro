@@ -1,4 +1,6 @@
-﻿.gallery_container {
+﻿
+
+.gallery_container {
     width: auto;
     height: 100vh;
     position: relative;
@@ -32,6 +34,7 @@
     height: 280px;
     margin-left: 1%;
     margin-right: 1%;
+    margin-bottom: 3%;
     float: left;
     border-radius: 4px;
     border: 2px solid #E6E9EC;
@@ -94,23 +97,33 @@
     box-shadow: 0px 3px 13px -3px rgba(0,0,0,0.75);
 }
 
-.add_button {
+label {
+    display: block;
+}
+
+.label {
     margin: 0 auto;
     width: 8vh;
     height: 8vh;
     display: table-cell;
     vertical-align: middle;
+    align-items: center;
+    justify-content: center;
 }
 
-.add_button img {
+.plus_image img {
     width: 100%;
 }
 
+.dropdown {
+    margin-left: 1%;
+    margin-top: 2%;
+}
 
-.example-1 .form-group {
+/*.example-1 .form-group {
     padding: 1em;
     margin: 1em
-}
+}*/
 
 .example-1 input[type=file] {
     outline: 0;
@@ -119,16 +132,14 @@
     user-select: none
 }
 
-.example-1 .label {
-    width: 100%;
-    border: 2px dashed grey;
-    border-radius: 5px;
-    display: block;
-    padding: 1.2em;
-    transition: border 300ms ease;
-    cursor: pointer;
-    text-align: center
-}
+/*.example-1 .label {
+     border-radius: 5px;
+     display: block;
+     padding: 1.2em;
+     transition: border 300ms ease;
+     cursor: pointer;
+     text-align: center
+ }
 
 .example-1 .label i {
     display: block;
@@ -147,4 +158,4 @@
 
 .example-1 .label:hover i, .example-1 .label:hover .title {
     color: #000
-}
+}*/

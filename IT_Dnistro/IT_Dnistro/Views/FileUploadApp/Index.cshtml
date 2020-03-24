@@ -52,24 +52,7 @@
 <body>
 
 <div class="gallery_container">
-    <div class="menu">
-        @*<a href="#" class="elementOfMenu currentMenu">
-                <span id="current">
-                    IT DnistrO
-                </span>
-            </a>
-            <a href="#" class="elementOfMenu">
-                <span>
-                    IT Carpaty
-                </span>
-            </a>
-            <a href="#" class="elementOfMenu">
-                <span>
-                    IT Scandinavia
-                </span>
-            </a>*@
-            
-        <div class="dropdown">
+    <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Обрати тур
             </button>
@@ -85,8 +68,7 @@
             </div>
         </div>
 
-    </div>
-    <div class="images">
+        <div class="images">
         <div class="first_images_container">
             @foreach (var f in Model.Photos)
             {
@@ -110,9 +92,8 @@
                 <div class="label">
                     <label>
                         <img src="~/images/plus.png" alt="plus">
-                    <input type="file">
+                        <input type="file">
                     </label>
-                    
                 </div>
             </div>
         </div>
