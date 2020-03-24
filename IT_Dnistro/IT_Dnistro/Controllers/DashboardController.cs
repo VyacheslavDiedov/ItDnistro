@@ -15,6 +15,7 @@ namespace IT_Dnistro.Controllers
     public class DashboardController : Controller
     {
         private readonly DatabaseContext _context;
+        private int countParticipant = 0;
 
         public DashboardController(DatabaseContext context)
         {
@@ -24,6 +25,12 @@ namespace IT_Dnistro.Controllers
         [HttpGet("participant")]
         public IActionResult GetParticipants()
         {
+            foreach (var count in _context.Participants)
+            {
+                countParticipant++;
+            }
+            ViewBag.Participant = countParticipant;
+
             var items = _context.Participants.Select(x => new ParticipantsViewModel()
             {
                 Id = x.Id,
@@ -106,14 +113,34 @@ namespace IT_Dnistro.Controllers
             return View(participant);
         }
 
+        [HttpGet("delete")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        [HttpPost("remove")]
-        public async Task<IActionResult> RemoveParticipant(int id)
+            var participant = await _context.Participants
+                .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
+            if (participant == null)
+            {
+                return NotFound();
+            }
+
+            return View(participant);
+        }
+
+        [HttpPost("delete")]
+        public async Task<IActionResult> DeleteConfirmed([FromForm]int id)
         {
             var participant = await _context.Participants.FindAsync(id);
             _context.Participants.Remove(participant);
             var TourType = await _context.TourTypes.FindAsync(participant.TourTypeId);
-            TourType.Amount--;
+            if (TourType.Amount != 0)
+            {
+                TourType.Amount--;
+            }
             await _context.SaveChangesAsync().ConfigureAwait(true);
             return RedirectToAction(nameof(GetParticipants));
         }

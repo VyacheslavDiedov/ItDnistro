@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Edit</h1>
+<br/>
+<h4><b>Редагування учасника</b></h4>
 
 <div class="row">
     <div class="col-md-4">
@@ -13,9 +14,14 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
+                <label asp-for="FullName" class="control-label">ПІБ</label>
                 <input asp-for="FullName" class="form-control" />
                 <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label">Номер телефону</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="EMail" class="control-label"></label>
@@ -23,22 +29,17 @@
                 <span asp-validation-for="EMail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TourTypeId" class="control-label"></label>
+                <label asp-for="TourTypeId" class="control-label">Назва туру</label>
                 <select asp-for="TourTypeId" class="form-control" asp-items="ViewBag.TourTypeId"></select>
                 <span asp-validation-for="TourTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Зберегти" class="btn btn-sm btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="GetParticipants">Back to List</a>
+    <a asp-action="GetParticipants" class="btn btn-sm btn-light">Повернутися до списку</a>
 </div>
