@@ -2,6 +2,10 @@
     background-color: #F5F5F5;
 }
 
+a {
+    cursor: pointer;
+}
+
 .container {
     max-width: 100%;
     margin: 0 auto;
@@ -75,20 +79,20 @@
 
 #visitors {
     background-color: #09A275;
-    padding-top: 16px;
+    padding-top: 15px;
     padding-left: 16px;
 }
 
 #tostart {
     background-color: #6D04AD;
-    padding-top: 9px;
+    padding-top: 8px;
     padding-left: 12px;
 }
 
 #newparticipants {
     background-color: #0F4FA8;
     padding-top: 9px;
-    padding-left: 6px;
+    padding-left: 7px;
 }
 
 .participantslist {
@@ -96,7 +100,7 @@
     padding-top: 22px;
     padding-left: 24px;
     height: 430px;
-    /*display: table;*/
+    display: table;
     flex: 1;
     background-color: #FFFFFF;
     border-radius: 4px;
@@ -112,6 +116,11 @@
         color: #656B72;
     }
 
+button {
+    border: 0;
+    background: transparent;
+}
+
 .button {
     position: absolute;
     top: 17px;
@@ -123,6 +132,10 @@
     padding-top: 6px;
     padding-left: 25px;
 }
+
+/*.button img {
+    width: 50px;
+}*/
 
 table {
     margin-top: 25px;
