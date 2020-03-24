@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\IT_Dnistro\Views\Shared\_LoginPartial.cshtml" Link="_LoginPartial.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.1" />

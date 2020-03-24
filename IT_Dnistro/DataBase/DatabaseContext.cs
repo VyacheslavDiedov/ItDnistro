@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 //using IT_Dnistro.Models;
 
 namespace DataBase
@@ -19,6 +20,7 @@ namespace DataBase
         public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
         public DbSet<TourPhoto> TourPhotos { get; set; }
         public DbSet<Participant> Participants { get; set; }
+        public IEnumerable<object> TourType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,9 +44,9 @@ namespace DataBase
             modelBuilder.Entity<TourType>().HasData(
                 new TourType[]
                 {
-                    new TourType {Id = 1, TourTypeName="Dnistro", TourTypeDescription = "For those who like to relax on the river bank"},
-                    new TourType {Id = 2, TourTypeName="Carpaty", TourTypeDescription = "For those who like to relax in the mountains"},
-                    new TourType {Id = 3, TourTypeName="Scandinadia", TourTypeDescription = "For those who love fjords"}
+                    new TourType {Id = 1, TourTypeName="IT DnistrO", TourTypeDescription = "For those who like to relax on the river bank"},
+                    new TourType {Id = 2, TourTypeName="IT Carpaty", TourTypeDescription = "For those who like to relax in the mountains"},
+                    new TourType {Id = 3, TourTypeName="IT Scandinavia", TourTypeDescription = "For those who love fjords"}
                 });
 
             //TourTypeSettings

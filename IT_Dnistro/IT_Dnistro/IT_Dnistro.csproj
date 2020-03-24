@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EcmaScript.Net" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
@@ -41,6 +42,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Component\" />
+    <Folder Include="Views\Shared\Components\NavigationMenu\" />
     <Folder Include="wwwroot\images\Carpaty\" />
     <Folder Include="wwwroot\images\Dnistro\" />
     <Folder Include="wwwroot\images\Swiper\" />
