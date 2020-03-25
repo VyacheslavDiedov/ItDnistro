@@ -1,61 +1,12 @@
-﻿
-
-.gallery_container {
+﻿.gallery_container {
     width: auto;
     height: 100vh;
     position: relative;
     display: flex;
 }
 
-<<<<<<< HEAD
 .main_title {
-=======
-.menu {
-    border-bottom: solid 1.5px #d7d7d7;
-    height: 5%;
-    width: 700px;
-    margin-top: 40px;
-    margin-left: 40px;
-    margin-bottom: 80px;
-}
 
-.currentMenu {
-    background: #5CB45B;
-    border: 1px solid #DFDFDF;
-    box-sizing: border-box;
-    border-radius: 4px;
-}
-
-.elementOfMenu {
-    /*height: 70%;*/
-    width: 150px;
-    display: block;
-    float: left;
-    margin-right: 30px;
-}
-
-#current {
-    color: white;
-}
-
-.menu span {
-    display: block;
-    text-align: center;
-    color: black;
-    margin-top: 10px;
->>>>>>> d9a0d25d2726a170240c606b399a658050ad3636
-    height: 28px;
-    margin-left: 1%;
-    margin-top: 3%;
-}
-
-.main_title p {
-    font-family: Arial;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
-    color: #2A323C;
 }
 
 .images {
