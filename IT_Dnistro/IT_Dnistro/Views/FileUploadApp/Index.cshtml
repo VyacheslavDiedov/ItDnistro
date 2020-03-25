@@ -81,7 +81,10 @@
 
                 <div class="image">
                     <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top / cover">
-                        <img src="~/images/delete.png" alt="del">
+                        @*<img src="~/images/delete.png" alt="del">*@
+                        @Html.ActionLink("", "DeleteConfirmed",
+                    controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
+                    new { @class = "mylink" })
                     </div>
                     <div class="photo_name">
                         <p> @f.PhotoLink </p>
@@ -91,8 +94,10 @@
             <div class="plus_image example-1">
                 <div class="label">
                     <label>
-                        <img src="~/images/plus.png" alt="plus">
-                        <input type="file">
+                        <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
+                            <img src="~/images/plus.png" alt="plus">
+                            <input type="file" name="uploadedFile">
+                        </form>
                     </label>
                 </div>
             </div>
