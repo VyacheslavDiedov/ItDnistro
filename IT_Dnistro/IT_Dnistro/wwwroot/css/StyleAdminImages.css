@@ -196,6 +196,8 @@ label {
 .mylink {
     background: url('../images/delete.png') no-repeat center right;
     display: block;
-    height: 84px;
-    width: 264px;
+    height: 18%;
+    width: 18%;
+    margin-left: 80%;
+    background-size: 5vh 5vh;
 }
