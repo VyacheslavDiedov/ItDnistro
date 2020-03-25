@@ -7,9 +7,7 @@
     display: flex;
 }
 
-<<<<<<< HEAD
-.main_title {
-=======
+
 .menu {
     border-bottom: solid 1.5px #d7d7d7;
     height: 5%;
@@ -43,7 +41,6 @@
     text-align: center;
     color: black;
     margin-top: 10px;
->>>>>>> d9a0d25d2726a170240c606b399a658050ad3636
     height: 28px;
     margin-left: 1%;
     margin-top: 3%;
