@@ -17,7 +17,7 @@ namespace IT_Dnistro.Component
 
         public IViewComponentResult Invoke()
         {
-            ViewBag.SelectedCategory = RouteData?.Values["tourType"];
+            ViewBag.SelectedCategory = RouteData?.Values["category"];
             return View(_db.TourTypes
                 .Select(x => x.TourTypeName));
         }
