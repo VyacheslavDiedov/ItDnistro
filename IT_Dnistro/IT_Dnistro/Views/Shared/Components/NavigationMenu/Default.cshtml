@@ -1,14 +1,9 @@
-﻿@model IEnumerable<string>
+﻿@model IEnumerable<DataBase.TourType>
 
-@foreach (string category in Model)
+@foreach (var category in Model)
 {
     <li>
-        <a class="a-left" 
-           @*@(category == ViewBag.SelectedCategory ? "btn-primary" : "btn-secondary")*@
-           asp-action="GetIdTour"
-           asp-controller="FileUploadApp"
-           asp-route-category="@category">
-            @category
-        </a>
+        @Html.ActionLink(@category.TourTypeName, "tour-info", "FileUploadApp",
+            new { idTour = @category.Id })
     </li>
 }

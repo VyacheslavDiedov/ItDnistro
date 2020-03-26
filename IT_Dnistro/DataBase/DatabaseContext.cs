@@ -20,7 +20,6 @@ namespace DataBase
         public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
         public DbSet<TourPhoto> TourPhotos { get; set; }
         public DbSet<Participant> Participants { get; set; }
-        public IEnumerable<object> TourType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
