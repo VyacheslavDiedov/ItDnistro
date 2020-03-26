@@ -19,6 +19,10 @@ namespace DataBase
         public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
         public DbSet<TourPhoto> TourPhotos { get; set; }
         public DbSet<Participant> Participants { get; set; }
+        public DbSet<TourTypeSetting> TourTypeSettings { get; set; }
+        public DbSet<EnvironmentType> EnvironmentTypes { get; set; }
+        public DbSet<Environment> Environments { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,12 +46,18 @@ namespace DataBase
             modelBuilder.Entity<TourType>().HasData(
                 new TourType[]
                 {
-                    new TourType {Id = 1, TourTypeName="Dnistro", TourTypeDescription = "For those who like to relax on the river bank"},
-                    new TourType {Id = 2, TourTypeName="Carpaty", TourTypeDescription = "For those who like to relax in the mountains"},
-                    new TourType {Id = 3, TourTypeName="Scandinadia", TourTypeDescription = "For those who love fjords"}
+                    new TourType {Id = 1, TourTypeName="ITDnistro", TourTypeDescription = "For those who like to relax on the river bank"},
+                    new TourType {Id = 2, TourTypeName="ITCarpaty", TourTypeDescription = "For those who like to relax in the mountains"},
+                    new TourType {Id = 3, TourTypeName="ITScandinavia", TourTypeDescription = "For those who love fjords"}
                 });
 
-            //TourTypeSettings
+            modelBuilder.Entity<TourTypeSetting>().HasData(
+                new TourTypeSetting[]
+                {
+                    new TourTypeSetting {Id = 1, BackColor = "", BackgroundImageLink = ""},
+                    new TourTypeSetting {Id = 2, BackColor = "", BackgroundImageLink = ""},
+                    new TourTypeSetting {Id = 3, BackColor = "", BackgroundImageLink = ""}
+                });
         }
     }
 }
