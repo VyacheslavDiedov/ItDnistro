@@ -83,5 +83,13 @@ namespace IT_Dnistro.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        [Route("tour-info")]
+        public ActionResult GetTourInfo(int idTour)
+        {
+            _id = idTour;
+            return RedirectToAction("Index");
+        }
     }
 }
