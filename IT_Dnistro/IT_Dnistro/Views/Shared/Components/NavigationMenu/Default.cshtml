@@ -1,0 +1,14 @@
+﻿@model IEnumerable<string>
+
+@foreach (string category in Model)
+{
+    <li>
+        <a class="a-left" 
+           @*@(category == ViewBag.SelectedCategory ? "btn-primary" : "btn-secondary")*@
+           asp-action="GetIdTour"
+           asp-controller="FileUploadApp"
+           asp-route-category="@category">
+            @category
+        </a>
+    </li>
+}

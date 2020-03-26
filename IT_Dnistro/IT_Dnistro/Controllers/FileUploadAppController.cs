@@ -18,8 +18,8 @@ namespace IT_Dnistro.Controllers
         DatabaseContext _context;
         IWebHostEnvironment _appEnvironment;
         private static int _id;
-        List<DataBase.TourPhoto> photos;
-        List<DataBase.TourType> tours;
+        List<TourPhoto> _photos;
+        List<TourType> _tours;
 
         public FileUploadAppController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
@@ -30,15 +30,15 @@ namespace IT_Dnistro.Controllers
         [HttpGet("upload")]
         public IActionResult Index()
         {
-            photos = new List<TourPhoto>(_context.TourPhotos);
-            tours = new List<TourType>(_context.TourTypes);
+            _photos = new List<TourPhoto>(_context.TourPhotos);
+            _tours = new List<TourType>(_context.TourTypes);
             // На 1 місце
-            tours.Insert(0, new TourType() { Id = 0, TourTypeName = "Все" });
-            GalleryViewModel gvm = new GalleryViewModel { Tours = tours, Photos = photos };
+            _tours.Insert(0, new TourType() { Id = 0, TourTypeName = "Все" });
+            GalleryViewModel gvm = new GalleryViewModel { Tours = _tours, Photos = _photos };
             // якщо є id, створює фільтр фільтрація
             if (_id > 0)
             {
-                gvm.Photos = photos.Where(p => p.TourTypeId == _id);
+                gvm.Photos = _photos.Where(p => p.TourTypeId == _id);
             }
             return View(gvm);
         }
