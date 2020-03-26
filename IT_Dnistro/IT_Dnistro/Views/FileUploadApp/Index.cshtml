@@ -1,44 +1,13 @@
-﻿@using DataBase
+﻿@using System.Net
+@using DataBase
 @using IT_Dnistro.ViewModels
+@using Swashbuckle.AspNetCore.SwaggerUI
 @model GalleryViewModel
 
 @{
     ViewData["Title"] = "Галерея";
     Layout = "_LayoutAdmin";
 }
-
-@*<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Обрати тур
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        @foreach (var tour in Model.Tours)
-        {
-            <button class="dropdown-item" type="button">
-                @Html.ActionLink(@tour.TourTypeName, "GetIdTour",
-                    controllerName: "FileUploadApp", routeValues: new { IdTour = tour.Id },
-                    new { @class = "btn btn-default" })
-            </button>
-        }
-    </div>
-</div>
-
-<h3>Выберите файл для загрузки</h3>
-<form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
-    <input type="file" name="uploadedFile" /><br>
-    <input type="submit" value="Загрузить" />
-</form>
-
-<h3>Все файлы</h3>
-@foreach (var f in Model.Photos)
-{
-    <p>
-        <img src="@Url.Content("~/images/Swiper/" + f.PhotoLink)" />
-        @Html.ActionLink("Delete", "DeleteConfirmed",
-            controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
-            new { @class = "btn btn-default" })
-    </p>
-}*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +19,6 @@
 
 </head>
 <body>
-
 <div class="gallery_container">
     <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,123 +37,39 @@
         </div>
 
         <div class="images">
-        <div class="first_images_container">
-            @foreach (var f in Model.Photos)
-            {
-                    @*<p>
-                <img src="@Url.Content("~/images/Swiper/" + f.PhotoLink)" />
-                @Html.ActionLink("Delete", "DeleteConfirmed",
-                    controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
-                    new { @class = "btn btn-default" })
-            </p>*@
-
-                <div class="image">
-                    <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top / cover">
-                        @*<img src="~/images/delete.png" alt="del">*@
-                        @Html.ActionLink("", "DeleteConfirmed",
-                    controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
-                    new { @class = "mylink" })
+            <div class="first_images_container">
+                @foreach (var f in Model.Photos)
+                {
+                    <div class="image">
+                        <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top / cover">
+                            @Html.ActionLink("", "DeleteConfirmed",
+                                controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
+                                new { @class = "mylink" })
+                        </div>
+                        <div class="photo_name">
+                            <p> @f.PhotoLink </p>
+                        </div>
                     </div>
-                    <div class="photo_name">
-                        <p> @f.PhotoLink </p>
+                }
+                <div class="plus_image example-1">
+                    <div class="label">
+                        <label>
+                            <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
+                                <img src="~/images/plus.png" alt="plus">
+                                <input type="file" name="uploadedFile" >
+                            </form></label>
                     </div>
-                </div>
-            }
-            <div class="plus_image example-1">
-                <div class="label">
-                    <label>
-                        <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
-                            <img src="~/images/plus.png" alt="plus">
-                            <input type="file" name="uploadedFile">
-                        </form>
-                    </label>
                 </div>
             </div>
-        </div>
-    </div> 
+        </div> 
 </div>
 
-
-@*<div class="image">
-                <div class="photo">
-                    <img src="~/images/delete.png" alt="del">
-                </div>
-                <div class="photo_name">
-                    <p> photo.jpg </p>
-                </div>
-            </div>
-            <div class="image">
-                <div class="photo">
-                    <img src="~/images/delete.png" alt="del">
-                </div>
-                <div class="photo_name">
-                    <p> photo2.jpg </p>
-                </div>
-            </div>
-            <div class="image">
-                <div class="photo">
-                    <img src="~/images/delete.png" alt="del">
-                </div>
-                <div class="photo_name">
-                    <p> photo3.jpg </p>
-                </div>
-            </div>
-            <div class="image">
-                <div class="photo">
-                    <img src="~/images/delete.png" alt="del">
-                </div>
-                <div class="photo_name">
-                    <p> photo4.jpg </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="first_images_container">
-            <div class="image">
-                <div class="photo">
-                    <img src="~/images/delete.png" alt="del">
-                </div>
-                <div class="photo_name">
-                    <p> photo5.jpg </p>
-                </div>
-            </div>
-            <div class="image">
-                <div class="photo">
-                    <img src="~/images/delete.png" alt="del">
-                </div>
-                <div class="photo_name">
-                    <p> photo6.jpg </p>
-                </div>
-            </div>
-            <div class="image">
-                <div class="photo">
-                    <img src="~/images/delete.png" alt="del">
-                </div>
-                <div class="photo_name">
-                    <p> photo7.jpg </p>
-                </div>
-            </div>*@
-
-
-                @*<div class="plus_image">
-            <div class="add_button">
-                <img src="~/images/plus.png" alt="plus">
-            </div>
-        </div>
-        <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
-            <input type="file" name="uploadedFile" /><br>
-            <input type="submit" value="Загрузить" />
-        </form>
-        <div id="drop-files" ondragover="return false">
-            <p>Перетащите изображение сюда</p>
-            <form id="frm">
-                <input type="file" id="uploadbtn" multiple />
-            </form>
-        </div>*@
-           
-   
-
-
-
+<script>
+    var input = document.querySelector("input[type='file']");
+    console.log(input);
+    input.onchange = function () {
+        this.form.submit();
+    }
+</script>
 </body>
 </html>
