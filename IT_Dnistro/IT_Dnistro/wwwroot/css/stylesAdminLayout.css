@@ -143,8 +143,7 @@ span {
         display: none;
     }
 
-
-    #sidebar ul li a {
+#sidebar ul li a {
         text-align: left;
     }
 
@@ -202,7 +201,7 @@ span {
         transform: translateX(50%);
     }
 
-    #sidebar .sidebar-header {
+#sidebar .sidebar-header {
         padding: 20px;
         background: #FFFFFF;
     }
