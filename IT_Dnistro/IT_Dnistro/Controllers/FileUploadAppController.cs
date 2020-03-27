@@ -27,6 +27,14 @@ namespace IT_Dnistro.Controllers
             _appEnvironment = appEnvironment;
         }
 
+        [HttpGet]
+        [Route("tour-info")]
+        public ActionResult GetTourInfo(int idTour)
+        {
+            _id = idTour;
+            return RedirectToAction("Index");
+        }
+
         [HttpGet("upload")]
         public IActionResult Index()
         {
@@ -81,14 +89,6 @@ namespace IT_Dnistro.Controllers
             {
                 System.IO.File.Delete(path);
             }
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        [Route("tour-info")]
-        public ActionResult GetTourInfo(int idTour)
-        {
-            _id = idTour;
             return RedirectToAction("Index");
         }
     }

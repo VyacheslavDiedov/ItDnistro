@@ -31,8 +31,8 @@ namespace IT_Dnistro.Controllers
         [HttpGet("create")]
         public IActionResult Create() => View();
 
-        [HttpPut("create")]
-        public async Task<IActionResult> Create(string name)
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromForm]string name)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -52,7 +52,7 @@ namespace IT_Dnistro.Controllers
             return View(name);
         }
 
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public async Task<IActionResult> Delete(string id)
         {
             IdentityRole role = await _roleManager.FindByIdAsync(id).ConfigureAwait(true);

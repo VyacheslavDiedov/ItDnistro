@@ -24,8 +24,8 @@ namespace IT_Dnistro.Controllers
         }
 
         [HttpGet]
-        [Route("tour-info")]
-        public ActionResult GetTourInfo(int idTour)
+        [Route("tour-id")]
+        public ActionResult GetTourId(int idTour)
         {
             _id = idTour;
             return RedirectToAction("GetParticipants");
@@ -40,7 +40,7 @@ namespace IT_Dnistro.Controllers
             }
             ViewBag.Participant = countParticipant;
 
-            var items = _context.Participants.Select(x => new ParticipantsViewModel()
+            var items = _context.Participants.Where(d => d.TourTypeId == _id).Select(x => new ParticipantsViewModel()
             {
                 Id = x.Id,
                 FullName = x.FullName,
@@ -48,6 +48,7 @@ namespace IT_Dnistro.Controllers
                 PhoneNumber = x.PhoneNumber,
                 TourName = x.TourType.TourTypeName
             }).ToList();
+
             return View(items);
         }
 
