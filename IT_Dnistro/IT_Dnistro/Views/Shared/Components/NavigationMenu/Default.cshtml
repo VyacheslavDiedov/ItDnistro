@@ -3,7 +3,7 @@
 @foreach (var category in Model)
 {
     <li>
-        @Html.ActionLink(@category.TourTypeName, "tour-info", "FileUploadApp",
+        @Html.ActionLink(@category.TourTypeName, "GetTourInfo", "Dashboard",
             new { idTour = @category.Id })
     </li>
 }

@@ -56,7 +56,7 @@ namespace IT_Dnistro.Controllers
             {
                 return NotFound();
             }
-            EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email, Phone = user.PhoneNumber };
+            EditUserViewModel model = new EditUserViewModel { Id = user.Id, UserName = user.UserName, Email = user.Email, Phone = user.PhoneNumber };
             return View(model);
         }
 

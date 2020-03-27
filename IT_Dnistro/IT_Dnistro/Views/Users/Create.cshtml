@@ -1,28 +1,37 @@
 ﻿@model IT_Dnistro.ViewModels.CreateUserViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Створення користувача";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-    <form asp-action="Create" asp-controller="Users">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="UserName" class="control-label">Ім'я</label>
-            <input type="text" asp-for="UserName" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Email" class="control-label">Email</label>
-            <input type="text" asp-for="Email" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Password" class="control-label">Пароль</label>
-            <input type="text" asp-for="Password" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Phone" class="control-label">Номер телефону</label>
-            <input type="number" asp-for="Phone" class="form-control" />
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Добавить" class="btn btn-outline-secondary" />
-        </div>
-    </form>
+
+<br />
+<h4><b>Створення користувача</b></h4>
+
+<hr />
+
+<form asp-action="Create" asp-controller="Users">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label">Логін</label>
+        <input type="text" asp-for="UserName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label">Пароль</label>
+        <input type="text" asp-for="Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone" class="control-label">Номер телефону</label>
+        <input type="number" asp-for="Phone" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Створити" class="btn btn-outline-secondary" />
+    </div>
+</form>
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-light">Повернутися до списку</a>
+</div>

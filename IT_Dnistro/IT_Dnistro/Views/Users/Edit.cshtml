@@ -1,27 +1,36 @@
 ﻿@model IT_Dnistro.ViewModels.EditUserViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редагування користувача";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-    <form asp-action="Edit" asp-controller="Users">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form-group">
-            <input type="hidden" asp-for="Id" />
-        </div>
-        <div class="form-group">
-            <label asp-for="UserName" class="control-label">Ім'я</label>
-            <input type="text" asp-for="UserName" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Email" class="control-label">Email</label>
-            <input type="text" asp-for="Email" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Phone" class="control-label">Телефон</label>
-            <input type="number" asp-for="Phone" class="form-control" />
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Сохранить" class="btn btn-outline-secondary" />
-        </div>
-    </form>
+
+<br />
+<h4><b>Редагування користувача</b></h4>
+
+<hr />
+
+<form asp-action="Edit" asp-controller="Users">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+    </div>
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label">Ім'я</label>
+        <input type="text" asp-for="UserName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone" class="control-label">Телефон</label>
+        <input type="number" asp-for="Phone" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Зберегти" class="btn btn-outline-secondary" />
+    </div>
+</form>
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-light">Повернутися до списку</a>
+</div>

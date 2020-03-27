@@ -16,10 +16,19 @@ namespace IT_Dnistro.Controllers
     {
         private readonly DatabaseContext _context;
         private int countParticipant = 0;
+        private static int _id;
 
         public DashboardController(DatabaseContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        [Route("tour-info")]
+        public ActionResult GetTourInfo(int idTour)
+        {
+            _id = idTour;
+            return RedirectToAction("GetParticipants");
         }
 
         [HttpGet("participant")]
