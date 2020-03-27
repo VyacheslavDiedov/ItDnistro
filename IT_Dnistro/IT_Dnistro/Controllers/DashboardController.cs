@@ -34,11 +34,20 @@ namespace IT_Dnistro.Controllers
         [HttpGet("participant")]
         public IActionResult GetParticipants()
         {
+            if (_id > 0)
+            {
+                DateTime dateTime = DateTime.Now;
+                DateTime dateTimes = _context.TourTypes.Find(_id).TourDateFrom;
+                TimeSpan diff = dateTimes - dateTime;
+                ViewBag.Time = diff.Days;
+                ViewBag.TourName = _context.TourTypes.Find(_id).TourTypeName;
+            }
             foreach (var count in _context.Participants)
             {
                 countParticipant++;
             }
-            ViewBag.Participant = countParticipant;
+            ViewBag.Count = countParticipant;
+            
 
             var items = _context.Participants.Where(d => d.TourTypeId == _id).Select(x => new ParticipantsViewModel()
             {
@@ -48,7 +57,6 @@ namespace IT_Dnistro.Controllers
                 PhoneNumber = x.PhoneNumber,
                 TourName = x.TourType.TourTypeName
             }).ToList();
-
             return View(items);
         }
 
@@ -70,10 +78,10 @@ namespace IT_Dnistro.Controllers
                     FullName = model.FullName,
                     EMail = model.EMail,
                     PhoneNumber = model.PhoneNumber,
-                    TourTypeId = model.TourTypeId
+                    TourTypeId = _id
                 };
                 _context.Add(participant);
-                var TourType = await _context.TourTypes.FindAsync(model.TourTypeId);
+                var TourType = await _context.TourTypes.FindAsync(_id);
                 TourType.Amount++;
                 await _context.SaveChangesAsync().ConfigureAwait(true);
                 return RedirectToAction(nameof(GetParticipants));
