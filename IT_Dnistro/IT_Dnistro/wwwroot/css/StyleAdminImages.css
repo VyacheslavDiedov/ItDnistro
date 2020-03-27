@@ -134,19 +134,25 @@ label {
     display: block;
 }
 
-.label {
+form img {
+    width: 16%;
+    height: 16%;
+    margin-top: 10%;
+}
+
+/*.label {
     margin: 0 auto;
-    width: 8vh;
-    height: 8vh;
-    display: table-cell;
+    width: 4vh;
+    height: 4vh;
+    display: block;
     vertical-align: middle;
     align-items: center;
     justify-content: center;
-}
+}*/
 
-.plus_image img {
+/*.plus_image img {
     width: 100%;
-}
+}*/
 
 .dropdown {
     margin-left: 1%;
