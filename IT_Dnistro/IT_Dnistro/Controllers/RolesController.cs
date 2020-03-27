@@ -65,7 +65,7 @@ namespace IT_Dnistro.Controllers
         [HttpGet("userList")]
         public IActionResult UserList() => View(_userManager.Users.ToList());
 
-        [HttpPost("user")]
+        [HttpGet("role")]
         //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(string userId)
         {
@@ -88,7 +88,7 @@ namespace IT_Dnistro.Controllers
         }
         [HttpPost("role")]
 
-        public async Task<IActionResult> Edit(string userId, List<string> roles)
+        public async Task<IActionResult> Edit([FromForm]string userId, [FromForm]List<string> roles)
         {
             // получаем пользователя
             var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(true);
