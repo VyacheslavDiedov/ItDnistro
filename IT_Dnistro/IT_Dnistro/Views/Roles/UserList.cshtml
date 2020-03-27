@@ -5,14 +5,18 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Список користувачів</h2>
+<br />
+<h4><b>Список користувачів</b></h4>
+
+<hr />
+
 <table class="table">
     @foreach (var user in Model)
     {
         <tr>
             <td>@user.Email</td>
             <td>
-                <a class="btn btn-sm btn-primary" asp-controller="Roles" asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
+                <a class="btn btn-sm btn-primary" asp-controller="Roles" asp-action="Edit" asp-route-userid="@user.Id">Права доступу</a>
             </td>
         </tr>
     }

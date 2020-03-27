@@ -1,9 +1,15 @@
-﻿
-
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
 @model IT_Dnistro.ViewModels.ChangeRoleViewModel
 
-<h2>Изменение ролей для пользователя @Model.UserEmail</h2>
+@{
+    ViewData["Title"] = "Зміна ролі";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<h4><b>Зміна ролі для користувача @Model.UserEmail</b></h4>
+
+<hr />
 
 <form asp-action="Edit" method="post">
     <input type="hidden" name="userId" value="@Model.UserId" />
@@ -14,5 +20,7 @@
                    @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
         }
     </div>
-    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <button type="submit" class="btn btn-primary">Зберегти</button>
 </form>
+
+<a asp-controller="Users" asp-action="Index" class="btn btn-sm btn-light">Повернутися до списку</a>

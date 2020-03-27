@@ -106,8 +106,7 @@ namespace IT_Dnistro.Controllers
                 await _userManager.AddToRolesAsync(user, addedRoles).ConfigureAwait(true);
 
                 await _userManager.RemoveFromRolesAsync(user, removedRoles).ConfigureAwait(true);
-
-                return RedirectToAction("UserList");
+                return RedirectToAction("Index","Users");
             }
 
             return NotFound();
