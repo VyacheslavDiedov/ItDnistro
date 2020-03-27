@@ -53,13 +53,14 @@
                     </div>
                 }
                 <div class="plus_image example-1">
-                    <div class="label">
+                    @*<div class="label">*@
                         <label>
                             <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
                                 <img src="~/images/plus.png" alt="plus">
                                 <input type="file" name="uploadedFile" >
-                            </form></label>
-                    </div>
+                            </form>
+                         </label>
+                    @*</div>*@
                 </div>
             </div>
         </div> 
