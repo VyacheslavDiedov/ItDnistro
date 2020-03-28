@@ -200,7 +200,7 @@ form img {
 }*/
 
 .mylink {
-    background: url('../images/delete.png') no-repeat center right;
+    background: url('../images/error.svg') no-repeat center right;
     display: block;
     height: 18%;
     width: 18%;
