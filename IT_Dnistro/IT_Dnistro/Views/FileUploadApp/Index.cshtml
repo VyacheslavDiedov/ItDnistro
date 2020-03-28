@@ -38,6 +38,32 @@
             </div>
         </div>*@
 
+        <div>
+            <a class="text-black" href="#" data-toggle="modal" data-target="#logoutModal">
+                <img class="together" src="~/icons/Exit.png" alt="">
+                Вихід
+            </a>
+        </div>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Готові вийти?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Нажміть "Вихід" нижче, якщо ви готові закінчити поточну сесію.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
+                        <a class="btn btn-primary" href="../Account/Login">Вихід</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="images">
             <div class="first_images_container">
                 @foreach (var f in Model.Photos)
@@ -54,25 +80,28 @@
                     </div>
                 }
                 <div class="plus_image example-1">
-                    @*<div class="label">*@
                     <label>
                         <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
                             <img src="~/images/plus.png" alt="plus">
                             <input type="file" name="uploadedFile">
                         </form>
                     </label>
-                    @*</div>*@
                 </div>
             </div>
         </div>
     </div>
 
-<script>
-    var input = document.querySelector("input[type='file']");
-    console.log(input);
-    input.onchange = function () {
-        this.form.submit();
-    }
-</script>
+    <script>
+        var input = document.querySelector("input[type='file']");
+        console.log(input);
+        input.onchange = function () {
+            this.form.submit();
+        }
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 </body>
 </html>
