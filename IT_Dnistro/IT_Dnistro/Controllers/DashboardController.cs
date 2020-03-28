@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DataBase;
 using Microsoft.AspNetCore.Mvc;
 using IT_Dnistro.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,32 +16,36 @@ namespace IT_Dnistro.Controllers
     public class DashboardController : Controller
     {
         private readonly DatabaseContext _context;
+        IWebHostEnvironment _appEnvironment;
         private int countParticipant = 0;
-        private static int _id;
+        protected static int IdTour;
 
-        public DashboardController(DatabaseContext context)
+        public DashboardController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
+
+       
 
         [HttpGet]
         [Route("tour-id")]
         public ActionResult GetTourId(int idTour)
         {
-            _id = idTour;
-            return RedirectToAction("GetParticipants");
+            IdTour = idTour;
+           return RedirectToAction("GetParticipants");
         }
 
         [HttpGet("participant")]
         public IActionResult GetParticipants()
         {
-            if (_id > 0)
+            if (IdTour > 0)
             {
                 DateTime dateTime = DateTime.Now;
-                DateTime dateTimes = _context.TourTypes.Find(_id).TourDateFrom;
+                DateTime dateTimes = _context.TourTypes.Find(IdTour).TourDateFrom;
                 TimeSpan diff = dateTimes - dateTime;
                 ViewBag.Time = diff.Days;
-                ViewBag.TourName = _context.TourTypes.Find(_id).TourTypeName;
+                ViewBag.TourName = _context.TourTypes.Find(IdTour).TourTypeName;
             }
             foreach (var count in _context.Participants)
             {
@@ -49,7 +54,7 @@ namespace IT_Dnistro.Controllers
             ViewBag.Count = countParticipant;
             
 
-            var items = _context.Participants.Where(d => d.TourTypeId == _id).Select(x => new ParticipantsViewModel()
+            var items = _context.Participants.Where(d => d.TourTypeId == IdTour).Select(x => new ParticipantsViewModel()
             {
                 Id = x.Id,
                 FullName = x.FullName,
@@ -78,10 +83,10 @@ namespace IT_Dnistro.Controllers
                     FullName = model.FullName,
                     EMail = model.EMail,
                     PhoneNumber = model.PhoneNumber,
-                    TourTypeId = _id
+                    TourTypeId = IdTour
                 };
                 _context.Add(participant);
-                var TourType = await _context.TourTypes.FindAsync(_id);
+                var TourType = await _context.TourTypes.FindAsync(IdTour);
                 TourType.Amount++;
                 await _context.SaveChangesAsync().ConfigureAwait(true);
                 return RedirectToAction(nameof(GetParticipants));

@@ -13,41 +13,42 @@ namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class FileUploadAppController : Controller
+    public class FileUploadAppController : DashboardController
     {
-        DatabaseContext _context;
+        DatabaseContext _db;
         IWebHostEnvironment _appEnvironment;
-        private static int _id;
         List<TourPhoto> _photos;
         List<TourType> _tours;
 
-        public FileUploadAppController(DatabaseContext context, IWebHostEnvironment appEnvironment)
+        public FileUploadAppController(DatabaseContext context, IWebHostEnvironment appEnvironment) : base(context, appEnvironment)
         {
-            _context = context;
+            _db = context;
             _appEnvironment = appEnvironment;
         }
 
-        [HttpGet]
-        [Route("tour-info")]
-        public ActionResult GetTourInfo(int idTour)
-        {
-            _id = idTour;
-            return RedirectToAction("Index");
-        }
+        //public FileUploadAppController(DatabaseContext context, IWebHostEnvironment appEnvironment) : base()
+        //{
+        //    _db = context;
+        //    _appEnvironment = appEnvironment;
+        //}
+
 
         [HttpGet("upload")]
         public IActionResult Index()
         {
-            _photos = new List<TourPhoto>(_context.TourPhotos);
-            _tours = new List<TourType>(_context.TourTypes);
-            // На 1 місце
-            _tours.Insert(0, new TourType() { Id = 0, TourTypeName = "Все" });
+            _photos = new List<TourPhoto>(_db.TourPhotos);
+            _tours = new List<TourType>(_db.TourTypes);
             GalleryViewModel gvm = new GalleryViewModel { Tours = _tours, Photos = _photos };
             // якщо є id, створює фільтр фільтрація
-            if (_id > 0)
+            if (IdTour == 0)
             {
-                gvm.Photos = _photos.Where(p => p.TourTypeId == _id);
+                IdTour = 1;
             }
+
+            gvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
+            gvm.Tours = _tours.Where(p => p.Id == IdTour);
+            ViewBag.TourName = _db.TourTypes.Find(IdTour).TourTypeName;
+
             return View(gvm);
         }
 
@@ -61,29 +62,22 @@ namespace IT_Dnistro.Controllers
                 {
                     uploadedFile.CopyTo(fileStream);
                 }
-                if (_id != 0)
+                if (IdTour != 0)
                 {
-                    TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = _id };
-                    _context.TourPhotos.Add(file);
-                    _context.SaveChanges();
+                    TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = IdTour };
+                    _db.TourPhotos.Add(file);
+                    _db.SaveChanges();
                 }
             }
             return RedirectToAction("Index");
         }
 
-        [HttpGet("getId")]
-        public ActionResult GetIdTour(int idTour)
-        {
-            _id = idTour;
-            return RedirectToAction("Index");
-        }
-
         [HttpGet]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirm(int id)
         {
-            var tourPhoto = _context.TourPhotos.Find(id);
-            _context.TourPhotos.Remove(tourPhoto);
-            _context.SaveChanges();
+            var tourPhoto = _db.TourPhotos.Find(id);
+            _db.TourPhotos.Remove(tourPhoto);
+            _db.SaveChanges();
             string path = _appEnvironment.WebRootPath + "/images/Swiper/" + tourPhoto.PhotoLink;
             if (System.IO.File.Exists(path))
             {
@@ -91,5 +85,15 @@ namespace IT_Dnistro.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        //[HttpGet]
+        //[Route("tour-info")]
+        //public ActionResult GetTourInfo(int idTour)
+        //{
+        //    _id = idTour;
+        //    return RedirectToAction("Index");
+        //}
+
+        
     }
 }
