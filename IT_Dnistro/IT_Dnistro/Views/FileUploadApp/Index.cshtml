@@ -21,6 +21,7 @@
 <body>
 
     <div class="gallery_container">
+        <div class="headerImage"><h1>Галерея @ViewBag.TourName</h1></div>
         @*<div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Обрати тур
@@ -37,36 +38,13 @@
             </div>
         </div>*@
 
-        <a class="text-black" href="#" data-toggle="modal" data-target="#logoutModal">
-            <img class="together" src="~/icons/Exit.png" alt="">
-            Вихід
-        </a>
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Готові вийти?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Нажміть "Вихід" нижче, якщо ви готові закінчити поточну сесію.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
-                        <a class="btn btn-primary" href="../Account/Login">Вихід</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="images">
             <div class="first_images_container">
                 @foreach (var f in Model.Photos)
                 {
                     <div class="image">
-                        <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top / cover">
-                            @Html.ActionLink("", "DeleteConfirmed",
+                        <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top/cover">
+                            @Html.ActionLink("", "DeleteConfirm",
                                 controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
                                 new { @class = "mylink" })
                         </div>
@@ -95,11 +73,6 @@
     input.onchange = function () {
         this.form.submit();
     }
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-    });
 </script>
 </body>
 </html>
