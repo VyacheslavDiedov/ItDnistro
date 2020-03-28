@@ -138,6 +138,7 @@ form img {
     width: 16%;
     height: 16%;
     margin-top: 10%;
+    cursor: pointer;
 }
 
 /*.label {
