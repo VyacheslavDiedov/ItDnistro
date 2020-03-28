@@ -21,6 +21,7 @@
 <body>
 
     <div class="gallery_container">
+        <div class="headerImage"><h1>Галерея @ViewBag.TourName</h1></div>
         @*<div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Обрати тур
@@ -37,10 +38,13 @@
             </div>
         </div>*@
 
-        <a class="text-black" href="#" data-toggle="modal" data-target="#logoutModal">
-            <img class="together" src="~/icons/Exit.png" alt="">
-            Вихід
-        </a>
+        <div>
+            <a class="text-black" href="#" data-toggle="modal" data-target="#logoutModal">
+                <img class="together" src="~/icons/Exit.png" alt="">
+                Вихід
+            </a>
+        </div>
+
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -65,8 +69,8 @@
                 @foreach (var f in Model.Photos)
                 {
                     <div class="image">
-                        <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top / cover">
-                            @Html.ActionLink("", "DeleteConfirmed",
+                        <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top/cover">
+                            @Html.ActionLink("", "DeleteConfirm",
                                 controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
                                 new { @class = "mylink" })
                         </div>
@@ -76,30 +80,28 @@
                     </div>
                 }
                 <div class="plus_image example-1">
-                    @*<div class="label">*@
                     <label>
                         <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
                             <img src="~/images/plus.png" alt="plus">
                             <input type="file" name="uploadedFile">
                         </form>
                     </label>
-                    @*</div>*@
                 </div>
             </div>
         </div>
     </div>
 
-<script>
-    var input = document.querySelector("input[type='file']");
-    console.log(input);
-    input.onchange = function () {
-        this.form.submit();
-    }
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
+    <script>
+        var input = document.querySelector("input[type='file']");
+        console.log(input);
+        input.onchange = function () {
+            this.form.submit();
+        }
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
