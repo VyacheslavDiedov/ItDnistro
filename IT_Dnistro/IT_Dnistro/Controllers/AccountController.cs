@@ -68,7 +68,7 @@ namespace IT_Dnistro.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Admin", "Admin");
+                        return RedirectToAction("GetParticipants", "Dashboard");
                     }
                 }
                 else

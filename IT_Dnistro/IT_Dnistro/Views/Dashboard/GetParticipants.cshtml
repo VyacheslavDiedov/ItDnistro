@@ -15,11 +15,11 @@
 
 <body>
     <div class="container">
-        <div class="header"><h1>Головна @*ITDnistrO*@</h1></div>
+        <div class="header"><h1>Головна @ViewBag.TourName</h1></div>
         <div class="row justify-content-between">
             <div class="frame col-3">
                 <h2>Всього учасників</h2>
-                <p>@ViewBag.Participant</p>
+                <p>@ViewBag.Count</p>
                 <div id="participants" class="round">
                     <object type="image/svg+xml"
                             data="~/icons/participants.svg">
@@ -27,8 +27,8 @@
                 </div>
             </div>
             <div class="frame col-3">
-                <h2>Всього відвідувачів</h2>
-                <p>@ViewBag.Participant</p>
+                <h2>Учасників у цьому турі</h2>
+                <p>@Model.Count()</p>
                 <div id="visitors" class="round">
                     <object type="image/svg+xml"
                             data="~/icons/eye.svg">
@@ -37,7 +37,7 @@
             </div>
             <div class="frame col-3">
                 <h2>Залишилось до старту</h2>
-                <p>7</p>
+                <p>@ViewBag.Time</p>
                 <div id="tostart" class="round">
                     <object type="image/svg+xml"
                             data="~/icons/time.svg">
@@ -46,7 +46,7 @@
             </div>
             <div class="frame col-3">
                 <h2>Нових учасників за тиждень</h2>
-                <p>@ViewBag.Participant</p>
+                <p>@Model.Count()</p>
                 <div id="newparticipants" class="round">
                     <object type="image/svg+xml"
                             data="~/icons/hand-shake.svg">
