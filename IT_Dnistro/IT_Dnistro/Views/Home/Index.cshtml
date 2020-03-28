@@ -1,6 +1,4 @@
-﻿@using IT_Dnistro.ViewModels
-@model GalleryViewModel
-
+﻿@model IEnumerable<DataBase.TourPhoto>
 @{
     Layout = null;
 }
@@ -296,9 +294,13 @@
                         <div class="swiper-slide" style="background-image: url(./images/foto5.jpg)"></div>
                         <div class="swiper-slide" style="background-image: url(./images/foto6.jpg)"></div>
                     -->
-                    @foreach (var photo in Model.Photos)
+
+                    @foreach (var photo in Model)
                     {
-                        <div class="swiper-slide" style="background-image: url(./images/Swiper/@photo.PhotoLink)"></div>
+                        if (photo.TourTypeId == 1)
+                        {
+                            <div class="swiper-slide" style="background-image: url(./images/Swiper/@photo.PhotoLink)"></div>
+                        }
                     }
                 </div>
                 <!-- Add Pagination -->
