@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
@@ -43,9 +44,9 @@ namespace DataBase
             modelBuilder.Entity<TourType>().HasData(
                 new TourType[]
                 {
-                    new TourType {Id = 1, TourTypeName="IT DnistrO", TourTypeDescription = "For those who like to relax on the river bank"},
-                    new TourType {Id = 2, TourTypeName="IT Carpaty", TourTypeDescription = "For those who like to relax in the mountains"},
-                    new TourType {Id = 3, TourTypeName="IT Scandinavia", TourTypeDescription = "For those who love fjords"}
+                    new TourType {Id = 1, TourTypeName="IT DnistrO", TourTypeDescription = "For those who like to relax on the river bank",TourDateFrom = DateTime.Now.AddDays(7), TourDateTo = DateTime.Now.AddDays(10)},
+                    new TourType {Id = 2, TourTypeName="IT Carpaty", TourTypeDescription = "For those who like to relax in the mountains",TourDateFrom = DateTime.Now.AddDays(10), TourDateTo = DateTime.Now.AddDays(12)},
+                    new TourType {Id = 3, TourTypeName="IT Scandinavia", TourTypeDescription = "For those who love fjords",TourDateFrom = DateTime.Now.AddDays(8), TourDateTo = DateTime.Now.AddDays(15)}
                 });
 
             //TourTypeSettings

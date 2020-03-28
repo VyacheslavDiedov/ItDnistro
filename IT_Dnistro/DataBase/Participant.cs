@@ -9,11 +9,13 @@ namespace DataBase
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(50)]
+        [MaxLength(40)]
         [Required]
         public string FullName { get; set; }
+        [MaxLength(35)]
         [Required]
         public string EMail { get; set; }
+        [MaxLength(20)]
         [Required]
         public string PhoneNumber { get; set; }
         public int TourTypeId { get; set; }
