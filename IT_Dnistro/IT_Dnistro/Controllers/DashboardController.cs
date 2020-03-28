@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DataBase;
 using Microsoft.AspNetCore.Mvc;
 using IT_Dnistro.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,20 +16,24 @@ namespace IT_Dnistro.Controllers
     public class DashboardController : Controller
     {
         private readonly DatabaseContext _context;
+        IWebHostEnvironment _appEnvironment;
         private int countParticipant = 0;
-        private static int _id;
+        protected static int IdTour;
 
-        public DashboardController(DatabaseContext context)
+        public DashboardController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
+
+       
 
         [HttpGet]
         [Route("tour-info")]
         public ActionResult GetTourInfo(int idTour)
         {
-            _id = idTour;
-            return RedirectToAction("GetParticipants");
+            IdTour = idTour;
+           return RedirectToAction("GetParticipants");
         }
 
         [HttpGet("participant")]
