@@ -19,13 +19,10 @@
 
 </head>
 <body>
-    @foreach (var tour in Model.Tours)
-    {
-       
-                <h3>Галерея @tour.TourTypeName</h3>
-    }
-    <div class="gallery_container">
-        @*<div class="dropdown">
+   
+<div class="gallery_container">
+    <div class="headerImage"><h1>Головна @ViewBag.TourName</h1></div>
+    @*<div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Обрати тур
             </button>
@@ -40,32 +37,32 @@
                 }
             </div>
         </div>*@
-        <div class="images">
-            <div class="first_images_container">
-                @foreach (var f in Model.Photos)
-                {
-                    <div class="image">
-                        <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top / cover">
-                            @Html.ActionLink("", "DeleteConfirm",
-                                controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
-                                new { @class = "mylink" })
-                        </div>
-                        <div class="photo_name">
-                            <p> @f.PhotoLink </p>
-                        </div>
+    <div class="images">
+        <div class="first_images_container">
+            @foreach (var f in Model.Photos)
+            {
+                <div class="image">
+                    <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top/cover">
+                        @Html.ActionLink("", "DeleteConfirm",
+                            controllerName: "FileUploadApp", routeValues: new {Id = @f.Id},
+                            new {@class = "mylink"})
                     </div>
-                }
-                <div class="plus_image example-1">
-                    <label>
-                        <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
-                            <img src="~/images/plus.png" alt="plus">
-                            <input type="file" name="uploadedFile">
-                        </form>
-                    </label>
+                    <div class="photo_name">
+                        <p> @f.PhotoLink </p>
+                    </div>
                 </div>
+            }
+            <div class="plus_image example-1">
+                @*<label>*@
+                    <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
+                        <img src="~/images/plus.png" alt="plus">
+                        <input type="file" name="uploadedFile">
+                    </form>
+                @*</label>*@
             </div>
         </div>
     </div>
+</div>
 
     <script>
         var input = document.querySelector("input[type='file']");

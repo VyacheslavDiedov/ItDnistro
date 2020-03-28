@@ -47,8 +47,8 @@ namespace IT_Dnistro.Controllers
 
             gvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
             gvm.Tours = _tours.Where(p => p.Id == IdTour);
+            ViewBag.TourName = _db.TourTypes.Find(IdTour).TourTypeName;
 
-            
             return View(gvm);
         }
 
