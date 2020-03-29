@@ -31,6 +31,14 @@
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
+.col-12 {
+    padding: 0;
+    margin: 0;
+}
+
+.row {
+    justify-content: center;
+}
 
 .block1 {
     background-image: url("../images/1.png");
@@ -47,7 +55,7 @@
 }
 
 .justify-spase-around {
-    justify-content: space-around;
+    justify-content: center;
 }
 
 h1 {
@@ -73,7 +81,7 @@ h2 {
 }
 
 .top-otstup {
-    padding-top: 1.5vh;
+    padding-top: 0.5vh;
 }
 
 .firstHeader {
@@ -485,6 +493,12 @@ footer {
         width: 6vw;
         height: auto;
     }
+    .top-otstup {
+        padding-top: 0.7vh;
+    }
+    .justify-spase-around {
+        justify-content: center;
+    }
 }
 @media (min-width: 800px) and (max-width: 1000px) {
     .ImgCloud1, .ImgCloud2, .ImgCloud3, .ImgCloud4, .ImgCloud5 {
@@ -579,6 +593,12 @@ footer {
     .logo {
         width: 5.5vw;
         height: auto;
+    }
+    .top-otstup {
+        padding-top: 1vh;
+    }
+    .justify-spase-around {
+        justify-content: space-around;
     }
 }
 
@@ -689,6 +709,12 @@ footer {
     }
     .block6 {
         margin-top: -15vh;
+    }
+    .justify-spase-around {
+        justify-content: space-around;
+    }
+    .top-otstup {
+        padding-top: 1.5vh;
     }
 }
 
@@ -819,5 +845,11 @@ footer {
     }
     .socialMedia {
         width: 5vw;
+    }
+    .justify-spase-around {
+        justify-content: space-around;
+    }
+    .top-otstup {
+        padding-top: 2vh;
     }
 }
