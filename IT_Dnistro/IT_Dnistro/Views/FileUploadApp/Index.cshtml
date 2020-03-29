@@ -39,15 +39,6 @@
                 }
             </div>
         </div>*@
-
-
-        
-
-
-        @*@Html.ActionLink("", "DeleteConfirm",
-            controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
-            new { @class = "mylink" })*@
-
         <div class="images">
             <div class="first_images_container">
                 @foreach (var f in Model.Photos)
@@ -55,49 +46,38 @@
                     <div class="image">
                         <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top/cover">
                             <div>
-                                <a class="text-black" href="#" data-toggle="modal" data-target="#confirmDelete">
-                                    <img class="together" onclick="getId(@f.Id)" src="~/icons/Exit.png" alt="">
-                                    Видалит
-                                    
-                                    @Html.ActionLink("Видалити", "DeleteConfirm",
-                                        controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
-                                        new { @class = "btn btn-primary" })
-                                    
-
-                                    <!-- Logout Modal-->
-                                    <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Ви впевнені що хочете видалити фото?</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">Повернути видалене фото буде неможливо.</div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
-                                                    @Html.ActionLink("Видалити", "DeleteConfirm",
-                                                        controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
-                                                        new { @class = "btn btn-primary" })
-                                                   
-
-                                                </div>
+                                <a class="text-black" href="#" data-toggle="modal" data-target="#confirmDelete@{@f.Id}">
+                                    <img class="together" src="~/icons/Exit.png" alt="">
+                                    Видалити
+                                </a>
+                                <!-- Logout Modal-->
+                                <div class="modal fade" id="confirmDelete@{ @f.Id }" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Ви впевнені що хочете видалити фото?</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Повернути видалене фото буде неможливо.</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
+                                                @Html.ActionLink("Видалити", "DeleteConfirm",
+                                                    "FileUploadApp", new { Id = @f.Id },
+                                                    new { @class = "btn btn-primary" })
                                             </div>
                                         </div>
                                     </div>
-
-                                </a>
+                                </div>
                             </div>
                         </div>
                         <div class="photo_name">
                             <p> @f.PhotoLink </p>
                         </div>
                     </div>
-
-                   
-
                 }
+
                 <div class="plus_image example-1">
                     <label>
                         <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
@@ -115,10 +95,6 @@
         console.log(input);
         input.onchange = function () {
             this.form.submit();
-        }
-
-        function getId(Id) {
-            alert(Id);
         }
 
         //$(document).ready(function () {
