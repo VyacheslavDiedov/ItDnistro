@@ -73,6 +73,7 @@ h2 {
     background-color: #9999cc;
     width: 2px;
     padding: 0;
+    flex: none;
 }
 
 .firstHeader {
