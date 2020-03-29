@@ -16,7 +16,7 @@ namespace IT_Dnistro.Controllers
     public class FileUploadAppController : DashboardController
     {
         DatabaseContext _db;
-        IWebHostEnvironment _appEnvironment;
+        private readonly IWebHostEnvironment _appEnvironment;
         List<TourPhoto> _photos;
         List<TourType> _tours;
 
@@ -57,10 +57,12 @@ namespace IT_Dnistro.Controllers
         {
             if (uploadedFile != null) 
             {
-                string path = "/images/Swiper/" + uploadedFile.FileName;
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                string path = _appEnvironment.WebRootPath + @"\images\Swiper\" + uploadedFile.FileName;
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + @"\images\Swiper\" + uploadedFile.FileName, FileMode.Create))
                 {
+                    Console.WriteLine(path);
                     uploadedFile.CopyTo(fileStream);
+                    Console.WriteLine(path + "finish");
                 }
                 if (IdTour != 0)
                 {
