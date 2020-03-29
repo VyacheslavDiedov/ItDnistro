@@ -46,8 +46,8 @@
                     <div class="col-1 separator"></div>
                     @*<div class="col-sm-3 add_separator"><a href="~/scandinavia">Скандинавія</a></div>*@
                     @*<div class="col-sm-3 add_separator"><a href="~/carpaty">Карпати</a></div>*@
-                    @await Component.InvokeAsync("NavigationMenuMain")
-                    
+                    @await Component.InvokeAsync("NavigationMenuMain",@ViewBag.TourId)
+
                     <div class="col-auto">+38 067 <b>431 74 24</b> <br> +38 073 <b>209 97 43</b></div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         <div class="block1 col-12">
             <div class="headerBackdown">
                 <h1>@ViewBag.TourName<br> In My Core</h1>
-                <h3 class="blue">@ViewBag.DateFrom-@ViewBag.DateTo</h3>
+                <h3 class="blue">@ViewBag.DateFrom - @ViewBag.DateTo</h3>
                 <div class="socialMedia">
                     <a href="#" class="fa fa-linkedin"></a> <br>
                     <a href="#" class="fa fa-facebook"></a> <br>

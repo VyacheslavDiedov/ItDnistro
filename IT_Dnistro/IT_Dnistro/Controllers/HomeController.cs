@@ -34,6 +34,11 @@ namespace IT_Dnistro.Controllers
             }
             if (IdTour > 0)
             {
+                if (_db.TourTypes.Find(IdTour)?.Id == null)
+                {
+                    IdTour = _db.TourTypes.First().Id;
+                }
+                ViewBag.TourId = IdTour;
                 ViewBag.TourName = _db.TourTypes.Find(IdTour).TourTypeName;
                 ViewBag.DateFrom = _db.TourTypes.Find(IdTour).TourDateFrom.ToShortDateString();
                 ViewBag.DateTo = _db.TourTypes.Find(IdTour).TourDateTo.ToShortDateString();
