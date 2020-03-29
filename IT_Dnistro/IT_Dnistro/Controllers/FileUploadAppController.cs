@@ -78,7 +78,7 @@ namespace IT_Dnistro.Controllers
             var tourPhoto = _db.TourPhotos.Find(id);
             _db.TourPhotos.Remove(tourPhoto);
             _db.SaveChanges();
-            string path = _appEnvironment.WebRootPath + "/images/Swiper/" + tourPhoto.PhotoLink;
+            string path = _appEnvironment.WebRootPath + @"\images\Swiper\" + tourPhoto.PhotoLink;
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);
@@ -86,13 +86,13 @@ namespace IT_Dnistro.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("tour-info")]
-        public ActionResult GetTourInfo(string idTour)
-        {
-            Console.WriteLine(IdTour);
-            return RedirectToAction("Index");
-        }
+        //[HttpGet]
+        //[Route("tour-info")]
+        //public ActionResult GetTourInfo(int idTour)
+        //{
+        //    Console.WriteLine(IdTour);
+        //    return RedirectToAction("Index");
+        //}
 
 
     }
