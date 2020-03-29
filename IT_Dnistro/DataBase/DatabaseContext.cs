@@ -44,9 +44,9 @@ namespace DataBase
             modelBuilder.Entity<TourType>().HasData(
                 new TourType[]
                 {
-                    new TourType {Id = 1, TourTypeName="IT DnistrO", TourTypeDescription = "For those who like to relax on the river bank",TourDateFrom = DateTime.Now.AddDays(7), TourDateTo = DateTime.Now.AddDays(10)},
-                    new TourType {Id = 2, TourTypeName="IT Carpaty", TourTypeDescription = "For those who like to relax in the mountains",TourDateFrom = DateTime.Now.AddDays(10), TourDateTo = DateTime.Now.AddDays(12)},
-                    new TourType {Id = 3, TourTypeName="IT Scandinavia", TourTypeDescription = "For those who love fjords",TourDateFrom = DateTime.Now.AddDays(8), TourDateTo = DateTime.Now.AddDays(15)}
+                    new TourType {Id = 1, TourTypeName="IT DnistrO", TourTypeDescription = "In My Core",TourDateFrom = DateTime.Now.AddDays(7), TourDateTo = DateTime.Now.AddDays(10)},
+                    new TourType {Id = 2, TourTypeName="IT Carpaty", TourTypeDescription = "Pass with little losses",TourDateFrom = DateTime.Now.AddDays(10), TourDateTo = DateTime.Now.AddDays(12)},
+                    new TourType {Id = 3, TourTypeName="IT Scandinavia", TourTypeDescription = "Move Your Drive",TourDateFrom = DateTime.Now.AddDays(8), TourDateTo = DateTime.Now.AddDays(15)}
                 });
 
             //TourTypeSettings

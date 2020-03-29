@@ -40,6 +40,7 @@ namespace IT_Dnistro.Controllers
                 }
                 ViewBag.TourId = IdTour;
                 ViewBag.TourName = _db.TourTypes.Find(IdTour).TourTypeName;
+                ViewBag.TourDescription = _db.TourTypes.Find(IdTour).TourTypeDescription;
                 ViewBag.DateFrom = _db.TourTypes.Find(IdTour).TourDateFrom.ToShortDateString();
                 ViewBag.DateTo = _db.TourTypes.Find(IdTour).TourDateTo.ToShortDateString();
             }
