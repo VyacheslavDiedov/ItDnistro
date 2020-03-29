@@ -2,7 +2,7 @@
 
 @foreach (var item in Model)
 {
-    <div class="col-auto">
+    <div class="col-auto top-otstup">
         @Html.ActionLink(@item.TourTypeName, "GetTourId", "Home",
             new { idTour = @item.Id })
     </div>
