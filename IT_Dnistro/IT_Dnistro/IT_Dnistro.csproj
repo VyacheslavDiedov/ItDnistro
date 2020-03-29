@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Shared\Components\NavigationMenuMain\" />
     <Folder Include="Views\Shared\Components\NavigationMenu\" />
     <Folder Include="wwwroot\images\Carpaty\" />
     <Folder Include="wwwroot\images\Dnistro\" />
