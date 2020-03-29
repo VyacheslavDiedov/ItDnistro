@@ -26,19 +26,21 @@ namespace IT_Dnistro.Controllers
             _appEnvironment = appEnvironment;
         }
 
-       
-
         [HttpGet]
         [Route("tour-id")]
         public ActionResult GetTourId(int idTour)
         {
-            IdTour = idTour;
-           return RedirectToAction("GetParticipants");
+            IdTour = idTour; 
+            return RedirectToAction("GetParticipants");
         }
 
         [HttpGet("participant")]
         public IActionResult GetParticipants()
         {
+            if (IdTour == 0)
+            {
+                IdTour = _context.TourTypes.First().Id;
+            }
             if (IdTour > 0)
             {
                 DateTime dateTime = DateTime.Now;
