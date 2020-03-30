@@ -55,14 +55,11 @@ namespace IT_Dnistro.Controllers
         [HttpPost]
         public RedirectToActionResult AddFile(IFormFile uploadedFile)
         {
-            if (uploadedFile != null) 
+            if (uploadedFile != null)
             {
-                string path = _appEnvironment.WebRootPath + @"\images\Swiper\" + uploadedFile.FileName;
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + @"\images\Swiper\" + uploadedFile.FileName, FileMode.Create))
                 {
-                    Console.WriteLine(path);
                     uploadedFile.CopyTo(fileStream);
-                    Console.WriteLine(path + "finish");
                 }
                 if (IdTour != 0)
                 {
