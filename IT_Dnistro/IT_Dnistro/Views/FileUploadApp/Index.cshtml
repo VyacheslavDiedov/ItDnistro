@@ -1,8 +1,10 @@
 ﻿@using System.Net
+@using System.Security.Cryptography.X509Certificates
 @using DataBase
 @using IT_Dnistro.ViewModels
 @using Swashbuckle.AspNetCore.SwaggerUI
 @model GalleryViewModel
+
 
 @{
     ViewData["Title"] = "Галерея";
@@ -37,32 +39,6 @@
                 }
             </div>
         </div>*@
-
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ви впевнені що хочете видалити фото?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Повернути видалене фото буде неможливо.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
-                        <a class="btn btn-primary" href="../Account/Login">Видалити</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        @*@Html.ActionLink("", "DeleteConfirm",
-            controllerName: "FileUploadApp", routeValues: new { Id = @f.Id },
-            new { @class = "mylink" })*@
-
         <div class="images">
             <div class="first_images_container">
                 @foreach (var f in Model.Photos)
@@ -70,10 +46,30 @@
                     <div class="image">
                         <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top/cover">
                             <div>
-                                <a class="text-black" href="#" data-toggle="modal" data-target="#confirmDelete">
+                                <a class="text-black" href="#" data-toggle="modal" data-target="#confirmDelete@{@f.Id}">
                                     <img class="together" src="~/icons/Exit.png" alt="">
                                     Видалити
                                 </a>
+                                <!-- Logout Modal-->
+                                <div class="modal fade" id="confirmDelete@{ @f.Id }" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Ви впевнені що хочете видалити фото?</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Повернути видалене фото буде неможливо.</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
+                                                @Html.ActionLink("Видалити", "DeleteConfirm",
+                                                    "FileUploadApp", new { Id = @f.Id },
+                                                    new { @class = "btn btn-primary" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="photo_name">
@@ -81,11 +77,12 @@
                         </div>
                     </div>
                 }
+
                 <div class="plus_image example-1">
                     <label>
                         <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
                             <img src="~/images/plus.png" alt="plus">
-                            <input type="file" name="uploadedFile">
+                            <input type="file" name="uploadedFile" accept = 'image/*'>
                         </form>
                     </label>
                 </div>
@@ -99,6 +96,7 @@
         input.onchange = function () {
             this.form.submit();
         }
+
         //$(document).ready(function () {
         //    $('#sidebarCollapse').on('click', function () {
         //        $('#sidebar').toggleClass('active');

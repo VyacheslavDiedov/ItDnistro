@@ -16,7 +16,7 @@ namespace IT_Dnistro.Controllers
     public class FileUploadAppController : DashboardController
     {
         DatabaseContext _db;
-        IWebHostEnvironment _appEnvironment;
+        private readonly IWebHostEnvironment _appEnvironment;
         List<TourPhoto> _photos;
         List<TourType> _tours;
 
@@ -55,10 +55,9 @@ namespace IT_Dnistro.Controllers
         [HttpPost]
         public RedirectToActionResult AddFile(IFormFile uploadedFile)
         {
-            if (uploadedFile != null) 
+            if (uploadedFile != null)
             {
-                string path = "/images/Swiper/" + uploadedFile.FileName;
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + @"\images\Swiper\" + uploadedFile.FileName, FileMode.Create))
                 {
                     uploadedFile.CopyTo(fileStream);
                 }
@@ -78,7 +77,7 @@ namespace IT_Dnistro.Controllers
             var tourPhoto = _db.TourPhotos.Find(id);
             _db.TourPhotos.Remove(tourPhoto);
             _db.SaveChanges();
-            string path = _appEnvironment.WebRootPath + "/images/Swiper/" + tourPhoto.PhotoLink;
+            string path = _appEnvironment.WebRootPath + @"\images\Swiper\" + tourPhoto.PhotoLink;
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);
@@ -90,10 +89,10 @@ namespace IT_Dnistro.Controllers
         //[Route("tour-info")]
         //public ActionResult GetTourInfo(int idTour)
         //{
-        //    _id = idTour;
+        //    Console.WriteLine(IdTour);
         //    return RedirectToAction("Index");
         //}
 
-        
+
     }
 }
