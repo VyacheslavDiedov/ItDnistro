@@ -36,6 +36,10 @@
     margin: 0;
 }
 
+.padding-top {
+    padding-top: 5vh;
+}
+
 .row {
     justify-content: center;
 }
@@ -394,7 +398,7 @@ footer {
     padding: 17vh;
 }
 .footerBlock5 {
-    padding: 30vh;
+    padding: 20vh;
 }
 .container {
     margin-left: auto !important;
@@ -455,7 +459,7 @@ footer {
         padding: 1vh;
     }
     .footerBlock4 {
-        padding: 30vh;
+        padding: 20vh;
     }
     .footerBlock5 {
         padding: 30vh;
@@ -556,7 +560,7 @@ footer {
         padding: 1vh;
     }
     .footerBlock4 {
-        padding: 30vh;
+        padding: 20vh;
     }
     .footerBlock5 {
         padding: 32vh;
@@ -660,7 +664,7 @@ footer {
         padding: 1vh;
     }
     .footerBlock4 {
-        padding: 30vh;
+        padding: 20vh;
     }
     .footerBlock5 {
         padding: 45vh;
