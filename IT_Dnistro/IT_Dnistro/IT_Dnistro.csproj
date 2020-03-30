@@ -46,6 +46,7 @@
     <Folder Include="Views\Shared\Components\NavigationMenu\" />
     <Folder Include="wwwroot\images\Carpaty\" />
     <Folder Include="wwwroot\images\Dnistro\" />
+    <Folder Include="wwwroot\images\TourBG\" />
     <Folder Include="wwwroot\images\Swiper\" />
   </ItemGroup>
 

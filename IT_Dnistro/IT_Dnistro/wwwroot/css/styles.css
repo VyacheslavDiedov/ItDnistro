@@ -40,14 +40,14 @@
     justify-content: center;
 }
 
-.block1 {
+/*.block1 {
     background-image: url("../images/1.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
     height: fit-content;
     width: 100%;
-}
+}*/
 .container80 {
     width: 80%;
     margin-left: auto !important;
