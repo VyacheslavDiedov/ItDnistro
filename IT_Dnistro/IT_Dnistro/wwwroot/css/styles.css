@@ -304,7 +304,7 @@ p {
     font-family: "Bahnschrift", sans-serif;
 }
 .thirdHeader {
-    padding-top: 28vh;
+    padding-top: 35vh;
     color: #f5f8f5;
 }
 .white li {
@@ -664,7 +664,7 @@ footer {
         padding: 1vh;
     }
     .footerBlock4 {
-        padding: 20vh;
+        padding: 25vh;
     }
     .footerBlock5 {
         padding: 45vh;

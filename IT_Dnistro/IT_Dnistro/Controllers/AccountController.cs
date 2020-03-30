@@ -33,7 +33,7 @@ namespace IT_Dnistro.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false).ConfigureAwait(true);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Default", "Home");
                 }
                 else
                 {
@@ -84,7 +84,7 @@ namespace IT_Dnistro.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync().ConfigureAwait(true);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Default", "Home");
         }
     }
 }
