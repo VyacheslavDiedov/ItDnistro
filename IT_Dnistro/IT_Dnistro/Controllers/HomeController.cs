@@ -43,6 +43,12 @@ namespace IT_Dnistro.Controllers
                 ViewBag.TourDescription = _db.TourTypes.Find(IdTour).TourTypeDescription;
                 ViewBag.DateFrom = _db.TourTypes.Find(IdTour).TourDateFrom.ToShortDateString();
                 ViewBag.DateTo = _db.TourTypes.Find(IdTour).TourDateTo.ToShortDateString();
+                ViewBag.Background = 
+                    _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == IdTour).FirstOrDefault()?.PhotoLink;
+                ViewBag.BackgroundTwo =
+                    _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == IdTour).Skip(1).FirstOrDefault()?.PhotoLink;
+                ViewBag.BackgroundThree =
+                    _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == IdTour).Skip(2).FirstOrDefault()?.PhotoLink;
             }
             var item = _db.TourPhotos.Where(x => x.TourTypeId == IdTour).ToList();
             return View(item);

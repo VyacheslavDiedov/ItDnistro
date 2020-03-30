@@ -4,14 +4,16 @@ using DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataBase.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200330194510_AddTourPhotoBackground")]
+    partial class AddTourPhotoBackground
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,62 +187,6 @@ namespace DataBase.Migrations
                     b.HasIndex("TourTypeId");
 
                     b.ToTable("TourPhotoBackgrounds");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            PhotoLink = "photo1.jpg",
-                            TourTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            PhotoLink = "photo2.jpg",
-                            TourTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            PhotoLink = "photo3.jpg",
-                            TourTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            PhotoLink = "photo4.jpg",
-                            TourTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            PhotoLink = "photo5.jpg",
-                            TourTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            PhotoLink = "photo6.jpg",
-                            TourTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            PhotoLink = "photo7.jpg",
-                            TourTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 8,
-                            PhotoLink = "photo8.jpg",
-                            TourTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 9,
-                            PhotoLink = "photo9.jpg",
-                            TourTypeId = 3
-                        });
                 });
 
             modelBuilder.Entity("DataBase.TourType", b =>
@@ -276,8 +222,8 @@ namespace DataBase.Migrations
                         {
                             Id = 1,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 7, 1, 26, 28, 470, DateTimeKind.Local).AddTicks(2178),
-                            TourDateTo = new DateTime(2020, 4, 10, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(4918),
+                            TourDateFrom = new DateTime(2020, 4, 6, 22, 45, 9, 149, DateTimeKind.Local).AddTicks(5601),
+                            TourDateTo = new DateTime(2020, 4, 9, 22, 45, 9, 154, DateTimeKind.Local).AddTicks(1335),
                             TourTypeDescription = "In My Core",
                             TourTypeName = "IT DnistrO"
                         },
@@ -285,8 +231,8 @@ namespace DataBase.Migrations
                         {
                             Id = 2,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 10, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(6377),
-                            TourDateTo = new DateTime(2020, 4, 12, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(6453),
+                            TourDateFrom = new DateTime(2020, 4, 9, 22, 45, 9, 154, DateTimeKind.Local).AddTicks(2402),
+                            TourDateTo = new DateTime(2020, 4, 11, 22, 45, 9, 154, DateTimeKind.Local).AddTicks(2454),
                             TourTypeDescription = "Pass with little losses",
                             TourTypeName = "IT Carpaty"
                         },
@@ -294,8 +240,8 @@ namespace DataBase.Migrations
                         {
                             Id = 3,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 8, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(6487),
-                            TourDateTo = new DateTime(2020, 4, 15, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(6497),
+                            TourDateFrom = new DateTime(2020, 4, 7, 22, 45, 9, 154, DateTimeKind.Local).AddTicks(2473),
+                            TourDateTo = new DateTime(2020, 4, 14, 22, 45, 9, 154, DateTimeKind.Local).AddTicks(2479),
                             TourTypeDescription = "Move Your Drive",
                             TourTypeName = "IT Scandinavia"
                         });

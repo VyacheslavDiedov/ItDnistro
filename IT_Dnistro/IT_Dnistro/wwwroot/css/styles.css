@@ -290,7 +290,7 @@ p {
 }
 
 
-.block4 {
+/*.block4 {
     background-image: url("../images/4.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -302,7 +302,7 @@ p {
     z-index: -1;
     text-align: center;
     font-family: "Bahnschrift", sans-serif;
-}
+}*/
 .thirdHeader {
     padding-top: 35vh;
     color: #f5f8f5;
@@ -352,7 +352,7 @@ p {
     opacity: 0;
 }
 
-.block6 {
+/*.block6 {
     background-image: url("../images/6.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -362,7 +362,7 @@ p {
     z-index: -2;
     padding: 0;
     margin-top: -12vh;
-}
+}*/
 footer {
     width: 100%;
     position: relative;
