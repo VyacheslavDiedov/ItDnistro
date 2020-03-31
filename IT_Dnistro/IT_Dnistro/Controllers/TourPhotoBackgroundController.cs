@@ -57,8 +57,18 @@ namespace IT_Dnistro.Controllers
         {
             if (uploadedFile != null)
             {
+                string namePhoto = "";
+                if (uploadedFile.FileName.Length <= 35)
+                {
+                    namePhoto = uploadedFile.FileName;
+                }
+                else
+                {
+                    int position = uploadedFile.FileName.IndexOf(".");
+                    namePhoto = uploadedFile.FileName.Substring(0, 31) + uploadedFile.FileName.Substring(position);
+                }
                 using (var fileStream =
-                    new FileStream(_appEnvironment.WebRootPath + @"\images\TourBG\" + uploadedFile.FileName,
+                    new FileStream(_appEnvironment.WebRootPath + @"\images\TourBG\" + namePhoto,
                         FileMode.Create))
                 {
                     uploadedFile.CopyTo(fileStream);
@@ -66,7 +76,7 @@ namespace IT_Dnistro.Controllers
 
                 if (IdTour != 0)
                 {
-                    TourPhotoBackground file = new TourPhotoBackground() {PhotoLink = uploadedFile.FileName, TourTypeId = IdTour};
+                    TourPhotoBackground file = new TourPhotoBackground() {PhotoLink = namePhoto, TourTypeId = IdTour};
                     _context.TourPhotoBackgrounds.Add(file);
                     _context.SaveChanges();
                 }
