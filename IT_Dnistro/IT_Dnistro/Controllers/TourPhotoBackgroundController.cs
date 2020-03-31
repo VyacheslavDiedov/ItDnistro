@@ -41,7 +41,7 @@ namespace IT_Dnistro.Controllers
 
             bvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
             bvm.Tours = _tours.Where(p => p.Id == IdTour);
-            ViewBag.TourName = _context.TourTypes.Find(IdTour).TourTypeName;
+            ViewBag.TourName = _context.TourTypes.Find(IdTour)?.TourTypeName;
             return View(bvm);
         }
 
