@@ -91,7 +91,9 @@ span {
 }
 
 .together {
-    display: inline-block!important;
+    display: inline-block !important;
+    width: 2rem !important;
+    height: 2rem !important;
 }
 
 /* ---------------------------------------------------
