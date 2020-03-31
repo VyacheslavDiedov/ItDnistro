@@ -1,8 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using IT_Dnistro.Models;
 using DataBase;
 using System.Linq;
+using System.Threading.Channels;
 
 namespace IT_Dnistro.Controllers
 {
@@ -11,6 +13,7 @@ namespace IT_Dnistro.Controllers
     {
         DatabaseContext _db;
         private static int IdTour;
+        private string _nameTour = "";
 
         public HomeController(DatabaseContext context)
         {
@@ -22,10 +25,26 @@ namespace IT_Dnistro.Controllers
         public ActionResult GetTourId(int idTour)
         {
             IdTour = idTour;
-            return RedirectToAction("Default");
+
+            _nameTour = _db.TourTypes.Find(IdTour).TourTypeName;
+            int position = _nameTour.IndexOf(" ");
+            _nameTour = _nameTour.Substring(position + 1);
+            for (int i = 0; i < _nameTour.Length; i++)
+            {
+                if ((((_nameTour[i] >= 'a') && (_nameTour[i] <= 'z')) || ((_nameTour[i] >= 'A') && (_nameTour[i] <= 'Z')) 
+                                                                     || _nameTour[i] == '-' || _nameTour[i] == '_'
+                                                                     || ((_nameTour[i] >= '0') && (_nameTour[i] <= '9'))) != true)
+                {
+                    _nameTour = "Index";
+                }
+
+                
+            }
+            Console.WriteLine(_nameTour);
+            return Redirect(_nameTour);
         }
 
-        [HttpGet("default")]
+        [HttpGet("{_nameTour}")]
         public IActionResult Default()
         {
             if (IdTour == 0)
