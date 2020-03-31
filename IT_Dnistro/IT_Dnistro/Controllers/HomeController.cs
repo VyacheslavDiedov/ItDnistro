@@ -11,9 +11,7 @@ namespace IT_Dnistro.Controllers
     [ApiController]
     public class HomeController : Controller
     {
-        DatabaseContext _db;
-        private static int IdTour;
-        private string _nameTour = "";
+        private readonly DatabaseContext _db;
 
         public HomeController(DatabaseContext context)
         {
@@ -21,90 +19,36 @@ namespace IT_Dnistro.Controllers
         }
 
         [HttpGet]
-        [Route("tour-id")]
-        public ActionResult GetTourId(int idTour)
+        [Route("tour-id/{idTourType:int?}")]
+        public ActionResult GetTourId(int? idTourType)
         {
-            IdTour = idTour;
-
-            _nameTour = _db.TourTypes.Find(IdTour).TourTypeName;
-            int position = _nameTour.IndexOf(" ");
-            _nameTour = _nameTour.Substring(position + 1);
-            for (int i = 0; i < _nameTour.Length; i++)
+            var tourType = _db.TourTypes.Find(idTourType ?? _db.TourTypes.First().Id);
+            if (tourType == null)
             {
-                if ((((_nameTour[i] >= 'a') && (_nameTour[i] <= 'z')) || ((_nameTour[i] >= 'A') && (_nameTour[i] <= 'Z')) 
-                                                                     || _nameTour[i] == '-' || _nameTour[i] == '_'
-                                                                     || ((_nameTour[i] >= '0') && (_nameTour[i] <= '9'))) != true)
+                Response.StatusCode = 404;
+                return View("Error", new ErrorViewModel()
                 {
-                    _nameTour = "Index";
-                }
-
-                
+                    //todo fill fields
+                });
             }
-            Console.WriteLine(_nameTour);
-            return Redirect(_nameTour);
+
+            var tourPhotos = _db.TourPhotos.Where(x => x.TourTypeId == tourType.Id).ToList();
+           
+            ViewBag.TourName = tourType.TourTypeName;
+            ViewBag.TourDescription = tourType.TourTypeDescription;
+            ViewBag.DateFrom = tourType.TourDateFrom.ToShortDateString();
+            ViewBag.DateTo = tourType.TourDateTo.ToShortDateString();
+
+            var backgrounds = _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == tourType.Id).ToList();
+            if(backgrounds.Count != 3)
+                throw new ArgumentException("Not enough images for this tour type");
+
+            ViewBag.Background = backgrounds.First().PhotoLink;
+            ViewBag.BackgroundTwo = backgrounds[1].PhotoLink;
+            ViewBag.BackgroundThree = backgrounds.Last().PhotoLink;
+
+            return View("Default", tourPhotos);
         }
-
-        [HttpGet("{_nameTour}")]
-        public IActionResult Default()
-        {
-            if (IdTour == 0)
-            {
-                if (_db.TourTypes.FirstOrDefault()?.Id == null)
-                {
-                    IdTour = 0;
-                }
-                if (_db.TourTypes.FirstOrDefault()?.Id != null)
-                {
-                    IdTour = _db.TourTypes.First().Id;
-                }
-            }
-            if (IdTour > 0)
-            {
-                if (_db.TourTypes.Find(IdTour)?.Id == null)
-                {
-                    if (_db.TourTypes.FirstOrDefault()?.Id != null)
-                    {
-                        IdTour = _db.TourTypes.First().Id;
-                    }
-                }
-
-                if (_db.TourTypes.Find(IdTour)?.Id != null)
-                {
-                    IdTour = _db.TourTypes.Find(IdTour).Id;
-                    ViewBag.TourId = IdTour;
-                    ViewBag.TourName = _db.TourTypes.Find(IdTour).TourTypeName;
-                    ViewBag.TourDescription = _db.TourTypes.Find(IdTour).TourTypeDescription;
-                    ViewBag.DateFrom = _db.TourTypes.Find(IdTour).TourDateFrom.ToShortDateString();
-                    ViewBag.DateTo = _db.TourTypes.Find(IdTour).TourDateTo.ToShortDateString();
-                    ViewBag.Background =
-                        _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == IdTour).FirstOrDefault()?.PhotoLink;
-                    ViewBag.BackgroundTwo =
-                        _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == IdTour).Skip(1).FirstOrDefault()?.PhotoLink;
-                    ViewBag.BackgroundThree =
-                        _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == IdTour).Skip(2).FirstOrDefault()?.PhotoLink;
-                }
-            }
-            var item = _db.TourPhotos.Where(x => x.TourTypeId == IdTour).ToList();
-            return View(item);
-        }
-
-        //[HttpGet("dnistro")]
-        //public IActionResult Index()
-        //{
-        //    return View(_db.TourPhotos.ToList());
-        //}
-
-        //[HttpGet("carpaty")]
-        //public IActionResult Carpaty()
-        //{
-        //    return View(_db.TourPhotos.ToList());
-        //}
-
-        //[HttpGet("scandinavia")]
-        //public IActionResult Scandinavia()
-        //{
-        //    return View(_db.TourPhotos.ToList());
-        //}
 
         [HttpGet("error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

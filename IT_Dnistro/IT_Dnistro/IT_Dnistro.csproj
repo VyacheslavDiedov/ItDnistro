@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <Content Remove="appsettings.Development.json" />
+    <Content Remove="Views\Home\Carpaty.cshtml" />
+    <Content Remove="Views\Home\Index.cshtml" />
+    <Content Remove="Views\Home\Scandinavia.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
