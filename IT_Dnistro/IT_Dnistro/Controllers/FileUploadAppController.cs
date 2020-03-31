@@ -65,14 +65,14 @@ namespace IT_Dnistro.Controllers
             if (uploadedFile != null)
             {
                 string namePhoto = "";
-                if (uploadedFile.FileName.Length <= 41)
+                if (uploadedFile.FileName.Length <= 35)
                 {
                     namePhoto = uploadedFile.FileName;
                 }
                 else
                 {
                     int position = uploadedFile.FileName.IndexOf(".");
-                    namePhoto = uploadedFile.FileName.Substring(0, 36) + uploadedFile.FileName.Substring(position);
+                    namePhoto = uploadedFile.FileName.Substring(0, 31) + uploadedFile.FileName.Substring(position);
                 }
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + @"\images\Swiper\" + namePhoto, FileMode.Create))
                 {
