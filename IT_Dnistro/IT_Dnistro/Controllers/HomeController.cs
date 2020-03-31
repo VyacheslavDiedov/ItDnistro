@@ -60,7 +60,15 @@ namespace IT_Dnistro.Controllers
             }
             if (IdTour > 0)
             {
-                if (_db.TourTypes.FirstOrDefault()?.Id != null)
+                if (_db.TourTypes.Find(IdTour)?.Id == null)
+                {
+                    if (_db.TourTypes.FirstOrDefault()?.Id != null)
+                    {
+                        IdTour = _db.TourTypes.First().Id;
+                    }
+                }
+
+                if (_db.TourTypes.Find(IdTour)?.Id != null)
                 {
                     IdTour = _db.TourTypes.Find(IdTour).Id;
                     ViewBag.TourId = IdTour;
