@@ -55,11 +55,7 @@ namespace IT_Dnistro.Controllers
                 {
                     if (_context.TourTypes.FirstOrDefault()?.Id != null)
                     {
-                        DateTime dateTime = DateTime.Now;
-                        DateTime dateTimes = _context.TourTypes.Find(IdTour).TourDateFrom;
-                        TimeSpan diff = dateTimes - dateTime;
-                        ViewBag.Time = diff.Days;
-                        ViewBag.TourName = _context.TourTypes.Find(IdTour).TourTypeName;
+                        IdTour = _context.TourTypes.First().Id;
                     }
                 }
 
