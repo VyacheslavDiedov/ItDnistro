@@ -57,13 +57,23 @@ namespace IT_Dnistro.Controllers
         {
             if (uploadedFile != null)
             {
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + @"\images\Swiper\" + uploadedFile.FileName, FileMode.Create))
+                string namePhoto = "";
+                if (uploadedFile.FileName.Length <= 41)
+                {
+                    namePhoto = uploadedFile.FileName;
+                }
+                else
+                {
+                    int position = uploadedFile.FileName.IndexOf(".");
+                    namePhoto = uploadedFile.FileName.Substring(0, 36) + uploadedFile.FileName.Substring(position);
+                }
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + @"\images\Swiper\" + namePhoto, FileMode.Create))
                 {
                     uploadedFile.CopyTo(fileStream);
                 }
                 if (IdTour != 0)
                 {
-                    TourPhoto file = new TourPhoto() { PhotoLink = uploadedFile.FileName, TourTypeId = IdTour };
+                    TourPhoto file = new TourPhoto() { PhotoLink = namePhoto, TourTypeId = IdTour };
                     _db.TourPhotos.Add(file);
                     _db.SaveChanges();
                 }
