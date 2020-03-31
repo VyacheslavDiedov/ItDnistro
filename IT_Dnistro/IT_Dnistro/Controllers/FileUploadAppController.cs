@@ -39,15 +39,22 @@ namespace IT_Dnistro.Controllers
             _photos = new List<TourPhoto>(_db.TourPhotos);
             _tours = new List<TourType>(_db.TourTypes);
             GalleryViewModel gvm = new GalleryViewModel { Tours = _tours, Photos = _photos };
-            // якщо є id, створює фільтр фільтрація
+
             if (IdTour == 0)
             {
-                IdTour = 1;
+                if (_db.TourTypes.FirstOrDefault()?.Id == null)
+                {
+                    IdTour = 0;
+                }
+                if (_db.TourTypes.FirstOrDefault()?.Id != null)
+                {
+                    IdTour = _db.TourTypes.First().Id;
+                }
             }
 
             gvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
             gvm.Tours = _tours.Where(p => p.Id == IdTour);
-            ViewBag.TourName = _db.TourTypes.Find(IdTour).TourTypeName;
+            ViewBag.TourName = _db.TourTypes.Find(IdTour)?.TourTypeName;
             
             return View(gvm);
         }

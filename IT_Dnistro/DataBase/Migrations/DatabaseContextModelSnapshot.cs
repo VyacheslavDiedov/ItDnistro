@@ -28,8 +28,8 @@ namespace DataBase.Migrations
 
                     b.Property<string>("EMail")
                         .IsRequired()
-                        .HasColumnType("nvarchar(40)")
-                        .HasMaxLength(40);
+                        .HasColumnType("nvarchar(35)")
+                        .HasMaxLength(35);
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -167,6 +167,82 @@ namespace DataBase.Migrations
                         });
                 });
 
+            modelBuilder.Entity("DataBase.TourPhotoBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PhotoLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TourTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourTypeId");
+
+                    b.ToTable("TourPhotoBackgrounds");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PhotoLink = "photo1.jpg",
+                            TourTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            PhotoLink = "photo2.jpg",
+                            TourTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            PhotoLink = "photo3.jpg",
+                            TourTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            PhotoLink = "photo4.jpg",
+                            TourTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            PhotoLink = "photo5.jpg",
+                            TourTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            PhotoLink = "photo6.jpg",
+                            TourTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            PhotoLink = "photo7.jpg",
+                            TourTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            PhotoLink = "photo8.jpg",
+                            TourTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            PhotoLink = "photo9.jpg",
+                            TourTypeId = 3
+                        });
+                });
+
             modelBuilder.Entity("DataBase.TourType", b =>
                 {
                     b.Property<int>("Id")
@@ -200,27 +276,27 @@ namespace DataBase.Migrations
                         {
                             Id = 1,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 4, 10, 26, 57, 748, DateTimeKind.Local).AddTicks(3561),
-                            TourDateTo = new DateTime(2020, 4, 7, 10, 26, 57, 753, DateTimeKind.Local).AddTicks(4215),
-                            TourTypeDescription = "For those who like to relax on the river bank",
+                            TourDateFrom = new DateTime(2020, 4, 7, 1, 26, 28, 470, DateTimeKind.Local).AddTicks(2178),
+                            TourDateTo = new DateTime(2020, 4, 10, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(4918),
+                            TourTypeDescription = "In My Core",
                             TourTypeName = "IT DnistrO"
                         },
                         new
                         {
                             Id = 2,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 7, 10, 26, 57, 753, DateTimeKind.Local).AddTicks(5051),
-                            TourDateTo = new DateTime(2020, 4, 9, 10, 26, 57, 753, DateTimeKind.Local).AddTicks(5112),
-                            TourTypeDescription = "For those who like to relax in the mountains",
+                            TourDateFrom = new DateTime(2020, 4, 10, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(6377),
+                            TourDateTo = new DateTime(2020, 4, 12, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(6453),
+                            TourTypeDescription = "Pass with little losses",
                             TourTypeName = "IT Carpaty"
                         },
                         new
                         {
                             Id = 3,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 5, 10, 26, 57, 753, DateTimeKind.Local).AddTicks(5146),
-                            TourDateTo = new DateTime(2020, 4, 12, 10, 26, 57, 753, DateTimeKind.Local).AddTicks(5155),
-                            TourTypeDescription = "For those who love fjords",
+                            TourDateFrom = new DateTime(2020, 4, 8, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(6487),
+                            TourDateTo = new DateTime(2020, 4, 15, 1, 26, 28, 476, DateTimeKind.Local).AddTicks(6497),
+                            TourTypeDescription = "Move Your Drive",
                             TourTypeName = "IT Scandinavia"
                         });
                 });
@@ -490,6 +566,15 @@ namespace DataBase.Migrations
                 });
 
             modelBuilder.Entity("DataBase.TourPhoto", b =>
+                {
+                    b.HasOne("DataBase.TourType", "TourType")
+                        .WithMany()
+                        .HasForeignKey("TourTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataBase.TourPhotoBackground", b =>
                 {
                     b.HasOne("DataBase.TourType", "TourType")
                         .WithMany()
