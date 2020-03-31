@@ -43,7 +43,7 @@ namespace IT_Dnistro.Controllers
             {
                 if (_db.TourTypes.FirstOrDefault()?.Id != null)
                 {
-                    IdTour = _db.TourTypes.FirstOrDefault().Id;
+                    IdTour = _db.TourTypes.Find(IdTour).Id;
                     ViewBag.TourId = IdTour;
                     ViewBag.TourName = _db.TourTypes.Find(IdTour).TourTypeName;
                     ViewBag.TourDescription = _db.TourTypes.Find(IdTour).TourTypeDescription;
