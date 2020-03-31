@@ -97,9 +97,15 @@ span {
 
 .togetherbg {
     display: inline-block !important;
-    width: 2rem;
-    height: 2rem;
+    width: 1.6rem;
+    height: 1.6rem;
 }
+
+    .togetherbg:hover {
+        display: inline-block !important;
+        width: 1.9rem;
+        height: 1.9rem;
+    }
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
