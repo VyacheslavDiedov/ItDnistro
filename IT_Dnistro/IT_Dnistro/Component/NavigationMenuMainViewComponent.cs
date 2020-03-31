@@ -20,14 +20,21 @@ namespace IT_Dnistro.Component
         {
             if (idTour == 0)
             {
-                IdTour = _db.TourTypes.First().Id;
+                if (_db.TourTypes.FirstOrDefault()?.Id == null)
+                {
+                    IdTour = 0;
+                }
+
+                if (_db.TourTypes.FirstOrDefault()?.Id != null)
+                {
+                    IdTour = _db.TourTypes.First().Id;
+                }
             }
             if (idTour > 0)
             {
                 IdTour = idTour;
             }
             var item = _db.TourTypes.Where(x => x.Id != IdTour).ToList();
-            //ViewBag.SelectedCategory = RouteData?.Values["category"];
             return View(item);
         }
     }

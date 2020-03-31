@@ -30,13 +30,23 @@ namespace IT_Dnistro.Controllers
         {
             if (IdTour == 0)
             {
-                IdTour = _db.TourTypes.First().Id;
+                if (_db.TourTypes.FirstOrDefault()?.Id == null)
+                {
+                    IdTour = 0;
+                }
+                if (_db.TourTypes.FirstOrDefault()?.Id != null)
+                {
+                    IdTour = _db.TourTypes.First().Id;
+                }
             }
             if (IdTour > 0)
             {
                 if (_db.TourTypes.Find(IdTour)?.Id == null)
                 {
-                    IdTour = _db.TourTypes.First().Id;
+                    if (_db.TourTypes.FirstOrDefault().Id != null)
+                    {
+                        IdTour = _db.TourTypes.FirstOrDefault().Id;
+                    }
                 }
                 ViewBag.TourId = IdTour;
                 ViewBag.TourName = _db.TourTypes.Find(IdTour).TourTypeName;

@@ -39,15 +39,26 @@ namespace IT_Dnistro.Controllers
         {
             if (IdTour == 0)
             {
-                IdTour = _context.TourTypes.First().Id;
+                if (_context.TourTypes.FirstOrDefault()?.Id == null)
+                {
+                    IdTour = 0;
+                }
+                if (_context.TourTypes.FirstOrDefault()?.Id != null)
+                {
+                    IdTour = _context.TourTypes.First().Id;
+                }
             }
+
             if (IdTour > 0)
             {
-                DateTime dateTime = DateTime.Now;
-                DateTime dateTimes = _context.TourTypes.Find(IdTour).TourDateFrom;
-                TimeSpan diff = dateTimes - dateTime;
-                ViewBag.Time = diff.Days;
-                ViewBag.TourName = _context.TourTypes.Find(IdTour).TourTypeName;
+                if (_context.TourTypes.FirstOrDefault()?.Id != null)
+                {
+                    DateTime dateTime = DateTime.Now;
+                    DateTime dateTimes = _context.TourTypes.Find(IdTour).TourDateFrom;
+                    TimeSpan diff = dateTimes - dateTime;
+                    ViewBag.Time = diff.Days;
+                    ViewBag.TourName = _context.TourTypes.Find(IdTour).TourTypeName;
+                }
             }
             foreach (var count in _context.Participants)
             {

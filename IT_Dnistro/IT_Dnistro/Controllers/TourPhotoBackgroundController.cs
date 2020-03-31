@@ -36,7 +36,14 @@ namespace IT_Dnistro.Controllers
             BackgroundViewModel bvm = new BackgroundViewModel { Tours = _tours, Photos = _photos};
             if (IdTour == 0)
             {
-                IdTour = _context.TourTypes.First().Id;
+                if (_context.TourTypes.FirstOrDefault()?.Id == null)
+                {
+                    IdTour = 0;
+                }
+                if (_context.TourTypes.FirstOrDefault()?.Id != null)
+                {
+                    IdTour = _context.TourTypes.First().Id;
+                }
             }
 
             bvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
