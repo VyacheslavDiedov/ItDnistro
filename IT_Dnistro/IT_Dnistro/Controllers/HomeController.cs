@@ -22,7 +22,7 @@ namespace IT_Dnistro.Controllers
         [Route("tour-id/{idTourType:int?}")]
         public ActionResult GetTourId(int? idTourType)
         {
-            var tourType = _db.TourTypes.Find(idTourType ?? _db.TourTypes.First().Id);
+            var tourType = _db.TourTypes.Find(idTourType ?? _db.TourTypes.FirstOrDefault()?.Id);
             if (tourType == null)
             {
                 Response.StatusCode = 404;
@@ -33,20 +33,23 @@ namespace IT_Dnistro.Controllers
             }
 
             var tourPhotos = _db.TourPhotos.Where(x => x.TourTypeId == tourType.Id).ToList();
-           
+
+            ViewBag.TourId = tourType.Id;
             ViewBag.TourName = tourType.TourTypeName;
             ViewBag.TourDescription = tourType.TourTypeDescription;
             ViewBag.DateFrom = tourType.TourDateFrom.ToShortDateString();
             ViewBag.DateTo = tourType.TourDateTo.ToShortDateString();
 
             var backgrounds = _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == tourType.Id).ToList();
-            if(backgrounds.Count != 3)
-                throw new ArgumentException("Not enough images for this tour type");
-
-            ViewBag.Background = backgrounds.First().PhotoLink;
-            ViewBag.BackgroundTwo = backgrounds[1].PhotoLink;
-            ViewBag.BackgroundThree = backgrounds.Last().PhotoLink;
-
+            //if(backgrounds.Count != 3)
+            //    throw new ArgumentException("Not enough images for this tour type");
+            if (backgrounds.Count > 0)
+            {
+                
+            }
+            ViewBag.Background = backgrounds.FirstOrDefault()?.PhotoLink;
+            ViewBag.BackgroundTwo = backgrounds.Skip(1).FirstOrDefault()?.PhotoLink;
+            ViewBag.BackgroundThree = backgrounds.Skip(2).FirstOrDefault()?.PhotoLink;
             return View("Default", tourPhotos);
         }
 

@@ -23,7 +23,7 @@
     "IT_Dnistro": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "dnistrO",
+      "launchUrl": "tour-id/1",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

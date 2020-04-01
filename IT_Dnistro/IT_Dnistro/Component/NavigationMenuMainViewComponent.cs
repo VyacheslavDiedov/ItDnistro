@@ -18,14 +18,16 @@ namespace IT_Dnistro.Component
 
         public IViewComponentResult Invoke(int idTour)
         {
+            var tourType = _db.TourTypes.FirstOrDefault()?.Id;
+
             if (idTour == 0)
             {
-                if (_db.TourTypes.FirstOrDefault()?.Id == null)
+                if (tourType == null)
                 {
                     IdTour = 0;
                 }
 
-                if (_db.TourTypes.FirstOrDefault()?.Id != null)
+                if (tourType != null)
                 {
                     IdTour = _db.TourTypes.First().Id;
                 }
