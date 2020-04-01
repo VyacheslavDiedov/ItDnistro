@@ -45,11 +45,10 @@ namespace IT_Dnistro.Controllers
             //    throw new ArgumentException("Not enough images for this tour type");
             if (backgrounds.Count > 0)
             {
-                
+                ViewBag.Background = backgrounds.FirstOrDefault()?.PhotoLink;
+                ViewBag.BackgroundTwo = backgrounds.Skip(1).FirstOrDefault()?.PhotoLink;
+                ViewBag.BackgroundThree = backgrounds.Skip(2).FirstOrDefault()?.PhotoLink;
             }
-            ViewBag.Background = backgrounds.FirstOrDefault()?.PhotoLink;
-            ViewBag.BackgroundTwo = backgrounds.Skip(1).FirstOrDefault()?.PhotoLink;
-            ViewBag.BackgroundThree = backgrounds.Skip(2).FirstOrDefault()?.PhotoLink;
             return View("Default", tourPhotos);
         }
 
