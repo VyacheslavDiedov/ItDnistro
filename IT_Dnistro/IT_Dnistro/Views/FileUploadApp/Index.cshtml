@@ -24,21 +24,6 @@
 
     <div class="gallery_container">
         <div class="headerImage"><h1>Галерея @ViewBag.TourName</h1></div>
-        @*<div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Обрати тур
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                @foreach (var tour in Model.Tours)
-                {
-                    <button class="dropdown-item" type="button">
-                        @Html.ActionLink(@tour.TourTypeName, "GetIdTour",
-                            controllerName: "FileUploadApp", routeValues: new { IdTour = tour.Id },
-                            new { @class = "btn btn-default" })
-                    </button>
-                }
-            </div>
-        </div>*@
         <div class="images">
             <div class="first_images_container">
                 @foreach (var f in Model.Photos)
@@ -92,16 +77,9 @@
 
     <script>
         var input = document.querySelector("input[type='file']");
-        console.log(input);
         input.onchange = function () {
             this.form.submit();
         }
-
-        //$(document).ready(function () {
-        //    $('#sidebarCollapse').on('click', function () {
-        //        $('#sidebar').toggleClass('active');
-        //    });
-        //});
     </script>
 </body>
 </html>

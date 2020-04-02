@@ -26,10 +26,8 @@ namespace IT_Dnistro.Controllers
             _userManager = userManager;
         }
         [HttpGet("index")]
-        //[Authorize(Roles = "admin")]
         public IActionResult Index() => View(_roleManager.Roles.ToList());
 
-        //[Authorize(Roles = "admin")]
         [HttpGet("create")]
         public IActionResult Create() => View();
 
@@ -68,7 +66,6 @@ namespace IT_Dnistro.Controllers
         public IActionResult UserList() => View(_userManager.Users.ToList());
 
         [HttpGet("role")]
-        //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(true);
@@ -85,24 +82,18 @@ namespace IT_Dnistro.Controllers
                 };
                 return View(model);
             }
-
             return NotFound();
         }
         [HttpPost("role")]
 
         public async Task<IActionResult> Edit([FromForm]string userId, [FromForm]List<string> roles)
         {
-            // получаем пользователя
             var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(true);
             if (user != null)
             {
-                // получем список ролей пользователя
                 var userRoles = await _userManager.GetRolesAsync(user).ConfigureAwait(true);
-                // получаем все роли
                 var allRoles = _roleManager.Roles.ToList();
-                // получаем список ролей, которые были добавлены
                 var addedRoles = roles.Except(userRoles);
-                // получаем роли, которые были удалены
                 var removedRoles = userRoles.Except(roles);
 
                 await _userManager.AddToRolesAsync(user, addedRoles).ConfigureAwait(true);
@@ -110,7 +101,6 @@ namespace IT_Dnistro.Controllers
                 await _userManager.RemoveFromRolesAsync(user, removedRoles).ConfigureAwait(true);
                 return RedirectToAction("Index","Users");
             }
-
             return NotFound();
         }
 

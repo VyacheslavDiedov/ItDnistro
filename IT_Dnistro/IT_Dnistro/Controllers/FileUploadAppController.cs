@@ -28,13 +28,6 @@ namespace IT_Dnistro.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        //public FileUploadAppController(DatabaseContext context, IWebHostEnvironment appEnvironment) : base()
-        //{
-        //    _db = context;
-        //    _appEnvironment = appEnvironment;
-        //}
-
-
         [HttpGet("upload")]
         public IActionResult Index()
         {
@@ -58,7 +51,6 @@ namespace IT_Dnistro.Controllers
                 gvm.Tours = _tours.Where(p => p.Id == IdTour);
                 ViewBag.TourName = _db.TourTypes.Find(IdTour)?.TourTypeName;
             }
-
             return View(gvm);
         }
 
@@ -68,14 +60,14 @@ namespace IT_Dnistro.Controllers
             if (uploadedFile != null)
             {
                 string namePhoto = "";
-                if (uploadedFile.FileName.Length <= 35)
+                if (uploadedFile.FileName.Length <= 15)
                 {
                     namePhoto = uploadedFile.FileName;
                 }
                 else
                 {
-                    int position = uploadedFile.FileName.IndexOf(".");
-                    namePhoto = uploadedFile.FileName.Substring(0, 31) + uploadedFile.FileName.Substring(position);
+                    var position = uploadedFile.FileName.IndexOf(".", StringComparison.Ordinal);
+                    namePhoto = uploadedFile.FileName.Substring(0, 11) + uploadedFile.FileName.Substring(position);
                 }
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + @"\images\Swiper\" + namePhoto, FileMode.Create))
                 {
@@ -104,15 +96,5 @@ namespace IT_Dnistro.Controllers
             }
             return RedirectToAction("Index");
         }
-
-        //[HttpGet]
-        //[Route("tour-info")]
-        //public ActionResult GetTourInfo(int idTour)
-        //{
-        //    Console.WriteLine(IdTour);
-        //    return RedirectToAction("Index");
-        //}
-
-
     }
 }
