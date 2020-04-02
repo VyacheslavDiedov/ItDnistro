@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DataBase;
 using Microsoft.AspNetCore.Mvc;
 using IT_Dnistro.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +14,7 @@ namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class DashboardController : Controller
     {
         private readonly DatabaseContext _context;
@@ -30,50 +32,38 @@ namespace IT_Dnistro.Controllers
         [Route("tour-id")]
         public ActionResult GetTourId(int idTour)
         {
-            IdTour = idTour; 
+            IdTour = idTour;
             return RedirectToAction("GetParticipants");
         }
 
         [HttpGet("participant")]
         public IActionResult GetParticipants()
         {
-            if (IdTour == 0)
+            var tourTypeFirst = _context.TourTypes.FirstOrDefault()?.Id;
+            var tourTypeId = _context.TourTypes.Find(IdTour)?.Id;
+            if (tourTypeId == null)
             {
-                if (_context.TourTypes.FirstOrDefault()?.Id == null)
-                {
-                    IdTour = 0;
-                }
-                if (_context.TourTypes.FirstOrDefault()?.Id != null)
+                if (tourTypeFirst != null)
                 {
                     IdTour = _context.TourTypes.First().Id;
                 }
             }
 
-            if (IdTour > 0)
+            if (_context.TourTypes.Find(IdTour)?.Id != null)
             {
-                if (_context.TourTypes.Find(IdTour)?.Id == null)
-                {
-                    if (_context.TourTypes.FirstOrDefault()?.Id != null)
-                    {
-                        IdTour = _context.TourTypes.First().Id;
-                    }
-                }
-
-                if (_context.TourTypes.Find(IdTour)?.Id != null)
-                {
-                    DateTime dateTime = DateTime.Now;
-                    DateTime dateTimes = _context.TourTypes.Find(IdTour).TourDateFrom;
-                    TimeSpan diff = dateTimes - dateTime;
-                    ViewBag.Time = diff.Days;
-                    ViewBag.TourName = _context.TourTypes.Find(IdTour).TourTypeName;
-                }
+                DateTime dateTime = DateTime.Now;
+                DateTime dateTimes = _context.TourTypes.Find(IdTour).TourDateFrom;
+                TimeSpan diff = dateTimes - dateTime;
+                ViewBag.Time = diff.Days;
+                ViewBag.TourName = _context.TourTypes.Find(IdTour).TourTypeName;
             }
+
             foreach (var count in _context.Participants)
             {
                 countParticipant++;
             }
             ViewBag.Count = countParticipant;
-            
+
 
             var items = _context.Participants.Where(d => d.TourTypeId == IdTour).Select(x => new ParticipantsViewModel()
             {

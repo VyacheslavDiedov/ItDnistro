@@ -8,11 +8,13 @@ using DataBase;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using IT_Dnistro.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class FileUploadAppController : DashboardController
     {
         DatabaseContext _db;
@@ -36,26 +38,27 @@ namespace IT_Dnistro.Controllers
         [HttpGet("upload")]
         public IActionResult Index()
         {
+            var tourTypeFirst = _db.TourTypes.FirstOrDefault()?.Id;
+            var tourTypeId = _db.TourTypes.Find(IdTour)?.Id;
             _photos = new List<TourPhoto>(_db.TourPhotos);
             _tours = new List<TourType>(_db.TourTypes);
             GalleryViewModel gvm = new GalleryViewModel { Tours = _tours, Photos = _photos };
 
-            if (IdTour == 0)
+            if (tourTypeId == null)
             {
-                if (_db.TourTypes.FirstOrDefault()?.Id == null)
-                {
-                    IdTour = 0;
-                }
-                if (_db.TourTypes.FirstOrDefault()?.Id != null)
+                if (tourTypeFirst != null)
                 {
                     IdTour = _db.TourTypes.First().Id;
                 }
             }
 
-            gvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
-            gvm.Tours = _tours.Where(p => p.Id == IdTour);
-            ViewBag.TourName = _db.TourTypes.Find(IdTour)?.TourTypeName;
-            
+            if (_db.TourTypes.Find(IdTour)?.Id != null)
+            {
+                gvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
+                gvm.Tours = _tours.Where(p => p.Id == IdTour);
+                ViewBag.TourName = _db.TourTypes.Find(IdTour)?.TourTypeName;
+            }
+
             return View(gvm);
         }
 

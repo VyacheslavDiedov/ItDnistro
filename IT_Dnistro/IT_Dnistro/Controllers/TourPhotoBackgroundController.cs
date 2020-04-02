@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using IT_Dnistro.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class TourPhotoBackgroundController : DashboardController
     {
         DatabaseContext _context;
@@ -31,24 +33,27 @@ namespace IT_Dnistro.Controllers
         [HttpGet("index")]
         public IActionResult Index()
         {
+            var tourTypeFirst = _context.TourTypes.FirstOrDefault()?.Id;
+            var tourTypeId = _context.TourTypes.Find(IdTour)?.Id;
             _photos = new List<TourPhotoBackground>(_context.TourPhotoBackgrounds);
             _tours = new List<TourType>(_context.TourTypes);
             BackgroundViewModel bvm = new BackgroundViewModel { Tours = _tours, Photos = _photos};
-            if (IdTour == 0)
+
+            if (tourTypeId == null)
             {
-                if (_context.TourTypes.FirstOrDefault()?.Id == null)
-                {
-                    IdTour = 0;
-                }
-                if (_context.TourTypes.FirstOrDefault()?.Id != null)
+                if (tourTypeFirst != null)
                 {
                     IdTour = _context.TourTypes.First().Id;
                 }
             }
 
-            bvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
-            bvm.Tours = _tours.Where(p => p.Id == IdTour);
-            ViewBag.TourName = _context.TourTypes.Find(IdTour)?.TourTypeName;
+            if (_context.TourTypes.Find(IdTour)?.Id != null)
+            {
+                bvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
+                bvm.Tours = _tours.Where(p => p.Id == IdTour);
+                ViewBag.TourName = _context.TourTypes.Find(IdTour)?.TourTypeName;
+            }
+
             return View(bvm);
         }
 

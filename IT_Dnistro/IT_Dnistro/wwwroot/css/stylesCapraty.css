@@ -215,7 +215,7 @@ p {
     font-family: "Bahnschrift", sans-serif;
 }
 .secondHeader {
-    margin-top: 4vh;
+    margin-top: 0;
 }
 .content-title {
     text-transform: uppercase;

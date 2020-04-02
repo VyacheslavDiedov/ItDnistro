@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DataBase;
 using IT_Dnistro.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class UsersController : Controller
     {
         UserManager<IdentityUser> _userManager;
