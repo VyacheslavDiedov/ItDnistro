@@ -26,7 +26,7 @@ namespace IT_Dnistro.Controllers
             if (tourType == null)
             {
                 Response.StatusCode = 404;
-                return View("Error", new ErrorViewModel()
+                return View("Error404", new ErrorViewModel()
                 {
                     //todo fill fields
                 });
@@ -55,6 +55,13 @@ namespace IT_Dnistro.Controllers
         [HttpGet("error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpGet("error404")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error404()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
