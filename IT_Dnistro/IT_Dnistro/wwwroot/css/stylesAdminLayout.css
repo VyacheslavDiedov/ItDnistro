@@ -22,6 +22,10 @@ body {
     display: inline-block;
 }
 
+.nav-right {
+    display: flex;
+}
+
 .otstup-top {
     padding-top: 10px;
 }
