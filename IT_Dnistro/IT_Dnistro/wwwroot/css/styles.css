@@ -410,6 +410,12 @@ footer {
     width: 80%;
 }
 
+.swiper-container {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 350px;
+}
+
 @media (min-width: 576px) and (max-width: 799px) {
     .ImgCloud1, .ImgCloud2, .ImgCloud3, .ImgCloud4, .ImgCloud5 {
         display: flex;
@@ -723,137 +729,599 @@ footer {
     }
 }
 
-@media (min-width: 1396px){
+@media (min-width: 1396px) and (max-width:1600px){
     .ImgCloud1, .ImgCloud2, .ImgCloud3, .ImgCloud4, .ImgCloud5 {
         display: flex;
     }
+
     .ImgCloud1 {
         width: 10vw;
         top: 25vh;
     }
+
     .ImgCloud2 {
         width: 35vw;
         top: 2vh;
     }
+
     .ImgCloud3 {
         width: 20vw;
         top: -40vh;
         position: relative;
         z-index: 6;
     }
+
     .ImgCloud4 {
-        width: 40vw;
+        width: 42vw;
         top: 3vh;
     }
+
     .firstHeader {
         margin-top: 20vh;
         margin-bottom: 5vh;
     }
+
     .secondHeader {
         margin-top: 10vh;
     }
+
     .thirdHeader {
         padding-top: 45vh;
     }
+
     .forthHeader {
-        margin-top: 20vh;
+        margin-top: 18vh;
     }
+
     .block4 {
         margin-top: -30vh;
     }
+
     .button4 {
         top: 2vh;
     }
+
     footer {
-        padding-top: 20vh;
+        padding-top: 21vh;
     }
+
     .content ul {
         margin-left: 4vw !important;
         line-height: 1.4;
         text-align: left;
     }
+
     .container {
         width: 70%;
     }
+
     .footerBlock1 {
         padding: 15vh;
     }
+
     .footerBlock3 {
         padding: -10vh;
     }
+
     .footerBlock4 {
-        padding: 22vh;
+        padding: 18vh;
     }
+
     .footerBlock5 {
         padding: 42vh;
     }
-    .slider img {
-        width: 100%;
-        max-height: 450px;
-        height: auto;
+
+    .content li {
+        font-size: 9pt;
     }
-    .project__next img, .project__prev img{
-        width:3vw;
-        height:auto;
-        padding-top: 20vh;
-    }
-    .slick-slide {
-        padding-top:0.75%;
-    }
-    .slick-center {
-        padding-top:0;
-    }
-    .slick-center img {
-        width: 135%;
-        left: -8vh;
-        height: auto;
-        position: relative;
-        z-index: 2000;
-    }.content li {
-         font-size: 9pt;
-     }
+
     .social-icon {
         height: auto;
         width: 2vw;
     }
+
     .logo {
-        width: 5vw;
+        width: 6vw;
         height: auto;
+        margin-left: -6vh;
     }
+
     .block2 {
         margin-top: -18vh;
     }
+
     .block6 {
         margin-top: -15vh;
     }
+
     p {
-        font-size: 12pt;
+        font-size: 16pt;
     }
+
     h1 {
-        font-size: 36pt;
+        font-size: 44pt;
     }
+
     h2 {
         font-size: 24pt;
     }
+
     h3 {
-        font-size: 18pt;
+        font-size: 26pt;
     }
+
     .content li {
-        font-size: 12pt;
+        font-size: 15pt;
     }
+
     .row a {
-        font-size: 12pt;
+        font-size: 16pt;
     }
+
     header, footer, .button4 {
-        font-size: 85%;
+        font-size: 115%;
     }
+
     .socialMedia {
         width: 5vw;
     }
+
     .justify-spase-around {
         justify-content: space-around;
     }
+
     .top-otstup {
-        padding-top: 2vh;
+        padding-top: 1vh;
+    }
+
+    .fa {
+        padding: 7px;
+        font-size: 28px;
+        width: 42px;
+        height: 42px;
+        text-align: center;
+        text-decoration: none;
+        margin: 8px 2px;
+        border-radius: 50%;
+        background: #603eb3;
+        color: white;
+    }
+
+    .content h3 {
+        padding: 7px 0 7px 0;
+        text-align: center;
+        font-size: 16pt;
+    }
+
+    .swiper-container {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 250px;
+    }
+
+    .footer-phone-email {
+        padding-top: 8px;
+        width: 20vh;
+        margin-left: -5vh;
+    }
+
+    .button-container {
+        padding-top: 12px;
+        margin-left: 1vh;
+        margin-right: -8vh;
+    }
+
+    .forthHeader {
+        margin-top: 25vh;
+        margin-bottom: 2vh;
+    }
+
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (min-width: 1601px) and (max-width:2047px) {
+    .ImgCloud1, .ImgCloud2, .ImgCloud3, .ImgCloud4, .ImgCloud5 {
+        display: flex;
+    }
+
+    .ImgCloud1 {
+        width: 10vw;
+        top: 25vh;
+    }
+
+    .ImgCloud2 {
+        width: 35vw;
+        top: 2vh;
+    }
+
+    .ImgCloud3 {
+        width: 20vw;
+        top: -40vh;
+        position: relative;
+        z-index: 6;
+    }
+
+    .ImgCloud4 {
+        width: 42vw;
+        top: 3vh;
+    }
+
+    .firstHeader {
+        margin-top: 20vh;
+        margin-bottom: 5vh;
+    }
+
+    .secondHeader {
+        margin-top: 10vh;
+    }
+
+    .thirdHeader {
+        padding-top: 45vh;
+    }
+
+    .forthHeader {
+        margin-top: 18vh;
+    }
+
+    .block4 {
+        margin-top: -30vh;
+    }
+
+    .button4 {
+        top: 2vh;
+    }
+
+    footer {
+        padding-top: 21vh;
+    }
+
+    .content ul {
+        margin-left: 4vw !important;
+        line-height: 1.4;
+        text-align: left;
+    }
+
+    .container {
+        width: 70%;
+    }
+
+    .footerBlock1 {
+        padding: 15vh;
+    }
+
+    .footerBlock3 {
+        padding: -10vh;
+    }
+
+    .footerBlock4 {
+        padding: 18vh;
+    }
+
+    .footerBlock5 {
+        padding: 42vh;
+    }
+
+    .content li {
+        font-size: 9pt;
+    }
+
+    .social-icon {
+        height: auto;
+        width: 2vw;
+    }
+
+    .logo {
+        width: 6vw;
+        height: auto;
+        margin-left: -6vh;
+    }
+
+    .block2 {
+        margin-top: -18vh;
+    }
+
+    .block6 {
+        margin-top: -15vh;
+    }
+
+    p {
+        font-size: 16pt;
+    }
+
+    h1 {
+        font-size: 44pt;
+    }
+
+    h2 {
+        font-size: 24pt;
+    }
+
+    h3 {
+        font-size: 26pt;
+    }
+
+    .content li {
+        font-size: 15pt;
+    }
+
+    .row a {
+        font-size: 16pt;
+    }
+
+    header, footer, .button4 {
+        font-size: 115%;
+    }
+
+    .socialMedia {
+        width: 5vw;
+    }
+
+    .justify-spase-around {
+        justify-content: space-around;
+    }
+
+    .top-otstup {
+        padding-top: 1vh;
+    }
+
+    .fa {
+        padding: 6px;
+        font-size: 30px;
+        width: 42px;
+        height: 42px;
+        text-align: center;
+        text-decoration: none;
+        margin: 8px 2px;
+        border-radius: 50%;
+        background: #603eb3;
+        color: white;
+    }
+
+    .content h3 {
+        padding: 7px 0 7px 0;
+        text-align: center;
+        font-size: 16pt;
+    }
+
+    .swiper-container {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 450px;
+    }
+
+    .footer-phone-email {
+        padding-top: 8px;
+        width: 20vh;
+        margin-left: -5vh;
+    }
+
+    .button-container {
+        padding-top: 12px;
+        margin-left: 1vh;
+        margin-right: -8vh;
+    }
+
+    .forthHeader {
+        margin-top: 13vh;
+        margin-bottom: 2vh;
+    }
+
+    .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (min-width: 2048px) {
+    .ImgCloud1, .ImgCloud2, .ImgCloud3, .ImgCloud4, .ImgCloud5 {
+        display: flex;
+    }
+
+    .ImgCloud1 {
+        width: 10vw;
+        top: 25vh;
+    }
+
+    .ImgCloud2 {
+        width: 35vw;
+        top: 2vh;
+    }
+
+    .ImgCloud3 {
+        width: 20vw;
+        top: -40vh;
+        position: relative;
+        z-index: 6;
+    }
+
+    .ImgCloud4 {
+        width: 42vw;
+        top: 3vh;
+    }
+
+    .firstHeader {
+        margin-top: 20vh;
+        margin-bottom: 5vh;
+    }
+
+    .secondHeader {
+        margin-top: 10vh;
+    }
+
+    .thirdHeader {
+        padding-top: 45vh;
+    }
+
+    .forthHeader {
+        margin-top: 18vh;
+    }
+
+    .block4 {
+        margin-top: -30vh;
+    }
+
+    .button4 {
+        top: 2vh;
+    }
+
+    footer {
+        padding-top: 21vh;
+    }
+
+    .content ul {
+        margin-left: 4vw !important;
+        line-height: 1.4;
+        text-align: left;
+    }
+
+    .container {
+        width: 70%;
+    }
+
+    .footerBlock1 {
+        padding: 15vh;
+    }
+
+    .footerBlock3 {
+        padding: -10vh;
+    }
+
+    .footerBlock4 {
+        padding: 18vh;
+    }
+
+    .footerBlock5 {
+        padding: 42vh;
+    }
+
+    .content li {
+        font-size: 9pt;
+    }
+
+    .social-icon {
+        height: auto;
+        width: 2vw;
+    }
+
+    .logo {
+        width: 6vw;
+        height: auto;
+        margin-left: -6vh;
+    }
+
+    .block2 {
+        margin-top: -18vh;
+    }
+
+    .block6 {
+        margin-top: -15vh;
+    }
+
+    p {
+        font-size: 16pt;
+    }
+
+    h1 {
+        font-size: 44pt;
+    }
+
+    h2 {
+        font-size: 24pt;
+    }
+
+    h3 {
+        font-size: 26pt;
+    }
+
+    .content li {
+        font-size: 15pt;
+    }
+
+    .row a {
+        font-size: 16pt;
+    }
+
+    header, footer, .button4 {
+        font-size: 145%;
+    }
+
+    .socialMedia {
+        width: 5vw;
+    }
+
+    .justify-spase-around {
+        justify-content: space-around;
+    }
+
+    .top-otstup {
+        padding-top: 1vh;
+    }
+
+    .fa {
+        padding: 6px;
+        font-size: 30px;
+        width: 42px;
+        height: 42px;
+        text-align: center;
+        text-decoration: none;
+        margin: 8px 2px;
+        border-radius: 50%;
+        background: #603eb3;
+        color: white;
+    }
+
+    .content h3 {
+        padding: 7px 0 7px 0;
+        text-align: center;
+        font-size: 16pt;
+    }
+
+    .swiper-container {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 250px;
+    }
+
+    .footer-phone-email {
+        padding-top: 8px;
+        width: 20vh;
+        margin-left: -5vh;
+    }
+
+    .button-container {
+        padding-top: 12px;
+        margin-left: 1vh;
+        margin-right: -8vh;
+    }
+
+    .forthHeader {
+        margin-top: 13vh;
+        margin-bottom: 2vh;
+    }
+
+    .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (width: 2560px) and (height:1080px) {
+    .block3 {
+        margin-top: -16vh;
+    }
+
+    .ImgCloud4 {
+        width: 49vw;
+        top: 3vh;
+    }
+    .block5 {
+        margin-top: -20vh;
+    }
+    .forthHeader {
+        margin-top: 20vh;
+        margin-bottom: 2vh;
     }
 }
