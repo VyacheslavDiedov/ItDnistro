@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using IT_Dnistro.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class TourPhotoBackgroundController : DashboardController
     {
         DatabaseContext _context;

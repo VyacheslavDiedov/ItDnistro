@@ -7,6 +7,7 @@ namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         private DatabaseContext _db;
@@ -16,7 +17,6 @@ namespace IT_Dnistro.Controllers
         }
 
         [HttpGet("adminmain")]
-        //[Authorize(Roles = "admin")]
         public IActionResult AdminMainPage()
         {
             Console.WriteLine(HttpContext.User.Identity.Name);
@@ -24,7 +24,6 @@ namespace IT_Dnistro.Controllers
         }
 
         [HttpGet("admin")]
-        //[Authorize(Roles = "admin")]
         public IActionResult Admin()
         {
             Console.WriteLine(HttpContext.User.Identity.Name);

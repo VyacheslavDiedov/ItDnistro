@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataBase;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class TourTypesController : Controller
     {
         private readonly DatabaseContext _context;

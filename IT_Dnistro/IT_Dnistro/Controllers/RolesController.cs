@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Identity;
 using IT_Dnistro.Models;
 using IT_Dnistro.ViewModels;
 using DataBase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace IT_Dnistro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class RolesController : Controller
     {
 
