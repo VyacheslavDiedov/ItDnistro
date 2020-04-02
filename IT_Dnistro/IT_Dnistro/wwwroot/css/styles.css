@@ -73,7 +73,7 @@ h2 {
     font-family: "Bahnschrift", sans-serif;
     color: rgb(28, 73, 135);
     text-transform: uppercase;
-    line-height: 1.2;
+    line-height: 1.6;
     text-align: center;
 }
 
@@ -190,8 +190,8 @@ div.col-2 {
 }
 h3 {
     font-size: 13pt;
-    font-family: "Arial", sans-serif;
-    color: rgb(0, 0, 0);
+    font-family: "Bahnschrift", sans-serif;
+    color: rgb(28, 73, 135);
     font-weight: bold;
     line-height: 1.2;
     text-align: center;
@@ -217,7 +217,7 @@ p {
     width: 30vw;
     height: auto;
     float: right;
-    margin-top: -72vh;
+    margin-top: -70vh;
     position: relative;
     z-index: 1;
     display: none;
@@ -227,6 +227,7 @@ p {
     height: auto;
     float: left;
     margin-top: -3vh;
+    margin-left: 3vh;
     position: relative;
     z-index: 1;
     display: none;
@@ -287,6 +288,7 @@ p {
     height: auto;
     float: left;
     display: none;
+    margin-top: -5vh;
 }
 
 
@@ -395,7 +397,7 @@ footer {
     padding: 17vh;
 }
 .footerBlock4 {
-    padding: 17vh;
+    padding: 8vh;
 }
 .footerBlock5 {
     padding: 20vh;
@@ -615,24 +617,23 @@ footer {
         top: 20vh;
     }
     .ImgCloud2 {
-        width: 40vw;
+        width: 32vw;
     }
     .ImgCloud3 {
         width: 20vw;
-        top: -80vh;
+        top: -36vh;
         position: relative;
         z-index: 6;
     }
     .ImgCloud4 {
-        width: 45vw;
+        width: 33vw;
     }
     .firstHeader {
         margin-top: 20vh;
         margin-bottom: 5vh;
     }
     .secondHeader {
-        margin-top: 15vh;
-        margin-bottom: 10vh;
+        margin-top: 7vh;
     }
     .thirdHeader {
         padding-top: 45vh;
@@ -664,7 +665,7 @@ footer {
         padding: 1vh;
     }
     .footerBlock4 {
-        padding: 25vh;
+        padding: 20vh;
     }
     .footerBlock5 {
         padding: 45vh;
@@ -749,8 +750,7 @@ footer {
         margin-bottom: 5vh;
     }
     .secondHeader {
-        margin-top: 15vh;
-        margin-bottom: 20vh;
+        margin-top: 10vh;
     }
     .thirdHeader {
         padding-top: 45vh;
@@ -782,7 +782,7 @@ footer {
         padding: -10vh;
     }
     .footerBlock4 {
-        padding: 30vh;
+        padding: 22vh;
     }
     .footerBlock5 {
         padding: 42vh;
