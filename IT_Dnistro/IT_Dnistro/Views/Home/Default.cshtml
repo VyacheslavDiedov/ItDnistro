@@ -66,7 +66,107 @@
             z-index: -2;
             padding: 0;
         }
+        .error
+        {
+            color: red;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script type="text/javascript">
+
+jQuery(document).ready(function($) {
+	var $loading = $('<div class="loading"><img  alt="" /></div>');
+	$(".default").each(function(){
+		var defaultVal = $(this).attr('title');
+		$(this).focus(function(){
+			if ($(this).val() == defaultVal){
+				$(this).removeClass('active').val('');
+			}
+		});
+		$(this).blur(function() {
+			if ($(this).val() == ''){
+				$(this).addClass('active').val(defaultVal);
+			}
+		})
+		.blur().addClass('active');
+	});
+	$('.btn-submit').click(function(e){
+        x=document.getElementsByClassName("error");  // Find the elements
+    for(var i = 0; i < x.length; i++){
+    x[i].innerText="";    // Change the content
+    }
+
+        var emailReg = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var telReg1 = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+        var e_mes = document.getElementById("email-err");
+        var n_mes = document.getElementById("name-err");
+        var t_mes = document.getElementById("tel-err");
+
+
+
+        var data = {
+            FullName: $("#input-name").val(),
+            EMail: $("#input-email").val(),
+            PhoneNumber: $("#input-phone").val(),
+            TourTypeId: @ViewBag.TourId
+
+        };
+
+        if (data.EMail.length == 0) {
+
+            e_mes.innerText = "Обов'язкове поле";
+        }
+        if (data.EMail.length != 0 && !emailReg.test(data.EMail)) {
+
+            e_mes.innerText = "Введіть валідну email адресу";
+        }
+        if (data.FullName.length == 0)
+        {
+             n_mes.innerText = "Обов'язкове поле";
+
+        }
+        if (data.PhoneNumber.length == 0)
+        {
+            t_mes.innerText = "Обов'язкове поле";
+        }
+        if (data.PhoneNumber.length != 0 && !data.PhoneNumber.match(telReg1)  )
+        {
+            let mesage22 = document.getElementById("tel-err").innerText = "Введіть валідний номер телефону ";
+
+        }
+
+       if (t_mes.innerText == "" && e_mes.innerText == "" && n_mes.innerText == "") {
+$("[data-dismiss=modal]").trigger({ type: "click" });
+                $.ajax({
+                    url: "/Home/SetData",
+                    type: 'POST',
+                    cache: false,
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: Swal.fire(
+  'Good job!',
+  'Your data is saved!',
+  'success'
+)
+                });
+
+}
+
+		e.preventDefault();
+	});
+});
+function defaulttextRemove(){
+	$('.default').each(function(){
+		var defaultVal = $(this).attr('title');
+		if ($(this).val() == defaultVal){
+			$(this).val('');
+		}
+	});
+}
+    </script>
 </head>
 
 <body>
@@ -79,7 +179,7 @@
                     <div class="col-1 separator"></div>
                     @*<div class="col-sm-3 add_separator"><a href="~/scandinavia">Скандинавія</a></div>*@
                     @*<div class="col-sm-3 add_separator"><a href="~/carpaty">Карпати</a></div>*@
-                    @await Component.InvokeAsync("NavigationMenuMain",@ViewBag.TourId)
+                    @await Component.InvokeAsync("NavigationMenuMain", @ViewBag.TourId)
 
                     <div class="col-auto contactNumber">+38 067 <b>431 74 24</b> <br> +38 073 <b>209 97 43</b></div>
                 </div>
@@ -99,7 +199,9 @@
                     <a href="#" class="fa fa-instagram"></a> <br>
                 </div>
                 <div class="text-center">
-                    <a asp-action="Register" asp-controller="Account" class="button4">Приєднатись</a>
+                    <button type="button" class="btn btn-primary button4" data-toggle="modal" data-target="#exampleModal">
+                        Приєднатись
+                    </button>
                 </div>
                 <div class="footerBlock1"></div>
             </div>
@@ -300,7 +402,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="footerBlock4"></div>
@@ -345,11 +447,13 @@
                             </div>
                         </div>
                         <div class="col-sm-4 button-container">
-                            <a asp-action="Register" asp-controller="Account" class="button4">Приєднатись</a>
+                            <button type="button" class="btn btn-primary button4" data-toggle="modal" data-target="#exampleModal">
+                                Приєднатись
+                            </button>
                         </div>
                         @*<div class="col-sm-1">
 
-                        </div>*@
+                            </div>*@
                         <div class="footerMedia">
                             <div class="col-sm-1 social-media-container">
                                 <a href="#">
@@ -372,33 +476,95 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Приєднатися до @ViewBag.TourName</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modal-body" class="modal-body">
+
+
+                    <fieldset>
+
+
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input id="input-email" type="email" class="form-control required" name="email" aria-describedby="emailHelp" placeholder="Введіть Еmail" required />
+                            <span id="email-err" class="error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Повне ім'я:</label>
+                            <input id="input-name" type="text" class="form-control required" name="name" aria-describedby="emailHelp" placeholder="Введіть ПІБ" required />
+                            <span id="name-err" class="error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон:</label>
+                            <input id="input-phone" type="text" class="form-control required" name="phone" aria-describedby="emailHelp" placeholder="Введіть ваш номер телефону" required />
+                            <span id="tel-err" class="error"></span>
+                        </div>
+
+
+                    </fieldset>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+                    <button id="save" type="button" class="btn btn-primary btn-submit">Зберегти</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+            asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"
+            asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
+    </script>
     <!-- Swiper JS -->
     <script src="~/swiper/package/js/swiper.min.js"></script>
 
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-        },
-    });
-</script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
 
 </body>
 </html>

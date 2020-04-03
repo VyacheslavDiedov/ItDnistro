@@ -58,6 +58,25 @@ namespace IT_Dnistro.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [HttpPost]
+        [Route("home/setdata")]
+        public ActionResult SetData(Participant item)
+        {
+            Participant participant = new Participant()
+            {
+                Id = item.Id,
+                FullName = item.FullName,
+                EMail = item.EMail,
+                PhoneNumber = item.PhoneNumber,
+                TourTypeId = item.TourTypeId
+            };
+            _db.Add(participant);
+            var TourType = _db.TourTypes.Find(item.TourTypeId);
+            TourType.Amount++;
+            _db.SaveChanges();
+
+            return Ok();
+        }
 
         [HttpGet("error404")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
