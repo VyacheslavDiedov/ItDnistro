@@ -321,10 +321,8 @@
                 <div class="swiper-wrapper">
                     @foreach (var photo in Model)
                     {
-                     
-                            <div class="swiper-slide" style="background-image: url(../images/Swiper/@photo.PhotoLink)"></div>
-                        
-                        }
+                        <div class="swiper-slide" style="background-image: url(../images/Swiper/@photo.PhotoLink)"></div>
+                    }
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
@@ -381,24 +379,24 @@
     <script src="~/swiper/package/js/swiper.min.js"></script>
 
 <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-            },
-        });
-    </script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+</script>
 
 
 </body>

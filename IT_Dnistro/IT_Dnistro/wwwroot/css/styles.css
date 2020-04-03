@@ -78,10 +78,13 @@ h2 {
 }
 
 .separator {
-    background-color: #9999cc;
+    background-color: rgb(248, 248, 248);
     width: 2px;
-    padding: 0;
+    margin-top: 2px;
+    padding: 0px;
     flex: none;
+    height: 4vh;
+    margin-top: 2px;
 }
 
 .top-otstup {
@@ -103,7 +106,7 @@ header {
     z-index: 3;
 }
 .header {
-    background-image: url("../images/header.png");
+    /*background-image: url("../images/heder2.png");*/
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
@@ -835,31 +838,31 @@ footer {
     }
 
     p {
-        font-size: 16pt;
+        font-size: 14pt;
     }
 
     h1 {
-        font-size: 44pt;
+        font-size: 34pt;
     }
 
     h2 {
-        font-size: 24pt;
+        font-size: 22pt;
     }
 
     h3 {
-        font-size: 26pt;
+        font-size: 17pt;
     }
 
     .content li {
-        font-size: 15pt;
+        font-size: 13pt;
     }
 
     .row a {
-        font-size: 16pt;
+        font-size: 12pt;
     }
 
     header, footer, .button4 {
-        font-size: 115%;
+        font-size: 90%;
     }
 
     .socialMedia {
@@ -876,9 +879,9 @@ footer {
 
     .fa {
         padding: 7px;
-        font-size: 28px;
-        width: 42px;
-        height: 42px;
+        font-size: 24px;
+        width: 36px;
+        height: 38px;
         text-align: center;
         text-decoration: none;
         margin: 8px 2px;
@@ -890,7 +893,7 @@ footer {
     .content h3 {
         padding: 7px 0 7px 0;
         text-align: center;
-        font-size: 16pt;
+        font-size: 15pt;
     }
 
     .swiper-container {
@@ -917,8 +920,8 @@ footer {
     }
 
     .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
     }
 }
 
