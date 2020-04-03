@@ -62,12 +62,12 @@
                 }
 
                 <div class="plus_image example-1">
-                    <label>
-                        <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
-                            <img src="~/images/plus.png" alt="plus">
-                            <input type="file" name="uploadedFile" accept='image/*'>
+                    <form asp-action="AddFile" asp-controller="FileUploadApp" method="post" enctype="multipart/form-data">
+                            <label>
+                                <img src="~/images/plus.png" alt="plus">
+                                <input type="file" name="uploadedFile" accept='image/*'>
+                            </label>
                         </form>
-                    </label>
                 </div>
             </div>
         </div>
