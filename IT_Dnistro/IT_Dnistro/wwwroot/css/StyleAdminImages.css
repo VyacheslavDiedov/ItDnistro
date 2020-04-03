@@ -1,12 +1,9 @@
-﻿
-
-.gallery_container {
+﻿.gallery_container {
     width: auto;
     height: 100vh;
     position: relative;
     display: flex;
 }
-
 
 .menu {
     border-bottom: solid 1.5px #d7d7d7;
@@ -100,21 +97,19 @@
     line-height: 7vh;
 }
 
-/*.photo img {
+.photo img {
     margin-left: 88%;
     width: 11%;
-    display: none;
-}*/
+}
 
 .image:hover img {
     display: block;
 }
 
 .image:hover {
-    /*-webkit-box-shadow: 0px 0px 11px 4px #29BC29 ;
+    -webkit-box-shadow: 0px 0px 11px 4px #29BC29 ;
     -moz-box-shadow: 0px 0px 11px 4px #29BC29;
-    box-shadow: 0px 0px 11px 4px #29BC29;*/
-    border: 6px solid #5CB45B;
+    box-shadow: 0px 0px 11px 4px #29BC29;
 }
 
 .plus_image {
@@ -141,29 +136,10 @@ form img {
     cursor: pointer;
 }
 
-/*.label {
-    margin: 0 auto;
-    width: 4vh;
-    height: 4vh;
-    display: block;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
-}*/
-
-/*.plus_image img {
-    width: 100%;
-}*/
-
 .dropdown {
     margin-left: 1%;
     margin-top: 2%;
 }
-
-/*.example-1 .form-group {
-    padding: 1em;
-    margin: 1em
-}*/
 
 .example-1 input[type=file] {
     outline: 0;
@@ -171,34 +147,6 @@ form img {
     pointer-events: none;
     user-select: none
 }
-
-/*.example-1 .label {
-     border-radius: 5px;
-     display: block;
-     padding: 1.2em;
-     transition: border 300ms ease;
-     cursor: pointer;
-     text-align: center
- }
-
-.example-1 .label i {
-    display: block;
-    font-size: 42px;
-    padding-bottom: 16px
-}
-
-.example-1 .label i, .example-1 .label .title {
-    color: grey;
-    transition: 200ms color
-}
-
-.example-1 .label:hover {
-    border: 2px solid #000
-}
-
-.example-1 .label:hover i, .example-1 .label:hover .title {
-    color: #000
-}*/
 
 .mylink {
     background: url('../images/delete.png') no-repeat center right;
