@@ -5,6 +5,9 @@
     margin-left: 0;
     margin-right: 0;
 }
+body {
+    padding-right: 0 !important;
+}
 .row::after {
     content: "";
     clear: both;
@@ -999,10 +1002,8 @@ footer {
     }
 }
 
-@media (min-width: 1167px) and (max-width: 1400px){
-    .container80 {
-        width: 60% !important;
-    }
+@media (min-width: 1167px) and (max-width: 1400px) {
+    .container80 { width: 60% !important }
 }
 
 @media (min-width: 1834px) {
