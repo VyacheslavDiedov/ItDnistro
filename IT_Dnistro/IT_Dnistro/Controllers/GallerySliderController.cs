@@ -15,20 +15,20 @@ namespace IT_Dnistro.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(Roles = "admin")]
-    public class FileUploadAppController : DashboardController
+    public class GallerySliderController : DashboardController
     {
         DatabaseContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
         List<TourPhoto> _photos;
         List<TourType> _tours;
 
-        public FileUploadAppController(DatabaseContext context, IWebHostEnvironment appEnvironment) : base(context, appEnvironment)
+        public GallerySliderController(DatabaseContext context, IWebHostEnvironment appEnvironment) : base(context, appEnvironment)
         {
             _db = context;
             _appEnvironment = appEnvironment;
         }
 
-        [HttpGet("upload")]
+        [HttpGet("index")]
         public IActionResult Index()
         {
             var tourTypeFirst = _db.TourTypes.FirstOrDefault()?.Id;
