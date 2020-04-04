@@ -1422,3 +1422,48 @@ footer {
         margin-top: -15vh;
     }
 }
+.error {
+    color: red;
+}
+
+
+
+.modal-ico {
+    color: #28a745;
+}
+
+.close {
+    color: red;
+}
+
+/*#close-modal {
+    background-color: red;
+}*/
+#save {
+    background-color: #603eb3 !important;
+}
+
+#modal-body {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.form-control {
+    border-radius: 30px;
+}
+
+.modal-footer button {
+    border-radius: 30px;
+}
+.modal-content {
+    border-radius: 30px;
+}
+.swal2-popup {
+    border-radius: 30px;
+}
+.swal2-styled.swal2-confirm {
+    border-radius: 30px;
+    background-color: #603eb3;
+}
+.modal-title{
+    text-align:center!important;
+}

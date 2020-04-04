@@ -66,10 +66,9 @@
             z-index: -2;
             padding: 0;
         }
-        .error
-        {
-            color: red;
-        }
+       #exampleModal{
+    border-radius: 30px;
+}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="sweetalert2.all.min.js"></script>
@@ -510,17 +509,17 @@ function removeToDefault(){
 
 
                         <div class="form-group">
-                            <label>Email:</label>
+                            <label><img  class="modal-ico" src="~/icons/email-icon.png" alt="" /> Email:</label>
                             <input id="input-email" type="email" class="form-control required default" name="email" aria-describedby="emailHelp" placeholder="Введіть Еmail" required />
                             <span id="email-err" class="error"></span>
                         </div>
                         <div class="form-group">
-                            <label>Повне ім'я:</label>
+                           <img class="modal-ico" src="~/icons/name-icon.png" alt="" /> <label>Повне ім'я:</label>
                             <input id="input-name" type="text" class="form-control required  default" name="name" aria-describedby="emailHelp" placeholder="Введіть ПІБ" required />
                             <span id="name-err" class="error"></span>
                         </div>
                         <div class="form-group">
-                            <label>Телефон:</label>
+                            <label><img class="modal-ico" src="~/icons/tel-icon.png" alt="" /> Телефон:</label>
                             <input id="input-phone" type="text" class="form-control required default" name="phone" aria-describedby="emailHelp" placeholder="Введіть ваш номер телефону" required />
                             <span id="tel-err" class="error"></span>
                         </div>
@@ -530,7 +529,7 @@ function removeToDefault(){
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+                    <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
                     <button id="save" type="button" class="btn btn-primary btn-submit">Зберегти</button>
                 </div>
 
