@@ -45,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\GallerySlider\" />
     <Folder Include="Views\Shared\Components\NavigationMenuMain\" />
     <Folder Include="Views\Shared\Components\NavigationMenu\" />
     <Folder Include="Views\TourPhotoBackground\" />
