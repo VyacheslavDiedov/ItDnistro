@@ -206,7 +206,7 @@ function removeToDefault(){
 
         <div class="block1 col-12">
             <div class="headerBackdown">
-                <h1>@ViewBag.TourName<br> @ViewBag.TourDescription</h1>
+                <h1>@ViewBag.TourName<br> @ViewBag.TourTagName</h1>
                 <h3 class="blue">@ViewBag.DateFrom - @ViewBag.DateTo</h3>
                 <div class="socialMedia">
                     <a href="#" class="fa fa-linkedin"></a> <br>
@@ -232,11 +232,7 @@ function removeToDefault(){
                 <div class="row justify-content-center">
                     <div class="col-9">
                         <p>
-                            Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували
-                            для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»!
-                            Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку.
-                            Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити
-                            всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.
+                            @ViewBag.TourTypeDescription
                         </p>
                     </div>
                 </div>
@@ -509,12 +505,12 @@ function removeToDefault(){
 
 
                         <div class="form-group">
-                            <label><img  class="modal-ico" src="~/icons/email-icon.png" alt="" /> Email:</label>
+                            <label><img class="modal-ico" src="~/icons/email-icon.png" alt="" /> Email:</label>
                             <input id="input-email" type="email" class="form-control required default" name="email" aria-describedby="emailHelp" placeholder="Введіть Еmail" required />
                             <span id="email-err" class="error"></span>
                         </div>
                         <div class="form-group">
-                           <img class="modal-ico" src="~/icons/name-icon.png" alt="" /> <label>Повне ім'я:</label>
+                            <img class="modal-ico" src="~/icons/name-icon.png" alt="" /> <label>Повне ім'я:</label>
                             <input id="input-name" type="text" class="form-control required  default" name="name" aria-describedby="emailHelp" placeholder="Введіть ПІБ" required />
                             <span id="name-err" class="error"></span>
                         </div>

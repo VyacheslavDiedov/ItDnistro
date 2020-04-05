@@ -9,13 +9,11 @@ namespace DataBase
 {
     public class DatabaseContext : IdentityDbContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) 
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
         {
             Database.EnsureCreated();
         }
-
-        public DbSet<Tour> Tours { get; set; }
         public DbSet<TourType> TourTypes { get; set; }
         public DbSet<UserTour> UserTours { get; set; }
         public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
@@ -45,9 +43,18 @@ namespace DataBase
             modelBuilder.Entity<TourType>().HasData(
                 new TourType[]
                 {
-                    new TourType {Id = 1, TourTypeName="IT DnistrO", TourTypeDescription = "In My Core",TourDateFrom = DateTime.Now.AddDays(7), TourDateTo = DateTime.Now.AddDays(10)},
-                    new TourType {Id = 2, TourTypeName="IT Carpaty", TourTypeDescription = "Pass with little losses",TourDateFrom = DateTime.Now.AddDays(10), TourDateTo = DateTime.Now.AddDays(12)},
-                    new TourType {Id = 3, TourTypeName="IT Scandinavia", TourTypeDescription = "Move Your Drive",TourDateFrom = DateTime.Now.AddDays(8), TourDateTo = DateTime.Now.AddDays(15)}
+                    new TourType {Id = 1, TourTypeName="IT DnistrO", TourTypeTagName = "In My Core",TourDateFrom = DateTime.Now.AddDays(7), TourDateTo = DateTime.Now.AddDays(10), TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. " +
+                                                                                                                                                                                                         "Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! " +
+                                                                                                                                                                                                         "Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. " +
+                                                                                                                                                                                                         "А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії."},
+                    new TourType {Id = 2, TourTypeName="IT Carpaty", TourTypeTagName = "Pass with little losses",TourDateFrom = DateTime.Now.AddDays(10), TourDateTo = DateTime.Now.AddDays(12), TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. " +
+                                                                                                                                                                                                                       "Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! " +
+                                                                                                                                                                                                                       "Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. " +
+                                                                                                                                                                                                                       "А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії."},
+                    new TourType {Id = 3, TourTypeName="IT Scandinavia", TourTypeTagName = "Move Your Drive",TourDateFrom = DateTime.Now.AddDays(8), TourDateTo = DateTime.Now.AddDays(15), TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. " +
+                                                                                                                                                                                                                  "Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! " +
+                                                                                                                                                                                                                  "Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. " +
+                                                                                                                                                                                                                  "А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії."}
                 });
             modelBuilder.Entity<TourPhotoBackground>().HasData(
                 new TourPhotoBackground[]
@@ -62,8 +69,6 @@ namespace DataBase
                     new TourPhotoBackground {Id = 8, PhotoLink = "photo8.png", TourTypeId = 3},
                     new TourPhotoBackground {Id = 9, PhotoLink = "photo9.png", TourTypeId = 3}
                 });
-
-            //TourTypeSettings
         }
     }
 }

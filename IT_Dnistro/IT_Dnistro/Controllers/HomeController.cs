@@ -36,13 +36,12 @@ namespace IT_Dnistro.Controllers
 
             ViewBag.TourId = tourType.Id;
             ViewBag.TourName = tourType.TourTypeName;
-            ViewBag.TourDescription = tourType.TourTypeDescription;
+            ViewBag.TourTagName = tourType.TourTypeTagName;
+            ViewBag.TourTypeDescription = tourType.TourTypeDescription;
             ViewBag.DateFrom = tourType.TourDateFrom.ToShortDateString();
             ViewBag.DateTo = tourType.TourDateTo.ToShortDateString();
 
             var backgrounds = _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == tourType.Id).ToList();
-            //if(backgrounds.Count != 3)
-            //    throw new ArgumentException("Not enough images for this tour type");
             if (backgrounds.Count > 0)
             {
                 ViewBag.Background = backgrounds.FirstOrDefault()?.PhotoLink;

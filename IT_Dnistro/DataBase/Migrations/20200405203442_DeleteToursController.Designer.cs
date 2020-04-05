@@ -4,14 +4,16 @@ using DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataBase.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200405203442_DeleteToursController")]
+    partial class DeleteToursController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -267,10 +269,6 @@ namespace DataBase.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<string>("TourTypeTagName")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
                     b.HasKey("Id");
 
                     b.ToTable("TourTypes");
@@ -280,31 +278,28 @@ namespace DataBase.Migrations
                         {
                             Id = 1,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 12, 23, 55, 52, 272, DateTimeKind.Local).AddTicks(9340),
-                            TourDateTo = new DateTime(2020, 4, 15, 23, 55, 52, 281, DateTimeKind.Local).AddTicks(4148),
-                            TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
-                            TourTypeName = "IT DnistrO",
-                            TourTypeTagName = "In My Core"
+                            TourDateFrom = new DateTime(2020, 4, 12, 23, 34, 31, 65, DateTimeKind.Local).AddTicks(6797),
+                            TourDateTo = new DateTime(2020, 4, 15, 23, 34, 31, 69, DateTimeKind.Local).AddTicks(7749),
+                            TourTypeDescription = "In My Core",
+                            TourTypeName = "IT DnistrO"
                         },
                         new
                         {
                             Id = 2,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 15, 23, 55, 52, 281, DateTimeKind.Local).AddTicks(6570),
-                            TourDateTo = new DateTime(2020, 4, 17, 23, 55, 52, 281, DateTimeKind.Local).AddTicks(6636),
-                            TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
-                            TourTypeName = "IT Carpaty",
-                            TourTypeTagName = "Pass with little losses"
+                            TourDateFrom = new DateTime(2020, 4, 15, 23, 34, 31, 69, DateTimeKind.Local).AddTicks(8713),
+                            TourDateTo = new DateTime(2020, 4, 17, 23, 34, 31, 69, DateTimeKind.Local).AddTicks(8758),
+                            TourTypeDescription = "Pass with little losses",
+                            TourTypeName = "IT Carpaty"
                         },
                         new
                         {
                             Id = 3,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 13, 23, 55, 52, 281, DateTimeKind.Local).AddTicks(6685),
-                            TourDateTo = new DateTime(2020, 4, 20, 23, 55, 52, 281, DateTimeKind.Local).AddTicks(6695),
-                            TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
-                            TourTypeName = "IT Scandinavia",
-                            TourTypeTagName = "Move Your Drive"
+                            TourDateFrom = new DateTime(2020, 4, 13, 23, 34, 31, 69, DateTimeKind.Local).AddTicks(8774),
+                            TourDateTo = new DateTime(2020, 4, 20, 23, 34, 31, 69, DateTimeKind.Local).AddTicks(8779),
+                            TourTypeDescription = "Move Your Drive",
+                            TourTypeName = "IT Scandinavia"
                         });
                 });
 

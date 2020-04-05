@@ -28,11 +28,12 @@
                 </a>
                 <div class="participants-table">
                     <table style="width:100%">
-                        <tr><th>Назва туру</th><th>Опис туру</th><th>Дата туру</th><th>Зареєстрованих учасників</th><th class="action">Дії</th></tr>
+                        <tr><th>Назва туру</th><th>Тег туру</th><th>Опис туру</th><th>Дата туру</th><th>Зареєстрованих учасників</th><th class="action">Дії</th></tr>
                         @foreach (var item in Model)
                         {
                             <tr>
                                 <td>@Html.DisplayFor(modelItem => item.TourTypeName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TourTypeTagName)</td>
                                 <td>@Html.DisplayFor(modelItem => item.TourTypeDescription)</td>
                                 <td>@item.TourDateFrom.ToShortDateString() - @item.TourDateTo.ToShortDateString()</td>
                                 <td>@Html.DisplayFor(modelItem => item.Amount)</td>

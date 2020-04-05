@@ -19,10 +19,15 @@
                 <span asp-validation-for="TourTypeName" class="text-danger"></span>
             </div>
             <div class="form-group">
-            <label asp-for="TourTypeDescription" class="control-label">Опис туру</label>
-            <input asp-for="TourTypeDescription" class="form-control" />
-            <span asp-validation-for="TourTypeDescription" class="text-danger"></span>
-        </div>
+                <label asp-for="TourTypeTagName" class="control-label">Тег туру</label>
+                <input asp-for="TourTypeTagName" class="form-control" />
+                <span asp-validation-for="TourTypeTagName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourTypeDescription" class="control-label">Опис туру</label>
+                <input asp-for="TourTypeDescription" class="form-control" />
+                <span asp-validation-for="TourTypeDescription" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="TourDateFrom" class="control-label">Дата туру з</label>
                 <input asp-for="TourDateFrom" class="form-control" />

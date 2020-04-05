@@ -27,23 +27,6 @@ namespace IT_Dnistro.Controllers
         {
             return View(await _context.TourTypes.ToListAsync().ConfigureAwait(true));
         }
-        //[HttpGet("details")]
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var tourType = await _context.TourTypes
-        //        .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
-        //    if (tourType == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(tourType);
-        //}
         [HttpGet("create")]
         public IActionResult Create()
         {
