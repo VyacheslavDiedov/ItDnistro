@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using DataBase;
 using Microsoft.AspNetCore.Mvc;
@@ -19,8 +20,8 @@ namespace IT_Dnistro.Controllers
     {
         private readonly DatabaseContext _context;
         IWebHostEnvironment _appEnvironment;
-        private int countParticipant = 0;
-        protected static int IdTour;
+        //private int countParticipant = 0;
+        public static int IdTour;
 
         public DashboardController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
@@ -39,33 +40,35 @@ namespace IT_Dnistro.Controllers
         [HttpGet("participant")]
         public IActionResult GetParticipants()
         {
-            var tourTypeFirst = _context.TourTypes.FirstOrDefault()?.Id;
-            var tourTypeId = _context.TourTypes.Find(IdTour)?.Id;
-            if (tourTypeId == null)
+            var tourType = _context.TourTypes.Find(IdTour);
+            if (tourType == null)
             {
+                var tourTypeFirst = _context.TourTypes.FirstOrDefault()?.Id; //1
                 if (tourTypeFirst != null)
                 {
-                    IdTour = _context.TourTypes.First().Id;
+                    IdTour = tourTypeFirst.Value;
                 }
             }
 
-            if (_context.TourTypes.Find(IdTour)?.Id != null)
+            var type = tourType ?? _context.TourTypes.Find(IdTour);
+            if (type?.Id != null)//4
             {
-                DateTime dateTime = DateTime.Now;
-                DateTime dateTimes = _context.TourTypes.Find(IdTour).TourDateFrom;
-                TimeSpan diff = dateTimes - dateTime;
+                DateTime dateTimes = type.TourDateFrom;
+                TimeSpan diff = dateTimes - DateTime.Now;
                 ViewBag.Time = diff.Days;
-                ViewBag.TourName = _context.TourTypes.Find(IdTour).TourTypeName;
+                ViewBag.TourName = type.TourTypeName;
             }
 
-            foreach (var count in _context.Participants)
-            {
-                countParticipant++;
-            }
-            ViewBag.Count = countParticipant;
+            //foreach (var count in _context.Participants)
+            //{
+            //    countParticipant++;
+            //}
+            ViewBag.Count = _context.Participants.Count();
 
 
-            var items = _context.Participants.Where(d => d.TourTypeId == IdTour).Select(x => new ParticipantsViewModel()
+            var items = _context.Participants
+                .Where(d => d.TourTypeId == IdTour)
+                .Select(x => new ParticipantsViewModel()
             {
                 Id = x.Id,
                 FullName = x.FullName,
@@ -73,6 +76,7 @@ namespace IT_Dnistro.Controllers
                 PhoneNumber = x.PhoneNumber,
                 TourName = x.TourType.TourTypeName
             }).ToList();
+
             return View(items);
         }
 
@@ -97,9 +101,11 @@ namespace IT_Dnistro.Controllers
                     TourTypeId = IdTour
                 };
                 _context.Add(participant);
-                var TourType = await _context.TourTypes.FindAsync(IdTour);
-                TourType.Amount++;
+                var tourType = await _context.TourTypes.FindAsync(IdTour);
+                tourType.Amount++;
+
                 await _context.SaveChangesAsync().ConfigureAwait(true);
+
                 return RedirectToAction(nameof(GetParticipants));
             }
             return View(model);
@@ -126,11 +132,6 @@ namespace IT_Dnistro.Controllers
         [HttpPost("edit")]
         public async Task<IActionResult> Edit([FromForm]int id, [FromForm]Participant participant)
         {
-            if (id != participant.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
@@ -152,11 +153,10 @@ namespace IT_Dnistro.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return StatusCode((int)HttpStatusCode.NotAcceptable);
             }
 
-            var participant = await _context.Participants
-                .FirstOrDefaultAsync(m => m.Id == id).ConfigureAwait(true);
+            var participant = await _context.Participants.FindAsync(id).ConfigureAwait(true);
             if (participant == null)
             {
                 return NotFound();

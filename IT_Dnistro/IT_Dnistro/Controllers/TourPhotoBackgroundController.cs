@@ -30,6 +30,8 @@ namespace IT_Dnistro.Controllers
             _appEnvironment = appEnvironment;
         }
 
+        //todo - User [GalerySlided]/index with parameter
+        [Obsolete]
         [HttpGet("index")]
         public IActionResult Index()
         {

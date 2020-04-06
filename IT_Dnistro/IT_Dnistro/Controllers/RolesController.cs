@@ -84,6 +84,7 @@ namespace IT_Dnistro.Controllers
             }
             return NotFound();
         }
+
         [HttpPost("role")]
 
         public async Task<IActionResult> Edit([FromForm]string userId, [FromForm]List<string> roles)
@@ -92,7 +93,6 @@ namespace IT_Dnistro.Controllers
             if (user != null)
             {
                 var userRoles = await _userManager.GetRolesAsync(user).ConfigureAwait(true);
-                var allRoles = _roleManager.Roles.ToList();
                 var addedRoles = roles.Except(userRoles);
                 var removedRoles = userRoles.Except(roles);
 

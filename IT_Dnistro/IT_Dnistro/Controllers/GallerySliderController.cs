@@ -15,24 +15,25 @@ namespace IT_Dnistro.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(Roles = "admin")]
-    public class GallerySliderController : DashboardController
+    public class GallerySliderController : Controller
     {
         DatabaseContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
         List<TourPhoto> _photos;
         List<TourType> _tours;
 
-        public GallerySliderController(DatabaseContext context, IWebHostEnvironment appEnvironment) : base(context, appEnvironment)
+        public GallerySliderController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
             _db = context;
             _appEnvironment = appEnvironment;
         }
 
+        //todo add parameter isBackground
         [HttpGet("index")]
         public IActionResult Index()
         {
             var tourTypeFirst = _db.TourTypes.FirstOrDefault()?.Id;
-            var tourTypeId = _db.TourTypes.Find(IdTour)?.Id;
+            var tourTypeId = _db.TourTypes.Find(DashboardController.IdTour)?.Id;
             _photos = new List<TourPhoto>(_db.TourPhotos);
             _tours = new List<TourType>(_db.TourTypes);
             GalleryViewModel gvm = new GalleryViewModel { Tours = _tours, Photos = _photos };
@@ -41,15 +42,15 @@ namespace IT_Dnistro.Controllers
             {
                 if (tourTypeFirst != null)
                 {
-                    IdTour = _db.TourTypes.First().Id;
+                    DashboardController.IdTour = _db.TourTypes.First().Id;
                 }
             }
 
-            if (_db.TourTypes.Find(IdTour)?.Id != null)
+            if (_db.TourTypes.Find(DashboardController.IdTour)?.Id != null)
             {
-                gvm.Photos = _photos.Where(p => p.TourTypeId == IdTour);
-                gvm.Tours = _tours.Where(p => p.Id == IdTour);
-                ViewBag.TourName = _db.TourTypes.Find(IdTour)?.TourTypeName;
+                gvm.Photos = _photos.Where(p => p.TourTypeId == DashboardController.IdTour);
+                gvm.Tours = _tours.Where(p => p.Id == DashboardController.IdTour);
+                ViewBag.TourName = _db.TourTypes.Find(DashboardController.IdTour)?.TourTypeName;
             }
             return View(gvm);
         }
@@ -73,9 +74,9 @@ namespace IT_Dnistro.Controllers
                 {
                     uploadedFile.CopyTo(fileStream);
                 }
-                if (IdTour != 0)
+                if (DashboardController.IdTour != 0)
                 {
-                    TourPhoto file = new TourPhoto() { PhotoLink = namePhoto, TourTypeId = IdTour };
+                    TourPhoto file = new TourPhoto() { PhotoLink = namePhoto, TourTypeId = DashboardController.IdTour };
                     _db.TourPhotos.Add(file);
                     _db.SaveChanges();
                 }

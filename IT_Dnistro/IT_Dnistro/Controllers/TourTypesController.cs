@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -49,7 +50,7 @@ namespace IT_Dnistro.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return StatusCode((int)HttpStatusCode.NotAcceptable);
             }
 
             var tourType = await _context.TourTypes.FindAsync(id);
@@ -64,11 +65,6 @@ namespace IT_Dnistro.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([FromForm]int id, [FromForm][Bind("Id,TourTypeName,TourTypeDescription,Amount,TourDateFrom,TourDateTo")] TourType tourType)
         {
-            if (id != tourType.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
