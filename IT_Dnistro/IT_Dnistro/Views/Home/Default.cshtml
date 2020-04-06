@@ -34,7 +34,7 @@
         }
 
         .block1 {
-            background-image: url("../images/TourBG/@{ @ViewBag.Background }");
+            background-image: url("../images/Gallery/@{ @ViewBag.Background }");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center top;
@@ -43,7 +43,7 @@
         }
 
         .block4 {
-            background-image: url("../images/TourBG/@{ @ViewBag.BackgroundTwo }");
+            background-image: url("../images/Gallery/@{ @ViewBag.BackgroundTwo }");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center top;
@@ -57,7 +57,7 @@
         }
 
         .block6 {
-            background-image: url("../images/TourBG/@{ @ViewBag.BackgroundThree }");
+            background-image: url("../images/Gallery/@{ @ViewBag.BackgroundThree }");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center top;
@@ -433,7 +433,7 @@ function removeToDefault(){
                 <div class="swiper-wrapper">
                     @foreach (var photo in Model)
                     {
-                        <div class="swiper-slide" style="background-image: url(../images/Swiper/@photo.PhotoLink)"></div>
+                        <div class="swiper-slide" style="background-image: url(../images/Gallery/@photo.PhotoLink)"></div>
                     }
                 </div>
                 <!-- Add Pagination -->

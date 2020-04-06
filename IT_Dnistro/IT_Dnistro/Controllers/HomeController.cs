@@ -5,6 +5,8 @@ using IT_Dnistro.Models;
 using DataBase;
 using System.Linq;
 using System.Threading.Channels;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace IT_Dnistro.Controllers
 {
@@ -32,7 +34,7 @@ namespace IT_Dnistro.Controllers
                 });
             }
 
-            var tourPhotos = _db.TourPhotos.Where(x => x.TourTypeId == tourType.Id).ToList();
+            var tourPhotos = _db.TourPhotos.Where(x => x.TourTypeId == tourType.Id).Where(x => x.ToutPhotoTypeId == 1).ToList();
 
             ViewBag.TourId = tourType.Id;
             ViewBag.TourName = tourType.TourTypeName;
@@ -41,7 +43,7 @@ namespace IT_Dnistro.Controllers
             ViewBag.DateFrom = tourType.TourDateFrom.ToShortDateString();
             ViewBag.DateTo = tourType.TourDateTo.ToShortDateString();
 
-            var backgrounds = _db.TourPhotoBackgrounds.Where(x => x.TourTypeId == tourType.Id).ToList();
+            var backgrounds = _db.TourPhotos.Where(x => x.TourTypeId == tourType.Id).Where(x => x.ToutPhotoTypeId == 2).ToList();
             if (backgrounds.Count > 0)
             {
                 ViewBag.Background = backgrounds.FirstOrDefault()?.PhotoLink;

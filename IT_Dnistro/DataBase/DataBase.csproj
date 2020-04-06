@@ -7,6 +7,7 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200213175726_UserInfo.cs" />
     <Compile Remove="Migrations\20200213175726_UserInfo.Designer.cs" />
+    <Compile Remove="TourPhotoBackground.cs" />
   </ItemGroup>
 
   <ItemGroup>

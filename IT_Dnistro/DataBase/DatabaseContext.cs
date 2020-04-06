@@ -19,7 +19,6 @@ namespace DataBase
         public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
         public DbSet<TourPhoto> TourPhotos { get; set; }
         public DbSet<Participant> Participants { get; set; }
-        public DbSet<TourPhotoBackground> TourPhotoBackgrounds { get; set; }
         public DbSet<ToutPhotoType> ToutPhotoTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -64,19 +63,6 @@ namespace DataBase
                                                                                                                                                                                                                   "Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! " +
                                                                                                                                                                                                                   "Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. " +
                                                                                                                                                                                                                   "А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії."}
-                });
-            modelBuilder.Entity<TourPhotoBackground>().HasData(
-                new TourPhotoBackground[]
-                {
-                    new TourPhotoBackground {Id = 1, PhotoLink = "photo1.png", TourTypeId = 1,},
-                    new TourPhotoBackground {Id = 2, PhotoLink = "photo2.png", TourTypeId = 1},
-                    new TourPhotoBackground {Id = 3, PhotoLink = "photo3.png", TourTypeId = 1},
-                    new TourPhotoBackground {Id = 4, PhotoLink = "photo4.png", TourTypeId = 2},
-                    new TourPhotoBackground {Id = 5, PhotoLink = "photo5.jpg", TourTypeId = 2},
-                    new TourPhotoBackground {Id = 6, PhotoLink = "photo6.png", TourTypeId = 2},
-                    new TourPhotoBackground {Id = 7, PhotoLink = "photo7.png", TourTypeId = 3},
-                    new TourPhotoBackground {Id = 8, PhotoLink = "photo8.png", TourTypeId = 3},
-                    new TourPhotoBackground {Id = 9, PhotoLink = "photo9.png", TourTypeId = 3}
                 });
             modelBuilder.Entity<ToutPhotoType>().HasData(
                 new ToutPhotoType[]

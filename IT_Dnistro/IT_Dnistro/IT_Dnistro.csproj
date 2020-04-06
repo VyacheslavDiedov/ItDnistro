@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="Models\ApplicationContext.cs" />
+    <Compile Remove="ViewModels\BackgroundViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
