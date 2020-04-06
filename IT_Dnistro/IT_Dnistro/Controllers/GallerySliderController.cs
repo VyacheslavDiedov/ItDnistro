@@ -20,7 +20,7 @@ namespace IT_Dnistro.Controllers
         DatabaseContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
         List<TourPhoto> _photos;
-        private int _tourTypePhotoId;
+        private static int _tourTypePhotoId;
 
         public GallerySliderController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
