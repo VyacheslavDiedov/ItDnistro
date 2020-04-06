@@ -20,6 +20,7 @@ namespace IT_Dnistro.Controllers
         DatabaseContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
         List<TourPhoto> _photos;
+        private int _tourTypePhotoId = 1;
 
         public GallerySliderController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
@@ -28,9 +29,11 @@ namespace IT_Dnistro.Controllers
         }
 
         //todo add parameter isBackground
-        [HttpGet("index")]
-        public IActionResult Index()
+        [HttpGet]
+        [Route("index/{tourTypePhotoId:int?}")]
+        public IActionResult Index(int? tourTypePhotoId)
         {
+            Console.WriteLine(tourTypePhotoId);
             var tourTypeFirst = _db.TourTypes.FirstOrDefault()?.Id;
             var tourTypeId = _db.TourTypes.Find(DashboardController.IdTour)?.Id;
             _photos = new List<TourPhoto>(_db.TourPhotos);
@@ -47,7 +50,7 @@ namespace IT_Dnistro.Controllers
             {
                 ViewBag.TourName = _db.TourTypes.Find(DashboardController.IdTour)?.TourTypeName;
             }
-            return View(_photos.Where(p => p.TourTypeId == DashboardController.IdTour));
+            return View(_photos.Where(p => p.TourTypeId == DashboardController.IdTour ).Where(p=> p.TourTypeId == 1));
         }
 
         [HttpPost]
