@@ -48,10 +48,8 @@
     <Folder Include="Views\GallerySlider\" />
     <Folder Include="Views\Shared\Components\NavigationMenuMain\" />
     <Folder Include="Views\Shared\Components\NavigationMenu\" />
-    <Folder Include="Views\TourPhotoBackground\" />
     <Folder Include="wwwroot\images\Carpaty\" />
     <Folder Include="wwwroot\images\Dnistro\" />
-    <Folder Include="wwwroot\images\TourBG\" />
     <Folder Include="wwwroot\images\Gallery\" />
   </ItemGroup>
 
