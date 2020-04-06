@@ -35,7 +35,7 @@ namespace IT_Dnistro.Controllers
         }
         [HttpPost("create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromForm][Bind("Id,TourTypeName,TourTypeDescription,Amount,TourDateFrom,TourDateTo")] TourType tourType)
+        public async Task<IActionResult> Create([FromForm][Bind("Id,TourTypeName,TourTypeTagName,TourTypeDescription,Amount,TourDateFrom,TourDateTo")] TourType tourType)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace IT_Dnistro.Controllers
 
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([FromForm]int id, [FromForm][Bind("Id,TourTypeName,TourTypeDescription,Amount,TourDateFrom,TourDateTo")] TourType tourType)
+        public async Task<IActionResult> Edit([FromForm]int id, [FromForm][Bind("Id,TourTypeName,TourTypeTagName,TourTypeDescription,Amount,TourDateFrom,TourDateTo")] TourType tourType)
         {
             if (ModelState.IsValid)
             {
