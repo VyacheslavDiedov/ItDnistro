@@ -4,14 +4,16 @@ using DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataBase.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200406170058_reworking_database")]
+    partial class reworking_database
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,8 +254,8 @@ namespace DataBase.Migrations
                         {
                             Id = 1,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 13, 20, 5, 26, 127, DateTimeKind.Local).AddTicks(431),
-                            TourDateTo = new DateTime(2020, 4, 16, 20, 5, 26, 129, DateTimeKind.Local).AddTicks(4964),
+                            TourDateFrom = new DateTime(2020, 4, 13, 20, 0, 58, 73, DateTimeKind.Local).AddTicks(193),
+                            TourDateTo = new DateTime(2020, 4, 16, 20, 0, 58, 75, DateTimeKind.Local).AddTicks(3614),
                             TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
                             TourTypeName = "IT DnistrO",
                             TourTypeTagName = "In My Core"
@@ -262,8 +264,8 @@ namespace DataBase.Migrations
                         {
                             Id = 2,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 16, 20, 5, 26, 129, DateTimeKind.Local).AddTicks(6056),
-                            TourDateTo = new DateTime(2020, 4, 18, 20, 5, 26, 129, DateTimeKind.Local).AddTicks(6088),
+                            TourDateFrom = new DateTime(2020, 4, 16, 20, 0, 58, 75, DateTimeKind.Local).AddTicks(4688),
+                            TourDateTo = new DateTime(2020, 4, 18, 20, 0, 58, 75, DateTimeKind.Local).AddTicks(4723),
                             TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
                             TourTypeName = "IT Carpaty",
                             TourTypeTagName = "Pass with little losses"
@@ -272,8 +274,8 @@ namespace DataBase.Migrations
                         {
                             Id = 3,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 14, 20, 5, 26, 129, DateTimeKind.Local).AddTicks(6104),
-                            TourDateTo = new DateTime(2020, 4, 21, 20, 5, 26, 129, DateTimeKind.Local).AddTicks(6108),
+                            TourDateFrom = new DateTime(2020, 4, 14, 20, 0, 58, 75, DateTimeKind.Local).AddTicks(4741),
+                            TourDateTo = new DateTime(2020, 4, 21, 20, 0, 58, 75, DateTimeKind.Local).AddTicks(4745),
                             TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
                             TourTypeName = "IT Scandinavia",
                             TourTypeTagName = "Move Your Drive"

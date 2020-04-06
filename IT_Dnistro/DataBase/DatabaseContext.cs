@@ -15,8 +15,6 @@ namespace DataBase
             Database.EnsureCreated();
         }
         public DbSet<TourType> TourTypes { get; set; }
-        public DbSet<UserTour> UserTours { get; set; }
-        public DbSet<UserAdditionalInfo> UserAdditionalInfos { get; set; }
         public DbSet<TourPhoto> TourPhotos { get; set; }
         public DbSet<Participant> Participants { get; set; }
         public DbSet<TourPhotoBackground> TourPhotoBackgrounds { get; set; }
