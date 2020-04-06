@@ -12,14 +12,9 @@ namespace DataBase
         public string PhotoLink { get; set; }
         public int TourTypeId { get; set; }
         public virtual TourType TourType { get; set; }
-        //todo add ToutPhotoType property
+        public int ToutPhotoTypeId { get; set; }
+        public virtual ToutPhotoType ToutPhotoType { get; set; }
     }
 
     //todo - use this
-    public class ToutPhotoType
-    {
-        [Key]
-        public int Id { get; set; }
-        public string Name { get; set; } //General, Background
-    }
 }

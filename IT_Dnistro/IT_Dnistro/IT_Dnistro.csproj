@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="Models\ApplicationContext.cs" />
+    <Compile Remove="ViewModels\BackgroundViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,14 +46,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\GallerySlider\" />
+    <Folder Include="Views\Gallery\" />
     <Folder Include="Views\Shared\Components\NavigationMenuMain\" />
     <Folder Include="Views\Shared\Components\NavigationMenu\" />
-    <Folder Include="Views\TourPhotoBackground\" />
     <Folder Include="wwwroot\images\Carpaty\" />
     <Folder Include="wwwroot\images\Dnistro\" />
-    <Folder Include="wwwroot\images\TourBG\" />
-    <Folder Include="wwwroot\images\Swiper\" />
+    <Folder Include="wwwroot\images\Gallery\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

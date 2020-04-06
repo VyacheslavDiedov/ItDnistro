@@ -1,6 +1,4 @@
-﻿@using IT_Dnistro.ViewModels
-@model GalleryViewModel
-
+﻿@model IEnumerable<DataBase.TourPhoto>
 
 @{
     ViewData["Title"] = "Галерея";
@@ -18,13 +16,13 @@
 <body>
 
     <div class="gallery_container">
-        <div class="headerImage"><h1>Галерея @ViewBag.TourName</h1></div>
+        <div class="headerImage"><h1>@ViewBag.GalleryName @ViewBag.TourName</h1></div>
         <div class="images">
             <div class="first_images_container">
-                @foreach (var f in Model.Photos)
+                @foreach (var f in Model)
                 {
                     <div class="image">
-                        <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top/cover">
+                        <div class="photo" style="background: url('/images/Gallery/@f.PhotoLink') no-repeat center top/cover">
                             <div>
                                 <a class="text-black" href="#" data-toggle="modal" data-target="#confirmDelete@{@f.Id}">
                                     <img src="/images/delete1.png" align="right" alt="">
@@ -43,7 +41,7 @@
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
                                                 @Html.ActionLink("Видалити", "DeleteConfirm",
-                                                    "GallerySlider", new { Id = @f.Id },
+                                                    "Gallery", new { Id = @f.Id },
                                                     new { @class = "btn btn-primary" })
                                             </div>
                                         </div>
@@ -58,7 +56,7 @@
                 }
 
                 <div class="plus_image example-1">
-                    <form asp-action="AddFile" asp-controller="GallerySlider" method="post" enctype="multipart/form-data">
+                    <form asp-action="AddFile" asp-controller="Gallery" method="post" enctype="multipart/form-data">
                             <label>
                                 <img src="~/images/plus.png" alt="plus">
                                 <input type="file" name="uploadedFile" accept='image/*'>

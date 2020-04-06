@@ -4,14 +4,16 @@ using DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataBase.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200406195023_TourPhotoTape")]
+    partial class TourPhotoTape
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,6 +51,34 @@ namespace DataBase.Migrations
                     b.HasIndex("TourTypeId");
 
                     b.ToTable("Participants");
+                });
+
+            modelBuilder.Entity("DataBase.Tour", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("TourDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TourLength")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TourName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("TourTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourTypeId");
+
+                    b.ToTable("Tour");
                 });
 
             modelBuilder.Entity("DataBase.TourPhoto", b =>
@@ -121,93 +151,113 @@ namespace DataBase.Migrations
                         new
                         {
                             Id = 7,
-                            PhotoLink = "foto7.jpg",
+                            PhotoLink = "photo1.jpg",
                             TourTypeId = 3,
                             ToutPhotoTypeId = 1
                         },
                         new
                         {
                             Id = 8,
-                            PhotoLink = "foto8.jpg",
+                            PhotoLink = "photo2.jpg",
                             TourTypeId = 3,
                             ToutPhotoTypeId = 1
                         },
                         new
                         {
                             Id = 9,
-                            PhotoLink = "foto9.jpg",
+                            PhotoLink = "photo3.jpg",
                             TourTypeId = 3,
                             ToutPhotoTypeId = 1
                         },
                         new
                         {
                             Id = 10,
-                            PhotoLink = "foto10.jpg",
+                            PhotoLink = "photo4.jpg",
                             TourTypeId = 3,
                             ToutPhotoTypeId = 1
                         },
                         new
                         {
                             Id = 11,
+                            PhotoLink = "photo5.jpg",
+                            TourTypeId = 3,
+                            ToutPhotoTypeId = 1
+                        });
+                });
+
+            modelBuilder.Entity("DataBase.TourPhotoBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PhotoLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TourTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourTypeId");
+
+                    b.ToTable("TourPhotoBackgrounds");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
                             PhotoLink = "photo1.png",
-                            TourTypeId = 1,
-                            ToutPhotoTypeId = 2
+                            TourTypeId = 1
                         },
                         new
                         {
-                            Id = 12,
+                            Id = 2,
                             PhotoLink = "photo2.png",
-                            TourTypeId = 1,
-                            ToutPhotoTypeId = 2
+                            TourTypeId = 1
                         },
                         new
                         {
-                            Id = 13,
+                            Id = 3,
                             PhotoLink = "photo3.png",
-                            TourTypeId = 1,
-                            ToutPhotoTypeId = 2
+                            TourTypeId = 1
                         },
                         new
                         {
-                            Id = 14,
-                            PhotoLink = "photo4.jpg",
-                            TourTypeId = 2,
-                            ToutPhotoTypeId = 2
+                            Id = 4,
+                            PhotoLink = "photo4.png",
+                            TourTypeId = 2
                         },
                         new
                         {
-                            Id = 15,
-                            PhotoLink = "photo5.png",
-                            TourTypeId = 2,
-                            ToutPhotoTypeId = 2
+                            Id = 5,
+                            PhotoLink = "photo5.jpg",
+                            TourTypeId = 2
                         },
                         new
                         {
-                            Id = 16,
+                            Id = 6,
                             PhotoLink = "photo6.png",
-                            TourTypeId = 2,
-                            ToutPhotoTypeId = 2
+                            TourTypeId = 2
                         },
                         new
                         {
-                            Id = 17,
+                            Id = 7,
                             PhotoLink = "photo7.png",
-                            TourTypeId = 3,
-                            ToutPhotoTypeId = 2
+                            TourTypeId = 3
                         },
                         new
                         {
-                            Id = 18,
+                            Id = 8,
                             PhotoLink = "photo8.png",
-                            TourTypeId = 3,
-                            ToutPhotoTypeId = 2
+                            TourTypeId = 3
                         },
                         new
                         {
-                            Id = 19,
+                            Id = 9,
                             PhotoLink = "photo9.png",
-                            TourTypeId = 3,
-                            ToutPhotoTypeId = 2
+                            TourTypeId = 3
                         });
                 });
 
@@ -248,8 +298,8 @@ namespace DataBase.Migrations
                         {
                             Id = 1,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 14, 1, 19, 50, 116, DateTimeKind.Local).AddTicks(2153),
-                            TourDateTo = new DateTime(2020, 4, 17, 1, 19, 50, 121, DateTimeKind.Local).AddTicks(8472),
+                            TourDateFrom = new DateTime(2020, 4, 13, 22, 50, 11, 332, DateTimeKind.Local).AddTicks(486),
+                            TourDateTo = new DateTime(2020, 4, 16, 22, 50, 11, 340, DateTimeKind.Local).AddTicks(477),
                             TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
                             TourTypeName = "IT DnistrO",
                             TourTypeTagName = "In My Core"
@@ -258,8 +308,8 @@ namespace DataBase.Migrations
                         {
                             Id = 2,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 17, 1, 19, 50, 122, DateTimeKind.Local).AddTicks(677),
-                            TourDateTo = new DateTime(2020, 4, 19, 1, 19, 50, 122, DateTimeKind.Local).AddTicks(726),
+                            TourDateFrom = new DateTime(2020, 4, 16, 22, 50, 11, 341, DateTimeKind.Local).AddTicks(5782),
+                            TourDateTo = new DateTime(2020, 4, 18, 22, 50, 11, 341, DateTimeKind.Local).AddTicks(5894),
                             TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
                             TourTypeName = "IT Carpaty",
                             TourTypeTagName = "Pass with little losses"
@@ -268,8 +318,8 @@ namespace DataBase.Migrations
                         {
                             Id = 3,
                             Amount = 0,
-                            TourDateFrom = new DateTime(2020, 4, 15, 1, 19, 50, 122, DateTimeKind.Local).AddTicks(768),
-                            TourDateTo = new DateTime(2020, 4, 22, 1, 19, 50, 122, DateTimeKind.Local).AddTicks(778),
+                            TourDateFrom = new DateTime(2020, 4, 14, 22, 50, 11, 341, DateTimeKind.Local).AddTicks(5937),
+                            TourDateTo = new DateTime(2020, 4, 21, 22, 50, 11, 341, DateTimeKind.Local).AddTicks(5946),
                             TourTypeDescription = "Вінницька IT Академія відкриває для всіх бажаючих простори рідного регіону. Ми підготували для вас цікаву і насичену програму. Беріть з собою друзів і гайда підкорювати нові «вершини»! Свіже повітря, захоплюючі пейзажі, гарна компанія - все для любителів активного відпочинку. Ми побачимо краєвиди, від яких точно перехопить подих. А вашим фотографіям  будуть заздрити всі знайомі. Пізнаємо рідний край,  проникаємось любов'ю до нього ;-) у приємній дружній компанії.",
                             TourTypeName = "IT Scandinavia",
                             TourTypeTagName = "Move Your Drive"
@@ -301,6 +351,56 @@ namespace DataBase.Migrations
                             Id = 2,
                             Name = "Background"
                         });
+                });
+
+            modelBuilder.Entity("DataBase.UserAdditionalInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserAdditionalInfos");
+                });
+
+            modelBuilder.Entity("DataBase.UserTour", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("HowFoundUs")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TourId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTours");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -508,6 +608,15 @@ namespace DataBase.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("DataBase.Tour", b =>
+                {
+                    b.HasOne("DataBase.TourType", "TourType")
+                        .WithMany()
+                        .HasForeignKey("TourTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DataBase.TourPhoto", b =>
                 {
                     b.HasOne("DataBase.TourType", "TourType")
@@ -521,6 +630,37 @@ namespace DataBase.Migrations
                         .HasForeignKey("ToutPhotoTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataBase.TourPhotoBackground", b =>
+                {
+                    b.HasOne("DataBase.TourType", "TourType")
+                        .WithMany()
+                        .HasForeignKey("TourTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataBase.UserAdditionalInfo", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataBase.UserTour", b =>
+                {
+                    b.HasOne("DataBase.Tour", "Tour")
+                        .WithMany()
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
