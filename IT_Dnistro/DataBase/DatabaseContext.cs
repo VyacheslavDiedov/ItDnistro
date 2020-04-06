@@ -35,20 +35,19 @@ namespace DataBase
                     new TourPhoto {Id = 4, PhotoLink = "foto4.jpg", TourTypeId = 2, ToutPhotoTypeId = 1},
                     new TourPhoto {Id = 5, PhotoLink = "foto5.jpg", TourTypeId = 2, ToutPhotoTypeId = 1},
                     new TourPhoto {Id = 6, PhotoLink = "foto6.jpg", TourTypeId = 2, ToutPhotoTypeId = 1},
-                    new TourPhoto {Id = 7, PhotoLink = "photo1.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
-                    new TourPhoto {Id = 8, PhotoLink = "photo2.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
-                    new TourPhoto {Id = 9, PhotoLink = "photo3.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
-                    new TourPhoto {Id = 10, PhotoLink = "photo4.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
-                    new TourPhoto {Id = 11, PhotoLink = "photo5.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
-                    new TourPhoto {Id = 12, PhotoLink = "photo1.png", TourTypeId = 1, ToutPhotoTypeId = 2},
-                    new TourPhoto {Id = 13, PhotoLink = "photo2.png", TourTypeId = 1, ToutPhotoTypeId = 2},
-                    new TourPhoto {Id = 14, PhotoLink = "photo3.png", TourTypeId = 1, ToutPhotoTypeId = 2},
-                    new TourPhoto {Id = 15, PhotoLink = "photo4.png", TourTypeId = 2, ToutPhotoTypeId = 2},
-                    new TourPhoto {Id = 16, PhotoLink = "photo5.jpg", TourTypeId = 2, ToutPhotoTypeId = 2},
-                    new TourPhoto {Id = 17, PhotoLink = "photo6.png", TourTypeId = 2, ToutPhotoTypeId = 2},
-                    new TourPhoto {Id = 18, PhotoLink = "photo7.png", TourTypeId = 3, ToutPhotoTypeId = 2},
-                    new TourPhoto {Id = 19, PhotoLink = "photo8.png", TourTypeId = 3, ToutPhotoTypeId = 2},
-                    new TourPhoto {Id = 20, PhotoLink = "photo9.png", TourTypeId = 3, ToutPhotoTypeId = 2}
+                    new TourPhoto {Id = 7, PhotoLink = "foto7.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
+                    new TourPhoto {Id = 8, PhotoLink = "foto8.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
+                    new TourPhoto {Id = 9, PhotoLink = "foto9.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
+                    new TourPhoto {Id = 10, PhotoLink = "foto10.jpg", TourTypeId = 3, ToutPhotoTypeId = 1},
+                    new TourPhoto {Id = 11, PhotoLink = "photo1.png", TourTypeId = 1, ToutPhotoTypeId = 2},
+                    new TourPhoto {Id = 12, PhotoLink = "photo2.png", TourTypeId = 1, ToutPhotoTypeId = 2},
+                    new TourPhoto {Id = 13, PhotoLink = "photo3.png", TourTypeId = 1, ToutPhotoTypeId = 2},
+                    new TourPhoto {Id = 14, PhotoLink = "photo4.jpg", TourTypeId = 2, ToutPhotoTypeId = 2},
+                    new TourPhoto {Id = 15, PhotoLink = "photo5.png", TourTypeId = 2, ToutPhotoTypeId = 2},
+                    new TourPhoto {Id = 16, PhotoLink = "photo6.png", TourTypeId = 2, ToutPhotoTypeId = 2},
+                    new TourPhoto {Id = 17, PhotoLink = "photo7.png", TourTypeId = 3, ToutPhotoTypeId = 2},
+                    new TourPhoto {Id = 18, PhotoLink = "photo8.png", TourTypeId = 3, ToutPhotoTypeId = 2},
+                    new TourPhoto {Id = 19, PhotoLink = "photo9.png", TourTypeId = 3, ToutPhotoTypeId = 2}
                 });
             modelBuilder.Entity<TourType>().HasData(
                 new TourType[]
