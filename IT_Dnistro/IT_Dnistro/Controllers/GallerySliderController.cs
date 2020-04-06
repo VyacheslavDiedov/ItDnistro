@@ -20,7 +20,7 @@ namespace IT_Dnistro.Controllers
         DatabaseContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
         List<TourPhoto> _photos;
-        private int _tourTypePhotoId = 1;
+        private int _tourTypePhotoId;
 
         public GallerySliderController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
@@ -33,10 +33,14 @@ namespace IT_Dnistro.Controllers
         [Route("index/{tourTypePhotoId:int?}")]
         public IActionResult Index(int? tourTypePhotoId)
         {
-            Console.WriteLine(tourTypePhotoId);
+            if (tourTypePhotoId != null)
+            {
+                _tourTypePhotoId = (int) tourTypePhotoId;
+            }
             var tourTypeFirst = _db.TourTypes.FirstOrDefault()?.Id;
             var tourTypeId = _db.TourTypes.Find(DashboardController.IdTour)?.Id;
             _photos = new List<TourPhoto>(_db.TourPhotos);
+            
 
             if (tourTypeId == null)
             {
@@ -50,7 +54,7 @@ namespace IT_Dnistro.Controllers
             {
                 ViewBag.TourName = _db.TourTypes.Find(DashboardController.IdTour)?.TourTypeName;
             }
-            return View(_photos.Where(p => p.TourTypeId == DashboardController.IdTour ).Where(p=> p.TourTypeId == 1));
+            return View(_photos.Where(p => p.TourTypeId == DashboardController.IdTour ).Where(p=> p.TourTypeId == _tourTypePhotoId));
         }
 
         [HttpPost]
@@ -74,7 +78,7 @@ namespace IT_Dnistro.Controllers
                 }
                 if (DashboardController.IdTour != 0)
                 {
-                    TourPhoto file = new TourPhoto() { PhotoLink = namePhoto, TourTypeId = DashboardController.IdTour };
+                    TourPhoto file = new TourPhoto() { PhotoLink = namePhoto, TourTypeId = DashboardController.IdTour, ToutPhotoTypeId = _tourTypePhotoId };
                     _db.TourPhotos.Add(file);
                     _db.SaveChanges();
                 }
