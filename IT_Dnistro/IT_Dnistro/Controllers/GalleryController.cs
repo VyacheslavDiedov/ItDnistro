@@ -15,14 +15,14 @@ namespace IT_Dnistro.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(Roles = "admin")]
-    public class GallerySliderController : Controller
+    public class GalleryController : Controller
     {
         DatabaseContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
         List<TourPhoto> _photos;
         private static int _tourTypePhotoId;
 
-        public GallerySliderController(DatabaseContext context, IWebHostEnvironment appEnvironment)
+        public GalleryController(DatabaseContext context, IWebHostEnvironment appEnvironment)
         {
             _db = context;
             _appEnvironment = appEnvironment;
@@ -53,6 +53,7 @@ namespace IT_Dnistro.Controllers
             if (_db.TourTypes.Find(DashboardController.IdTour)?.Id != null)
             {
                 ViewBag.TourName = _db.TourTypes.Find(DashboardController.IdTour)?.TourTypeName;
+                ViewBag.GalleryName = _db.ToutPhotoTypes.Find(_tourTypePhotoId)?.Name;
             }
             return View(_photos.Where(p => p.TourTypeId == DashboardController.IdTour).Where(p => p.ToutPhotoTypeId == _tourTypePhotoId));
         }
