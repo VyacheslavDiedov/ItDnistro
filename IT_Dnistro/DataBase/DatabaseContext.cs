@@ -65,7 +65,7 @@ namespace DataBase
             modelBuilder.Entity<ToutPhotoType>().HasData(
                 new ToutPhotoType[]
                 {
-                    new ToutPhotoType {Id = 1, Name = "General"},
+                    new ToutPhotoType {Id = 1, Name = "Gallery"},
                     new ToutPhotoType {Id = 2, Name = "Background"}
                 });
 
