@@ -54,7 +54,7 @@ namespace IT_Dnistro.Controllers
             {
                 ViewBag.TourName = _db.TourTypes.Find(DashboardController.IdTour)?.TourTypeName;
             }
-            return View(_photos.Where(p => p.TourTypeId == DashboardController.IdTour ).Where(p=> p.TourTypeId == _tourTypePhotoId));
+            return View(_photos.Where(p => p.TourTypeId == DashboardController.IdTour).Where(p => p.ToutPhotoTypeId == _tourTypePhotoId));
         }
 
         [HttpPost]
