@@ -6,7 +6,7 @@ using System.Text;
 namespace DataBase
 {
     //todo - drop. Use TourPhoto
-    [Obsolete]
+    //[Obsolete]
     public class TourPhotoBackground
     {
         [Key]

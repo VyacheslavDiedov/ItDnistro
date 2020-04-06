@@ -52,7 +52,7 @@
     <Folder Include="wwwroot\images\Carpaty\" />
     <Folder Include="wwwroot\images\Dnistro\" />
     <Folder Include="wwwroot\images\TourBG\" />
-    <Folder Include="wwwroot\images\Swiper\" />
+    <Folder Include="wwwroot\images\Gallery\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

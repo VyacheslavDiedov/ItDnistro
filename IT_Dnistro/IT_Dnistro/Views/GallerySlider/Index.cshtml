@@ -1,5 +1,4 @@
-﻿@using IT_Dnistro.ViewModels
-@model GalleryViewModel
+﻿@model IEnumerable<DataBase.TourPhoto>
 
 
 @{
@@ -21,10 +20,10 @@
         <div class="headerImage"><h1>Галерея @ViewBag.TourName</h1></div>
         <div class="images">
             <div class="first_images_container">
-                @foreach (var f in Model.Photos)
+                @foreach (var f in Model)
                 {
                     <div class="image">
-                        <div class="photo" style="background: url('/images/Swiper/@f.PhotoLink') no-repeat center top/cover">
+                        <div class="photo" style="background: url('/images/Gallery/@f.PhotoLink') no-repeat center top/cover">
                             <div>
                                 <a class="text-black" href="#" data-toggle="modal" data-target="#confirmDelete@{@f.Id}">
                                     <img src="/images/delete1.png" align="right" alt="">
